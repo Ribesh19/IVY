@@ -12,4 +12,26 @@
     <string name="open">Open</string>
     <string name="distance">Distance</string>
     <string name="dollar">$$</string>
+    <string name="ivy_kids_safe_home">IVY: Kids Safe Home</string>
+    <string name="about_us">About Us</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    </string>
+    <string name="age">2.0 - 5.0 years</string>
+    <string name="age_groups">Age Groups</string>
+    <string name="transportation">Transportation</string>
+    <string name="preschool">Preschool</string>
+    <string name="facilities">Facilities</string>
+    <string name="lorem_ipsum2"> - Lorem ipsum dolor sit amet
+
+    </string>
+    <string name="reviews">Reviews</string>
+    <string name="see_all_reviews">See all reviews ></string>
+    <string name="feestructure">Request Fee Structure</string>
+    <string name="average_review">Average Reviews</string>
+    <string name="qualified_staff">Qualified Staff</string>
+    <string name="curriculum">Curriculum</string>
+    <string name="security">Security</string>
+    <string name="infrastructure">Infrastructure</string>
 </resources>

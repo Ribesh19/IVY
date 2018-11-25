@@ -20,6 +20,7 @@
         app:layout_constraintStart_toStartOf="@+id/spinner_listhelper"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <Button
         android:id="@+id/btn_mapview"
         android:layout_width="wrap_content"
@@ -49,8 +50,6 @@
         app:layout_constraintBottom_toBottomOf="@+id/btn_mapview"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/btn_mapview" />
-
-
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
         android:layout_width="384dp"
@@ -74,7 +73,8 @@
         app:fabSize="normal"
         app:layout_constraintBottom_toTopOf="@+id/navigation"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@color/colorAccent" />
+        android:backgroundTint="@color/colorAccent"
+        android:layout_gravity="bottom|end"/>
 
     <android.widget.Spinner
         android:id="@+id/spinner_listhelper"
@@ -106,6 +106,7 @@
         app:layout_constraintTop_toBottomOf="@+id/spinner_listhelper" />
 
     <include
+        android:id="@+id/include"
         layout="@layout/school_info_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -115,4 +116,5 @@
         app:layout_constraintTop_toBottomOf="@+id/textView">
 
     </include>
+
 </android.support.constraint.ConstraintLayout>

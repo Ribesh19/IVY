@@ -6,9 +6,13 @@ import android.support.design.bottomappbar.BottomAppBar;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.FrameLayout;
+import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -16,6 +20,10 @@ import java.util.ArrayList;
 public class ListingHelpActivity extends AppCompatActivity {
 
    Spinner spinner;
+
+   RatingBar ratingBar;
+
+
 
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -41,7 +49,11 @@ public class ListingHelpActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_listing_help);spinner=findViewById(R.id.spinner_listhelper);
+        setContentView(R.layout.activity_listing_help);
+        spinner=findViewById(R.id.spinner_listhelper);
+        ratingBar=findViewById(R.id.rating);
+
+        ratingBar.setRating(4);
         //String [] location={"Delhi","Hauz Khas", "Lajpat Nagar","Greater Kailash","Rangpuri", "Noida"};
         //ArrayAdapter<String> adapter =new ArrayAdapter<String>(this,R.layout.support_simple_spinner_dropdown_item,location);
         //spinner.setAdapter(adapter);
@@ -57,6 +69,9 @@ public class ListingHelpActivity extends AppCompatActivity {
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+
+
 
 
     }

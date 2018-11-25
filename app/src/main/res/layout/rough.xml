@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="4dp"
+    android:id="@+id/averageratting_whole"
+    android:background="@color/grey2">
+
+    <TextView
+        android:id="@+id/avgreview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="@string/average_review"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/security"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="@string/security"
+        android:textColor="@color/grey"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/avgreview"
+        app:layout_constraintTop_toBottomOf="@+id/avgreview" />
+
+    <RatingBar
+        android:id="@+id/rating_security"
+        style="@style/Base.Widget.AppCompat.RatingBar.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:stepSize="0.1"
+        app:layout_constraintBottom_toBottomOf="@+id/security"
+        app:layout_constraintStart_toEndOf="@+id/security"
+        app:layout_constraintTop_toTopOf="@+id/security"
+        android:rating="3.5"/>
+
+    <TextView
+        android:id="@+id/Qualified_staff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="@string/qualified_staff"
+        android:textColor="@color/grey"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/security"
+        app:layout_constraintTop_toBottomOf="@+id/security"
+        />
+
+    <RatingBar
+        android:id="@+id/rating_qualified_staff"
+        style="@style/Base.Widget.AppCompat.RatingBar.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:stepSize="0.1"
+        app:layout_constraintBottom_toBottomOf="@+id/Qualified_staff"
+        app:layout_constraintStart_toEndOf="@+id/Qualified_staff"
+        app:layout_constraintTop_toTopOf="@+id/Qualified_staff"
+        android:rating="4"/>
+
+    <TextView
+        android:id="@+id/infrastructure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="Infrastructure"
+        android:textColor="@color/grey"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/Qualified_staff"
+        app:layout_constraintTop_toBottomOf="@+id/Qualified_staff" />
+
+    <RatingBar
+        android:id="@+id/rating_infrastructure"
+        style="@style/Base.Widget.AppCompat.RatingBar.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:stepSize="0.1"
+        app:layout_constraintBottom_toBottomOf="@+id/infrastructure"
+        app:layout_constraintStart_toEndOf="@+id/infrastructure"
+        app:layout_constraintTop_toTopOf="@+id/infrastructure"
+        android:rating="3"/>
+
+    <TextView
+        android:id="@+id/curriculum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="@string/curriculum"
+        android:textColor="@color/grey"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/infrastructure"
+        app:layout_constraintTop_toBottomOf="@+id/infrastructure"
+        />
+
+    <RatingBar
+        android:id="@+id/rating_curriculum"
+        style="@style/Base.Widget.AppCompat.RatingBar.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:stepSize="0.1"
+        app:layout_constraintBottom_toBottomOf="@+id/curriculum"
+        app:layout_constraintStart_toEndOf="@+id/curriculum"
+        app:layout_constraintTop_toTopOf="@+id/curriculum"
+        android:rating="4.5"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp"
+        android:padding="8dp"
+        >
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Request Fee Structure"
+            android:textColor="@color/white"
+            android:background="#0066b2"
+            android:padding="4dp"
+            android:textSize="14sp"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Book An Appointment"
+            android:textColor="@color/white"
+            android:background="@color/colorAccent"
+            android:padding="4dp"
+            android:textSize="14sp"
+            android:layout_marginStart="4dp"/>
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
