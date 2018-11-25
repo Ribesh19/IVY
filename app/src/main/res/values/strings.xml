@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">IVY</string>
+    <string name="title_activity_listing_help">ListingHelpActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="search">Search</string>
+    <string name="favourite">Favourite</string>
+    <string name="mapview">Map View</string>
+    <string name="your_location">Your Location</string>
+    <string name="ivy_komal_pre_school">IVY: Komal Pre-School</string>
+    <string name="open">Open</string>
+    <string name="distance">Distance</string>
+    <string name="dollar">$$</string>
+</resources>
