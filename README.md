@@ -1,1 +1,2 @@
-# IVY
+![](detail.gif)
+
