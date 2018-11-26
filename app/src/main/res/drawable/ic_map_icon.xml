@@ -1,0 +1,27 @@
+<vector android:height="24dp" android:viewportHeight="42"
+    android:viewportWidth="42" android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">
+    <group>
+        <clip-path android:pathData="M0,0h42v42h-42z M 0,0"/>
+        <path android:fillColor="@color/colorAccent" android:pathData="M38.5,31.5V32c0,3.6,-2.9,6.5,-6.5,6.5H10c-3.6,0,-6.5,-2.9,-6.5,-6.5V10   c0,-3.6,2.9,-6.5,6.5,-6.5h6.7V0H10C4.5,0,0,4.5,0,10V32c0,5.5,4.5,10,10,10H32c5.5,0,10,-4.5,10,-10v-0.5H38.5z"/>
+    </group>
+    <group>
+        <clip-path android:pathData="M0,0h42v42h-42z M 0,0"/>
+        <path android:fillColor="@color/colorAccent" android:pathData="M40.2,35c-1,0,-1.8,-0.8,-1.8,-1.8v-4.4c0,-1,0.8,-1.8,1.8,-1.8c1,0,1.8,0.8,1.8,1.8   v4.4C42,34.2,41.2,35,40.2,35"/>
+    </group>
+    <group>
+        <clip-path android:pathData="M0,0h42v42h-42z M 0,0"/>
+        <path android:fillColor="@color/colorAccent" android:pathData="M21.9,32.4H9.6c-1,0,-1.8,-0.8,-1.8,-1.8s0.8,-1.8,1.8,-1.8h12.2c1,0,1.8,0.8,1.8,1.8   S22.8,32.4,21.9,32.4"/>
+    </group>
+    <group>
+        <clip-path android:pathData="M0,0h42v42h-42z M 0,0"/>
+        <path android:fillColor="@color/colorAccent" android:pathData="M14.9,24.5H9.6c-1,0,-1.8,-0.8,-1.8,-1.8c0,-1,0.8,-1.8,1.8,-1.8h5.2   c1,0,1.8,0.8,1.8,1.8C16.6,23.7,15.8,24.5,14.9,24.5"/>
+    </group>
+    <group>
+        <clip-path android:pathData="M0,0h42v42h-42z M 0,0"/>
+        <path android:fillColor="@color/colorAccent" android:pathData="M30.8,7.8c-1.8,0,-3.3,1.5,-3.3,3.3c0,1.8,1.6,3.3,3.4,3.3c1.8,0,3.2,-1.5,3.2,-3.3   C34.1,9.3,32.6,7.8,30.8,7.8"/>
+    </group>
+    <group>
+        <clip-path android:pathData="M0,0h42v42h-42z M 0,0"/>
+        <path android:fillColor="@color/colorAccent" android:pathData="M30.8,0v3.5c2,0,4,0.9,5.4,2.4c1.5,1.6,2.4,3.9,2.2,6.2   c-0.4,6.4,-4.8,10.7,-7.3,12.6c-2.8,-2.1,-8,-7,-8,-13.5c0,-3.8,2.8,-7,6.6,-7.6c0.3,0,0.7,-0.1,1,-0.1L30.8,0 M30.8,0c-0.5,0,-1,0,-1.5,0.1   c-5.4,0.8,-9.6,5.4,-9.6,11c0,10.9,10.9,17.5,11.4,17.7c0,0,0,0,0,0c0,0,0,0,0,0c0.4,-0.3,10.1,-5.9,10.8,-16.6C42.3,5.7,37.2,0,30.8,0"/>
+    </group>
+</vector>
