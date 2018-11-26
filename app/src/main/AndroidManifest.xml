@@ -26,10 +26,10 @@
         <activity
             android:name=".ListingHelpActivity"
             android:label="@string/title_activity_listing_help" />
-        <activity android:name=".DetailActivity"
-            android:parentActivityName=".HomeActivity">
-
-        </activity>
+        <activity
+            android:name=".DetailActivity"
+            android:parentActivityName=".HomeActivity"></activity>
+        <activity android:name=".FeeStructureActivity"></activity>
     </application>
 
 </manifest>

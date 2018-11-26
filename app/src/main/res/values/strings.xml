@@ -34,4 +34,13 @@
     <string name="curriculum">Curriculum</string>
     <string name="security">Security</string>
     <string name="infrastructure">Infrastructure</string>
+    <string name="name">Name *</string>
+    <string name="request_fee_structure">Request Fee Structure</string>
+    <string name="komal_day_care_service_and_pre_nursery">Komal Day Care Service and Pre - Nursery</string>
+    <string name="email">Email *</string>
+    <string name="phone_number">Phone Number *</string>
+    <string name="address">Address</string>
+    <string name="age_of_the_child">Age of the child</string>
+    <string name="is_transportation_required">Is Transportation Required?</string>
+    <string name="additional_information">Additional Information</string>
 </resources>
