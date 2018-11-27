@@ -5,6 +5,8 @@ import android.support.annotation.NonNull;
 import android.support.design.bottomappbar.BottomAppBar;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -51,9 +53,6 @@ public class ListingHelpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listing_help);
         spinner=findViewById(R.id.spinner_listhelper);
-        ratingBar=findViewById(R.id.rating);
-
-        ratingBar.setRating(4);
         //String [] location={"Delhi","Hauz Khas", "Lajpat Nagar","Greater Kailash","Rangpuri", "Noida"};
         //ArrayAdapter<String> adapter =new ArrayAdapter<String>(this,R.layout.support_simple_spinner_dropdown_item,location);
         //spinner.setAdapter(adapter);
@@ -66,6 +65,11 @@ public class ListingHelpActivity extends AppCompatActivity {
         list.add(new ItemData("Noida"));
         SpinnerAdapter adapter=new SpinnerAdapter(this,R.layout.spinner_layout,R.id.spinner_txt_item,list);
         spinner.setAdapter(adapter);
+
+        RecyclerView recyclerView =findViewById(R.id.recyclerview);
+        final SchoollistAdapter recyclerview_adapter = new SchoollistAdapter(getApplicationContext());
+        recyclerView.setAdapter(recyclerview_adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);

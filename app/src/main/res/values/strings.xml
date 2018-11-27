@@ -43,4 +43,7 @@
     <string name="age_of_the_child">Age of the child</string>
     <string name="is_transportation_required">Is Transportation Required?</string>
     <string name="additional_information">Additional Information</string>
+    <string name="signup_loginin">SignUp|LoginIn</string>
+    <string name="back">back</string>
+    <string name="book_an_appointment">Book An Appointment</string>
 </resources>

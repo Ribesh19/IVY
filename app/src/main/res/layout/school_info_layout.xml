@@ -4,13 +4,13 @@
     android:id="@+id/card_view_clicked"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginBottom="280dp"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="16dp"
     android:orientation="vertical">
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:background="@color/white"
         android:orientation="vertical"
@@ -44,7 +44,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <RatingBar
-                android:id="@+id/rating"
+                android:id="@+id/rating_list"
                 style="@style/Base.Widget.AppCompat.RatingBar.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -102,8 +102,8 @@
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@+id/txtview_status"
-                app:layout_constraintEnd_toEndOf="@+id/rating"
-                app:layout_constraintTop_toBottomOf="@+id/rating" />
+                app:layout_constraintEnd_toEndOf="@+id/rating_list"
+                app:layout_constraintTop_toBottomOf="@+id/rating_list" />
         </android.support.constraint.ConstraintLayout>
 
 
