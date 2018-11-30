@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,7 +6,8 @@
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:background="#fff">
+    android:background="#fff"
+    android:theme="@style/AppTheme2">
     <ImageButton
         android:id="@+id/back_btn"
         android:layout_width="wrap_content"
@@ -360,7 +360,8 @@
                 android:stepSize="0.1"
                 app:layout_constraintBottom_toBottomOf="@+id/security"
                 app:layout_constraintStart_toEndOf="@+id/security"
-                app:layout_constraintTop_toTopOf="@+id/security" />
+                app:layout_constraintTop_toTopOf="@+id/security"
+                />
 
             <TextView
                 android:id="@+id/Qualified_staff"
@@ -452,6 +453,7 @@
             style="?android:attr/buttonBarStyle"
             >
             <Button
+                android:id="@+id/btn_requestfeestructure_detail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/request_fee_structure"
@@ -464,6 +466,7 @@
                 />
 
             <Button
+                android:id="@+id/btn_bookanappointment_detail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/book_an_appointment"

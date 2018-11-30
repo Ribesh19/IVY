@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.CheckedTextView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -27,7 +28,7 @@ public class SpinnerAdapter extends ArrayAdapter<ItemData> {
     public View getView(int position, View convertView, ViewGroup parent ){
         View itemView=inflater.inflate(groupid,parent,false);
 
-        TextView textView=(TextView)itemView.findViewById(R.id.spinner_txt_item);
+        CheckedTextView textView=itemView.findViewById(R.id.spinner_txt_item);
         textView.setText(list.get(position).getLocationname());
         return itemView;
     }

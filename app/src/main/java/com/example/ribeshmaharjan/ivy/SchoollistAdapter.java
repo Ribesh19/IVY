@@ -2,15 +2,20 @@ package com.example.ribeshmaharjan.ivy;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.LayerDrawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
 import java.util.List;
+
+import static com.example.ribeshmaharjan.ivy.R.color.colorAccent;
 
 public class SchoollistAdapter extends  RecyclerView.Adapter<SchoollistAdapter.InfoViewHolder>{
 
@@ -20,10 +25,10 @@ public class SchoollistAdapter extends  RecyclerView.Adapter<SchoollistAdapter.I
     class InfoViewHolder extends RecyclerView.ViewHolder {
         ImageView mSchoolImage;
         TextView mSchoolName;
-       RatingBar mRatingbar;
+       //RatingBar mRatingbar;
         TextView mStatus;
         TextView mDistance;
-        TextView mPrice;
+        ImageButton mPrice;
 
 
 
@@ -32,10 +37,10 @@ public class SchoollistAdapter extends  RecyclerView.Adapter<SchoollistAdapter.I
             super(itemView);
            mSchoolImage=  itemView.findViewById(R.id.profileImageView);
            mSchoolName=itemView.findViewById(R.id.nameTxt);
-           mRatingbar=itemView.findViewById(R.id.rating_list);
+           //mRatingbar=itemView.findViewById(R.id.rating_list);
            mStatus=itemView.findViewById(R.id.txtview_status);
            mDistance=itemView.findViewById(R.id.txtview_distance);
-           mPrice=itemView.findViewById(R.id.textviewprice);
+           mPrice=itemView.findViewById(R.id.btn_viewprice);
 
 
         }
@@ -64,13 +69,32 @@ public class SchoollistAdapter extends  RecyclerView.Adapter<SchoollistAdapter.I
     @Override
     public void onBindViewHolder(InfoViewHolder holder, int position) {
 
+
+
         /*holder.mSchoolImage.setImageResource(mImageIds.get(position));*/
         holder.mSchoolImage.setBackgroundResource(R.drawable.preschool_img);
         holder.mSchoolName.setText(R.string.ivy_komal_pre_school);
-        holder.mRatingbar.setRating(4);
+       // holder.mRatingbar.setRating(2);
         holder.mDistance.setText("0.4 KM");
-        holder.mPrice.setText("$ 200");
         holder.mStatus.setText("Open");
+        holder.mPrice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(mcontext.getApplicationContext(),FeeStructureActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                mcontext.startActivity(intent);
+            }
+        });
+
+        holder.mSchoolImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(mcontext.getApplicationContext(),DetailActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                mcontext.startActivity(intent);
+
+            }
+        });
 
 
     }

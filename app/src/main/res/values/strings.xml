@@ -46,4 +46,24 @@
     <string name="signup_loginin">SignUp|LoginIn</string>
     <string name="back">back</string>
     <string name="book_an_appointment">Book An Appointment</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="can_t_find_a_suitable_fit">Can\'t find a suitable fit?</string>
+    <string name="let_us_know_how_we_can_help_you_by_typing_here">Let us know how we can help you by typing here.</string>
+    <string name="email_address">Email Address *</string>
+    <string name="submit_review">Submit Review</string>
+    <string name="post_review_for">Post Review For</string>
+    <string name="how_do_you_feel_about_the_school">How do you feel about the school?</string>
+    <string name="preferred_date_for_appointment">Preferred Date for Appointment</string>
+    <string name="list_view">List View</string>
+
+
+
+
+    <string name="title_activity_maps">Current Place Details</string>
+    <string name="default_info_title">Default Location</string>
+    <string name="default_info_snippet">No places found, because location permission is disabled.</string>
+    <string name="option_get_place">Get place</string>
+    <string name="pick_place">Choose a place</string>
 </resources>
