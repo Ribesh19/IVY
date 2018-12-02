@@ -2,15 +2,16 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-    <!-- Customize your theme here. -->
-    <item name="colorPrimary">@color/colorPrimary</item>
-    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-    <item name="colorAccent">@color/colorAccent</item>
-    <!-- <item name="colorAccent">@color/yellow</item>- -->
-    <item name="android:fontFamily">@font/montserrat</item>
-    <item name="android:textSize">12sp</item>
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <!-- <item name="colorAccent">@color/yellow</item>- -->
+        <item name="android:fontFamily">@font/montserrat</item>
+        <item name="android:textSize">12sp</item>
 
-</style>
+    </style>
+
     <style name="AppTheme2" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
@@ -19,6 +20,7 @@
         <item name="android:fontFamily">@font/montserrat</item>
         <item name="android:textSize">12sp</item>
     </style>
+
     <style name="AppTheme3" parent="@android:style/Theme.Translucent">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
@@ -35,10 +37,17 @@
 
     </style>-->
 
-    <style name="ImageRatingBar" parent="@style/Base.Widget.AppCompat.RatingBar">
-        <item name="android:progressDrawable">@drawable/rating_bar_selector</item>
-        <item name="android:minHeight">50dp</item>
-        <item name="android:maxHeight">50dp</item>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="CustomTabLayout" parent="Widget.Design.TabLayout">
+        <item name="tabIndicatorHeight">3dp</item>
+        <item name="colorAccent">@color/colorPrimaryDark</item>
+        <item name="tabBackground">@color/white</item>
+        <item name="tabSelectedTextColor">@color/colorPrimaryDark</item>
+        <item name="tabTextAppearance">@color/grey2</item>
     </style>
 
 </resources>

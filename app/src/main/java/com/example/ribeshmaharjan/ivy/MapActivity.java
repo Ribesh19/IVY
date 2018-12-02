@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -40,6 +41,7 @@ import com.google.android.gms.tasks.Task;
 import java.util.ArrayList;
 
 public class MapActivity extends FragmentActivity implements OnMapReadyCallback {
+    Button mListview;
     Spinner spinner;
 
     private GoogleMap mMap;
@@ -106,6 +108,14 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         list.add(new ItemData("Greater Kailash"));
         list.add(new ItemData("Rangpuri"));
         list.add(new ItemData("Noida"));
+
+        mListview=findViewById(R.id.btn_listview);
+        mListview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
+            }
+        });
 
         SpinnerAdapter adapter=new SpinnerAdapter(this,R.layout.spinner_layout,R.id.spinner_txt_item,list);
         // adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

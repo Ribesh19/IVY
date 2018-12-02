@@ -6,4 +6,41 @@
     android:layout_height="match_parent"
     tools:context=".MainLayoutActivity">
 
+    <FrameLayout
+        android:id="@+id/frameLayout_replace"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </FrameLayout>
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:elevation="8dp"
+        app:itemIconTint="@drawable/navigation_item_selected"
+        app:itemTextColor="@drawable/navigation_item_selected"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/navigation"
+        android:layout_marginTop="32dp"/>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_listinghelp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
+        android:src="@drawable/ic_icon_help"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toTopOf="@+id/navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:backgroundTint="@color/colorAccent"
+        android:layout_gravity="bottom|end"
+        android:focusable="true" />
+
 </android.support.constraint.ConstraintLayout>

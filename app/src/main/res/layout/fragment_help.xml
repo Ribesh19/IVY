@@ -1,110 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HelpFragment"
-    android:background="@color/grey2"
-    android:theme="@style/AppTheme3">
+    tools:context=".HelpFragment">
 
-
-
-    <FrameLayout
-        android:id="@+id/frameLayout"
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:elevation="8dp"
-        android:layout_marginTop="164dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:background="@color/grey2">
+        android:layout_height="match_parent"
+        android:text="@string/hello_blank_fragment" />
 
-        <android.support.constraint.ConstraintLayout
-            android:id="@+id/constraintLayout_inner2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="bottom"
-            android:paddingBottom="32dp">
-
-            <TextView
-                android:id="@+id/txtview_suitablefit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:gravity="center"
-                android:text="@string/can_t_find_a_suitable_fit"
-                android:textColor="@color/grey"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <EditText
-                android:id="@+id/additional_info_help"
-                android:layout_width="0dp"
-                android:layout_height="156dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:background="@drawable/ic_form_background_with_fill"
-                android:hint="@string/let_us_know_how_we_can_help_you_by_typing_here"
-                android:padding="8dp"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/txtview_suitablefit"
-                app:layout_constraintTop_toBottomOf="@+id/txtview_suitablefit" />
-
-            <EditText
-                android:id="@+id/email_help"
-                android:layout_width="0dp"
-                android:layout_height="56dp"
-                android:layout_marginTop="24dp"
-                android:background="@drawable/ic_form_background_with_fill"
-                android:hint="@string/email_address"
-                android:inputType="textEmailAddress"
-                android:padding="8dp"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="@+id/additional_info_help"
-                app:layout_constraintStart_toStartOf="@+id/additional_info_help"
-                app:layout_constraintTop_toBottomOf="@+id/additional_info_help" />
-
-            <EditText
-                android:id="@+id/phonenumber_help"
-                android:layout_width="0dp"
-                android:layout_height="56dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/ic_form_background_with_fill"
-                android:hint="@string/phone_number"
-                android:inputType="phone"
-                android:padding="8dp"
-                app:layout_constraintEnd_toEndOf="@+id/email_help"
-                app:layout_constraintStart_toStartOf="@+id/email_help"
-                app:layout_constraintTop_toBottomOf="@+id/email_help"
-                android:textSize="16sp"
-                />
-        </android.support.constraint.ConstraintLayout>
-    </FrameLayout>
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/cross_fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
-        android:background="@color/grey"
-        android:backgroundTint="@color/grey2"
-        android:backgroundTintMode="src_over"
-        android:clickable="true"
-        android:focusable="true"
-        android:src="@drawable/ic_icon_cross"
-        app:fabSize="normal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
-
-</android.support.constraint.ConstraintLayout>
+</FrameLayout>

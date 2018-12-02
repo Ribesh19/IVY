@@ -10,8 +10,6 @@
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
-
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -33,9 +31,6 @@
             android:resource="@array/preloaded_fonts" />
 
         <activity
-            android:name=".ListingHelpActivity"
-            android:label="@string/title_activity_listing_help" />
-        <activity
             android:name=".DetailActivity"
             android:parentActivityName=".HomeActivity" />
         <activity android:name=".FeeStructureActivity" />
@@ -53,13 +48,21 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
-
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-        <activity android:name=".MapActivity"/>
-        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
 
+        <activity android:name=".MapActivity" />
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
+        <activity
+            android:name=".RegisterActivity"
+            android:label="@string/title_activity_register"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".MainLayoutActivity"></activity>
     </application>
 
 </manifest>

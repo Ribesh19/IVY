@@ -2,9 +2,7 @@ package com.example.ribeshmaharjan.ivy;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.LayerDrawable;
-import android.support.v7.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,10 +10,9 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.support.v7.widget.RecyclerView;
 
-import java.util.List;
 
-import static com.example.ribeshmaharjan.ivy.R.color.colorAccent;
 
 public class SchoollistAdapter extends  RecyclerView.Adapter<SchoollistAdapter.InfoViewHolder>{
 

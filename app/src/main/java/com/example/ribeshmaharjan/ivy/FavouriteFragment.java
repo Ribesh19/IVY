@@ -6,15 +6,17 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FavroiteFragment extends Fragment {
+public class FavouriteFragment extends Fragment {
 
 
-    public FavroiteFragment() {
+    public FavouriteFragment() {
         // Required empty public constructor
     }
 
@@ -23,7 +25,12 @@ public class FavroiteFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_favroite, container, false);
+        View rootview= inflater.inflate(R.layout.fragment_favourite, container, false);
+        RecyclerView recyclerView =rootview.findViewById(R.id.recyclerview_favourite);
+        final FavouriteAdapter recyclerview_adapter1 = new FavouriteAdapter(getActivity().getApplicationContext());
+        recyclerView.setAdapter(recyclerview_adapter1);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
+        return rootview;
     }
 
 }
