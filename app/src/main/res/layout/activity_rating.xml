@@ -5,8 +5,7 @@
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:background="#fff"
-    android:theme="@style/AppTheme2">
+    android:background="#fff">
     <ImageButton
         android:id="@+id/back_btn_rating"
         android:layout_width="wrap_content"
@@ -35,7 +34,7 @@
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/constraintLayout_inner_rating"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="32dp">
 
@@ -83,6 +82,7 @@
                 <RatingBar
                     android:id="@+id/rating_security_input"
                     style="@style/Base.Widget.AppCompat.RatingBar"
+                    android:theme="@style/AppTheme2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
@@ -109,6 +109,7 @@
                 <RatingBar
                     android:id="@+id/Qualified_staff_rating_input"
                     style="@style/Base.Widget.AppCompat.RatingBar"
+                    android:theme="@style/AppTheme2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
@@ -134,6 +135,7 @@
                 <RatingBar
                     android:id="@+id/infrastructure_rating_input"
                     style="@style/Base.Widget.AppCompat.RatingBar"
+                    android:theme="@style/AppTheme2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
@@ -159,6 +161,7 @@
                 <RatingBar
                     android:id="@+id/curriculum_rating_input"
                     style="@style/Base.Widget.AppCompat.RatingBar"
+                    android:theme="@style/AppTheme2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
@@ -167,7 +170,7 @@
                     android:stepSize="1"
                     app:layout_constraintStart_toStartOf="@+id/curriculum_rating"
                     app:layout_constraintTop_toBottomOf="@+id/curriculum_rating" />
-
+<!--
                 <EditText
                     android:id="@+id/how_do_you_feel_about_school"
                     android:layout_width="0dp"
@@ -181,7 +184,36 @@
                     android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/curriculum_rating_input"
-                    app:layout_constraintTop_toBottomOf="@+id/curriculum_rating_input" />
+                    app:layout_constraintTop_toBottomOf="@+id/curriculum_rating_input" />-->
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/how_do_you_feel_about_school"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="24dp"
+                    app:errorEnabled="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/curriculum_rating_input"
+                    app:layout_constraintTop_toBottomOf="@+id/curriculum_rating_input">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/edit_text_how_do_you_feel_about_school"
+                        android:layout_width="match_parent"
+                        android:layout_height="168dp"
+                        android:ellipsize="end"
+                        android:freezesText="true"
+                        android:hint="@string/additional_information"
+                        android:imeOptions="actionNext"
+                        android:inputType="textMultiLine"
+                        android:lines="2"
+                        android:maxLength="100"
+                        android:nextFocusDown="@null"
+                        android:paddingBottom="100dp"
+                        android:selectAllOnFocus="true"
+                        android:textSize="14sp" />
+                </android.support.design.widget.TextInputLayout>
                 <Button
                     android:id="@+id/btn_submit_review"
                     android:layout_width="match_parent"
@@ -191,6 +223,7 @@
                     android:text="@string/submit_review"
                     android:textColor="@color/white"
                     android:textSize="14sp"
+                    android:padding="8dp"
                     android:layout_marginBottom="1dp"
                     app:layout_constraintStart_toStartOf="@id/how_do_you_feel_about_school"
                     app:layout_constraintTop_toBottomOf="@+id/how_do_you_feel_about_school"/>

@@ -5,7 +5,11 @@ import java.util.List;
 
 public class ImageAssets {
     private static final List<Integer> school = new ArrayList<Integer>() {{
-        add(R.drawable.preschool_img);
+
+        add(R.drawable.school_img1);
+        add(R.drawable.school_img2);
+
+
 
     }};
     private static final List<Integer> all = new ArrayList<Integer>() {{

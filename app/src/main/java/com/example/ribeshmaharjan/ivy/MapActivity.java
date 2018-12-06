@@ -1,6 +1,7 @@
 package com.example.ribeshmaharjan.ivy;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.support.annotation.NonNull;
@@ -16,6 +17,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -43,6 +45,7 @@ import java.util.ArrayList;
 public class MapActivity extends FragmentActivity implements OnMapReadyCallback {
     Button mListview;
     Spinner spinner;
+    ImageButton msignup;
 
     private GoogleMap mMap;
 
@@ -98,8 +101,21 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
             mCameraPosition = savedInstanceState.getParcelable(KEY_CAMERA_POSITION);
         }
 
+
+
+
         // Retrieve the content view that renders the map.
         setContentView(R.layout.activity_map);
+
+        msignup=findViewById(R.id.signup_login_map);
+        msignup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MapActivity.this,RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
+
         spinner=findViewById(R.id.spinner_mapview);
         ArrayList<ItemData> list=new ArrayList<>();
         list.add(new ItemData("Delhi"));
@@ -116,7 +132,6 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                 
             }
         });
-
         SpinnerAdapter adapter=new SpinnerAdapter(this,R.layout.spinner_layout,R.id.spinner_txt_item,list);
         // adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
@@ -364,7 +379,6 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                     .title(getString(R.string.default_info_title))
                     .position(mDefaultLocation)
                     .snippet(getString(R.string.default_info_snippet)));
-
             // Prompt the user for permission.
             getLocationPermission();
         }

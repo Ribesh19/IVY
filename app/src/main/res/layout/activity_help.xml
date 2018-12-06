@@ -1,31 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
-    android:background="@color/grey2"
     android:theme="@style/AppTheme3">
-    <FrameLayout
-        android:id="@+id/frameLayout"
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardview_help"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="32dp"
+        android:background="@color/grey2"
+        app:cardCornerRadius="3dp"
+        app:cardElevation="4dp"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:elevation="8dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:background="@color/grey2">
+        app:layout_constraintTop_toTopOf="parent">
+
 
         <android.support.constraint.ConstraintLayout
-            android:id="@+id/constraintLayout_inner2"
+
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="bottom"
+            android:background="@color/grey2"
             android:paddingBottom="32dp">
+
 
             <TextView
                 android:id="@+id/txtview_suitablefit"
@@ -79,13 +86,13 @@
                 android:hint="@string/phone_number"
                 android:inputType="phone"
                 android:padding="8dp"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="@+id/email_help"
                 app:layout_constraintStart_toStartOf="@+id/email_help"
-                app:layout_constraintTop_toBottomOf="@+id/email_help"
-                android:textSize="16sp"
-                />
+                app:layout_constraintTop_toBottomOf="@+id/email_help" />
         </android.support.constraint.ConstraintLayout>
-    </FrameLayout>
+    </android.support.v7.widget.CardView>
+
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/cross_fab"
@@ -100,6 +107,7 @@
         android:src="@drawable/ic_icon_cross"
         app:fabSize="normal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/cardview_help"
+        android:backgroundTint="@color/grey"/>
 
 </android.support.constraint.ConstraintLayout>

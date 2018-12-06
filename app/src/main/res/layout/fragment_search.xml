@@ -1,14 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".SearchFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <android.support.v7.widget.SearchView
+        android:id="@+id/search_school"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="45dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/ic_search_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:searchIcon="@drawable/ic_icon_search_grey"
+        android:focusable="true">
 
-</FrameLayout>
+    </android.support.v7.widget.SearchView>
+
+    <android.support.v7.widget.SearchView
+        android:id="@+id/search_location"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/ic_search_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_school"
+        app:searchIcon="@drawable/ic_location_icon_grey"
+        android:focusable="true">
+
+    </android.support.v7.widget.SearchView>
+    <TextView
+        android:id="@+id/recentsearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="start"
+        android:text="@string/recent_search"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/search_location"
+        app:layout_constraintTop_toBottomOf="@+id/search_location" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recentsearch_recyclerview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/search_location"
+        app:layout_constraintStart_toStartOf="@+id/recentsearch"
+        app:layout_constraintTop_toBottomOf="@+id/recentsearch">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <TextView
+        android:id="@+id/recommendation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="start"
+        android:text="@string/recommendation_for_you"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/recentsearch_recyclerview"
+        app:layout_constraintTop_toBottomOf="@+id/recentsearch_recyclerview" />
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recommendation_recyclerview"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/recentsearch_recyclerview"
+        app:layout_constraintStart_toStartOf="@+id/recentsearch_recyclerview"
+        app:layout_constraintTop_toBottomOf="@+id/recommendation">
+
+    </android.support.v7.widget.RecyclerView>
+
+
+
+
+
+</android.support.constraint.ConstraintLayout>

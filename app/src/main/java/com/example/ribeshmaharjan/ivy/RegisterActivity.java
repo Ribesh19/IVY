@@ -1,5 +1,8 @@
 package com.example.ribeshmaharjan.ivy;
 
+import android.content.Intent;
+import android.content.res.Resources;
+import android.os.Build;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -11,9 +14,21 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.util.TypedValue;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.Toast;
+
+import java.lang.reflect.Field;
 
 
 public class RegisterActivity extends AppCompatActivity {
+    ImageButton mbtnback;
+    Button mfacbook;
+
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -32,11 +47,36 @@ public class RegisterActivity extends AppCompatActivity {
     final LoginFragment loginFragment=new LoginFragment();
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         final android.support.v4.app.FragmentManager fragmentManager0 =getSupportFragmentManager();
+        fragmentManager0.beginTransaction()
+                .replace(R.id.container_frame,loginFragment)
+                .commit();
+        mbtnback=findViewById(R.id.btn_back_register_activity);
+        mfacbook=findViewById(R.id.facebook);
+
+        mbtnback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Toast.makeText(RegisterActivity.this,"Button pressed",Toast.LENGTH_LONG).show();
+                Intent intent=new Intent(RegisterActivity.this,MainLayoutActivity.class);
+                startActivity(intent);
+            }
+        });
+        mfacbook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               // Toast.makeText(RegisterActivity.this,"Button  Facebook pressed",Toast.LENGTH_LONG).show();
+            }
+        });
+
+
+
+
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
@@ -48,6 +88,9 @@ public class RegisterActivity extends AppCompatActivity {
 
         final TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
        // tabLayout.setupWithViewPager(mViewPager);
+
+
+
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
 
 
@@ -62,7 +105,7 @@ public class RegisterActivity extends AppCompatActivity {
                 }else if (tabLayout.getSelectedTabPosition()==1)
                 {
                             fragmentManager0.beginTransaction()
-                            .replace(R.id.container_frame,signUpFragment)
+                            .replace(R.id .container_frame,signUpFragment)
                             .commit();
 
                 }
@@ -83,8 +126,12 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
+
+
+
         //mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         //tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
+
     }
    /* private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());

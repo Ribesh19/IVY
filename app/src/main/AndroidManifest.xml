@@ -30,9 +30,7 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity
-            android:name=".DetailActivity"
-            android:parentActivityName=".HomeActivity" />
+        <activity android:name=".DetailActivity" />
         <activity android:name=".FeeStructureActivity" />
         <activity android:name=".RatingActivity" />
         <activity android:name=".AppointmentActivity" />
@@ -62,7 +60,8 @@
             android:name=".RegisterActivity"
             android:label="@string/title_activity_register"
             android:theme="@style/AppTheme" />
-        <activity android:name=".MainLayoutActivity"></activity>
+        <activity android:name=".MainLayoutActivity" />
+        <activity android:name=".AllReviewAcitivity"></activity>
     </application>
 
 </manifest>

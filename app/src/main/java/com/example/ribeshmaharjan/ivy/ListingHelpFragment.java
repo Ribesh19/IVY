@@ -4,6 +4,7 @@ package com.example.ribeshmaharjan.ivy;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -35,7 +36,7 @@ public class ListingHelpFragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootview= inflater.inflate(R.layout.fragment_listing_help, container, false);
@@ -64,14 +65,9 @@ public class ListingHelpFragment extends Fragment {
             }
         });
         RecyclerView recyclerView =rootview.findViewById(R.id.recyclerview);
-        final SchoollistAdapter recyclerview_adapter = new SchoollistAdapter(Objects.requireNonNull(getActivity()).getApplicationContext());
+        final SchoollistAdapter recyclerview_adapter = new SchoollistAdapter(Objects.requireNonNull(getActivity()).getApplicationContext(),ImageAssets.getAll());
         recyclerView.setAdapter(recyclerview_adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
-
-
-
-
-
         mbtnsignuplogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

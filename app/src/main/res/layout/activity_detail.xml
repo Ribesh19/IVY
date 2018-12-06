@@ -24,7 +24,8 @@
     <ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+        android:fillViewport="true"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <LinearLayout
@@ -171,7 +172,7 @@
         android:layout_height="36dp"
         android:layout_marginStart="16dp"
         android:background="@drawable/ic_circle_yellow"
-        android:drawableStart="@drawable/ic_icon_review"
+        android:drawableStart="@drawable/ic_create_black_24dp"
         android:paddingStart="6dp"
         android:paddingEnd="6dp"
         app:layout_constraintBottom_toBottomOf="@+id/btn_favourite"
@@ -210,18 +211,18 @@
             app:layout_constraintStart_toStartOf="@+id/imageView2"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <TextView
-        android:id="@+id/aboutus_content"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:padding="2dp"
-        android:text="@string/lorem_ipsum"
-        android:textColor="@color/grey"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/aboutus"
-        app:layout_constraintTop_toBottomOf="@+id/aboutus" />
+        <TextView
+            android:id="@+id/aboutus_content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:padding="2dp"
+            android:text="@string/lorem_ipsum"
+            android:textColor="@color/grey"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/rating2"
+            app:layout_constraintStart_toStartOf="@+id/aboutus"
+            app:layout_constraintTop_toBottomOf="@+id/aboutus" />
 
         <TextView
             android:id="@+id/transportation"
@@ -296,8 +297,8 @@
             app:layout_constraintStart_toStartOf="@+id/facilities"
             app:layout_constraintTop_toBottomOf="@+id/facilities_content" />
 
-        <TextView
-            android:id="@+id/textView3"
+        <Button
+            android:id="@+id/seeallreview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
@@ -308,7 +309,8 @@
             app:layout_constraintEnd_toEndOf="@+id/txtview_agegroup"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/reviewtxt"
-            app:layout_constraintTop_toTopOf="@+id/reviewtxt" />
+            app:layout_constraintTop_toTopOf="@+id/reviewtxt"
+            android:background="@null"/>
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/averageratting_whole"
@@ -317,9 +319,9 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="32dp"
-            android:background="@color/grey2"
+            android:background="#f0f0f0"
             android:padding="4dp"
-            app:layout_constraintEnd_toEndOf="@+id/textView3"
+            app:layout_constraintEnd_toEndOf="@+id/seeallreview"
             app:layout_constraintStart_toStartOf="@id/reviewtxt"
             app:layout_constraintTop_toBottomOf="@+id/reviewtxt">
 
@@ -443,43 +445,90 @@
 
         </android.support.constraint.ConstraintLayout>
 
-    </android.support.constraint.ConstraintLayout>
         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_alignParentBottom="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/averageratting_whole">
+            <Button
+                android:id="@+id/btn_requestfeestructure_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#0066b2"
+                android:layout_weight="0.5"
+                android:text="@string/request_fee_structure"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+
+
+                android:layout_marginEnd="2dp" />
+
+        <Button
+            android:id="@+id/btn_bookanappointment_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            android:layout_weight="0.5"
+            android:text="@string/book_an_appointment"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+
+            android:layout_marginStart="2dp" />
+
+
+        </LinearLayout>
+
+        <!--<Button
+            android:id="@+id/btn_requestfeestructure_detail"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="8dp"
+            android:background="#0066b2"
+            android:padding="4dp"
+            android:text="@string/request_fee_structure"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btn_bookanappointment_detail"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/averageratting_whole" />
+
+        <Button
+            android:id="@+id/btn_bookanappointment_detail"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="4dp"
+            android:background="@color/colorAccent"
+            android:padding="4dp"
+            android:text="@string/book_an_appointment"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_requestfeestructure_detail"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btn_requestfeestructure_detail"
+            app:layout_constraintTop_toTopOf="@+id/btn_requestfeestructure_detail" />-->
+
+    </android.support.constraint.ConstraintLayout>
+        <!--<android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginTop="8dp"
             android:padding="8dp"
-            style="?android:attr/buttonBarStyle"
-            >
-            <Button
-                android:id="@+id/btn_requestfeestructure_detail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/request_fee_structure"
-                android:textColor="@color/white"
-                android:background="#0066b2"
-                android:padding="4dp"
-                android:textSize="14sp"
-                style="?android:attr/buttonBarButtonStyle"
-
-                />
-
-            <Button
-                android:id="@+id/btn_bookanappointment_detail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/book_an_appointment"
-                android:textColor="@color/white"
-                android:background="@color/colorAccent"
-                android:padding="4dp"
-                android:textSize="14sp"
-                android:layout_marginStart="4dp"
-                style="?android:attr/buttonBarButtonStyle"
-               />
-
-        </LinearLayout>
-
+            style="?android:attr/buttonBarStyle">-->
     </LinearLayout>
 
 </ScrollView>

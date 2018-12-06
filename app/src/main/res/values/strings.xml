@@ -70,8 +70,8 @@
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
     <string name="tab_text_3">Tab 3</string>
-    <string name="login">LOGIN</string>
-    <string name="sign_up">SIGN UP</string>
+    <string name="login"><b>LOGIN</b></string>
+    <string name="sign_up"><b>SIGN UP</b></string>
     <string name="PLEASE_SIGN_UP">PLEASE SIGN UP</string>
     <string name="to_add_your_review">to add your review</string>
     <string name="log_in_with_facebook">LOG IN WITH FACEBOOK</string>
@@ -84,4 +84,12 @@
     <string name="password">PASSWORD</string>
     <string name="confirm_password">CONFIRM PASSWORD</string>
     <string name="your_favourite_schools">Your Favourite Schools</string>
+    <string name="nurturing_future_leaders">NURTURING FUTURE LEADERS</string>
+    <string name="sign_up_underline"><u>Sign Up</u></string>
+    <string name="recent_search">Recent Search</string>
+    <string name="recommendation_for_you">Recommendation for you</string>
+    <string name="kidzone">Kid Zone</string>
+    <string name="review">Review</string>
+    <string name="username">UserName</string>
+    <string name="last_active_day">Last Active Day</string>
 </resources>

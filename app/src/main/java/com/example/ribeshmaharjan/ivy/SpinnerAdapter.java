@@ -28,7 +28,7 @@ public class SpinnerAdapter extends ArrayAdapter<ItemData> {
     public View getView(int position, View convertView, ViewGroup parent ){
         View itemView=inflater.inflate(groupid,parent,false);
 
-        CheckedTextView textView=itemView.findViewById(R.id.spinner_txt_item);
+        TextView textView=itemView.findViewById(R.id.spinner_txt_item);
         textView.setText(list.get(position).getLocationname());
         return itemView;
     }

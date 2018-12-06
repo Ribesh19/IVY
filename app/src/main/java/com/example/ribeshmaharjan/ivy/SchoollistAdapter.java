@@ -12,12 +12,14 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.support.v7.widget.RecyclerView;
 
+import java.util.List;
 
 
 public class SchoollistAdapter extends  RecyclerView.Adapter<SchoollistAdapter.InfoViewHolder>{
 
 
     Context mcontext;
+    private List<Integer> mImageIds;
 
     class InfoViewHolder extends RecyclerView.ViewHolder {
         ImageView mSchoolImage;
@@ -46,10 +48,11 @@ public class SchoollistAdapter extends  RecyclerView.Adapter<SchoollistAdapter.I
     private final LayoutInflater mInflater;
     // Cached copy of words
 
-    SchoollistAdapter(Context context)
+    SchoollistAdapter(Context context,List<Integer> imageIds)
     {
         mcontext=context;
         mInflater = LayoutInflater.from(context);
+        mImageIds = imageIds;
 
     }
 
@@ -69,11 +72,15 @@ public class SchoollistAdapter extends  RecyclerView.Adapter<SchoollistAdapter.I
 
 
         /*holder.mSchoolImage.setImageResource(mImageIds.get(position));*/
-        holder.mSchoolImage.setBackgroundResource(R.drawable.preschool_img);
-        holder.mSchoolName.setText(R.string.ivy_komal_pre_school);
-       // holder.mRatingbar.setRating(2);
-        holder.mDistance.setText("0.4 KM");
-        holder.mStatus.setText("Open");
+            //holder.mSchoolImage.setBackgroundResource(R.drawable.school_img2);
+            holder.mSchoolImage.setImageResource(mImageIds.get(position));
+            holder.mSchoolName.setText(R.string.ivy_komal_pre_school);
+            // holder.mRatingbar.setRating(2);
+            holder.mDistance.setText("0.4 km from you");
+            holder.mStatus.setText("Open");
+
+
+
         holder.mPrice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -103,7 +110,7 @@ public class SchoollistAdapter extends  RecyclerView.Adapter<SchoollistAdapter.I
         /*if (logs != null)
             return logs.size();
         else return 0;*/
-        return 3;
+        return 2;
     }
 
 }

@@ -12,14 +12,22 @@
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:context=".MapActivity" />
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/topbar_constraint_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="4dp"
+        android:background="#f0f0f0">
 
         <TextView
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="14dp"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="8dp"
             android:fontFamily="@font/montserrat_bold"
             android:text="@string/your_location"
             android:textColor="#616161"
@@ -32,10 +40,9 @@
             android:id="@+id/btn_listview"
             android:layout_width="wrap_content"
             android:layout_height="36dp"
-            android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
-            android:background="@drawable/ic_rounded_button"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/ic_rounded_button_grey"
             android:drawableEnd="@drawable/ic_icon_list"
             android:drawablePadding="8dp"
             android:minWidth="64dp"
@@ -43,13 +50,11 @@
             android:paddingEnd="12dp"
             android:text="@string/list_view"
             android:textColor="@color/colorAccent"
-            app:layout_constraintEnd_toStartOf="@+id/signup_login"
-            app:layout_constraintHorizontal_bias="0.95"
-            app:layout_constraintStart_toEndOf="@+id/spinner_mapview"
+            app:layout_constraintEnd_toStartOf="@+id/signup_login_map"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
-            android:id="@+id/signup_login"
+            android:id="@+id/signup_login_map"
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:layout_marginEnd="32dp"
@@ -61,37 +66,38 @@
             android:contentDescription="@string/signup_loginin"/>
 
 
-    <android.widget.Spinner
-        android:id="@+id/spinner_mapview"
+        <android.widget.Spinner
+            android:id="@+id/spinner_mapview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:dropDownWidth="300dip"
+            android:dropDownVerticalOffset="40dp"
+            android:foregroundTint="@color/colorPrimaryDark"
+            android:spinnerMode="dropdown"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_listview"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+    </android.support.constraint.ConstraintLayout>
+
+
+    <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:backgroundTint="@color/colorPrimaryDark"
-        android:dropDownVerticalOffset="40dp"
-        android:foregroundTint="@color/colorPrimaryDark"
-        android:spinnerMode="dropdown"
-        android:theme="@style/ThemeOverlay.AppCompat.Light"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_listview"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/ic_blue_textviewbg"
+        android:paddingStart="16dp"
+        android:paddingTop="2dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="2dp"
+        android:text="Preschools"
+        android:textColor="@color/colorAccent"
+        android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btn_listview" />
-
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:background="@drawable/ic_blue_textviewbg"
-            android:paddingStart="16dp"
-            android:paddingTop="2dp"
-            android:paddingEnd="16dp"
-            android:paddingBottom="2dp"
-            android:text="Preschools"
-            android:textColor="@color/colorAccent"
-            android:textSize="12sp"
-            app:layout_constraintStart_toStartOf="@+id/spinner_mapview"
-            app:layout_constraintTop_toBottomOf="@+id/spinner_mapview"
-            />
+        app:layout_constraintTop_toBottomOf="@+id/topbar_constraint_layout" />
 
 
     </android.support.constraint.ConstraintLayout>

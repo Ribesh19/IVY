@@ -6,4 +6,180 @@
     android:layout_height="match_parent"
     tools:context=".AllReviewAcitivity">
 
+    <ImageButton
+        android:id="@+id/back_btn_review"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:background="#fff"
+        android:src="@drawable/ic_keyboard_backspace_black_24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/back"/>
+    <TextView
+        android:id="@+id/reviewALL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="center"
+        android:text="@string/review"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/averageratting_whole"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:background="#f0f0f0"
+        android:padding="4dp"
+        android:theme="@style/AppTheme2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reviewALL">
+
+        <TextView
+            android:id="@+id/avgreview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="@string/average_review"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/security"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="@string/security"
+            android:textColor="@color/grey"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/avgreview"
+            app:layout_constraintTop_toBottomOf="@+id/avgreview" />
+
+        <RatingBar
+            android:id="@+id/rating_security"
+            style="@style/Base.Widget.AppCompat.RatingBar.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:isIndicator="true"
+            android:numStars="5"
+            android:rating="3.5"
+            android:stepSize="0.1"
+            app:layout_constraintBottom_toBottomOf="@+id/security"
+            app:layout_constraintStart_toEndOf="@+id/security"
+            app:layout_constraintTop_toTopOf="@+id/security" />
+
+        <TextView
+            android:id="@+id/Qualified_staff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="@string/qualified_staff"
+            android:textColor="@color/grey"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/security"
+            app:layout_constraintTop_toBottomOf="@+id/security" />
+
+        <RatingBar
+            android:id="@+id/rating_qualified_staff"
+            style="@style/Base.Widget.AppCompat.RatingBar.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:isIndicator="true"
+            android:numStars="5"
+            android:rating="4"
+            android:stepSize="0.1"
+            app:layout_constraintBottom_toBottomOf="@+id/Qualified_staff"
+            app:layout_constraintStart_toEndOf="@+id/Qualified_staff"
+            app:layout_constraintTop_toTopOf="@+id/Qualified_staff" />
+
+        <TextView
+            android:id="@+id/infrastructure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="@string/infrastructure"
+            android:textColor="@color/grey"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/Qualified_staff"
+            app:layout_constraintTop_toBottomOf="@+id/Qualified_staff" />
+
+        <RatingBar
+            android:id="@+id/rating_infrastructure"
+            style="@style/Base.Widget.AppCompat.RatingBar.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:isIndicator="true"
+            android:numStars="5"
+            android:rating="3"
+            android:stepSize="0.1"
+            app:layout_constraintBottom_toBottomOf="@+id/infrastructure"
+            app:layout_constraintStart_toEndOf="@+id/infrastructure"
+            app:layout_constraintTop_toTopOf="@+id/infrastructure" />
+
+        <TextView
+            android:id="@+id/curriculum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="@string/curriculum"
+            android:textColor="@color/grey"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/infrastructure"
+            app:layout_constraintTop_toBottomOf="@+id/infrastructure" />
+
+        <RatingBar
+            android:id="@+id/rating_curriculum"
+            style="@style/Base.Widget.AppCompat.RatingBar.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:isIndicator="true"
+            android:numStars="5"
+            android:rating="4.5"
+            android:stepSize="0.1"
+            app:layout_constraintBottom_toBottomOf="@+id/curriculum"
+            app:layout_constraintStart_toEndOf="@+id/curriculum"
+            app:layout_constraintTop_toTopOf="@+id/curriculum" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/allreview_recyclerview"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/averageratting_whole"
+        app:layout_constraintStart_toStartOf="@+id/averageratting_whole"
+        app:layout_constraintTop_toBottomOf="@+id/averageratting_whole">
+
+    </android.support.v7.widget.RecyclerView>
+
+
 </android.support.constraint.ConstraintLayout>

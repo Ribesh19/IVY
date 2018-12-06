@@ -9,6 +9,7 @@
         <!-- <item name="colorAccent">@color/yellow</item>- -->
         <item name="android:fontFamily">@font/montserrat</item>
         <item name="android:textSize">12sp</item>
+        <item name="android:windowActivityTransitions">true</item>
 
     </style>
 
@@ -19,6 +20,7 @@
         <item name="colorAccent">@color/yellow</item>
         <item name="android:fontFamily">@font/montserrat</item>
         <item name="android:textSize">12sp</item>
+        <item name="android:windowActivityTransitions">true</item>
     </style>
 
     <style name="AppTheme3" parent="@android:style/Theme.Translucent">
@@ -31,11 +33,46 @@
 
     </style>
 
+    <style name="AppTheme4" parent="@style/Theme.MaterialComponents.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorPrimaryDark</item>
+        <item name="android:fontFamily">@font/montserrat</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:windowActivityTransitions">true</item>
+
+    </style>
+
+
+    <style name="fbbutton" parent="@style/Theme.MaterialComponents.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">#3b5998</item>
+        <item name="android:fontFamily">@font/montserrat</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:windowActivityTransitions">true</item>
+
+    </style>
+
+
+
     <!--<style name="spinnerItemStyle" parent="android:Widget.TextView.SpinnerItem">
         <item name="android:textSize">10pt</item>
         <item name="android:textColor">@color/colorPrimaryDark</item>
 
+
     </style>-->
+
+    <style name="Theme.Transparent" parent="android:Theme">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
 
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
@@ -49,5 +86,19 @@
         <item name="tabSelectedTextColor">@color/colorPrimaryDark</item>
         <item name="tabTextAppearance">@color/grey2</item>
     </style>
+
+    <style name="AppTheme_withtransition" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/yellow</item>
+        <item name="android:fontFamily">@font/montserrat</item>
+        <item name="android:textSize">12sp</item>
+       <!-- <item name="android:windowActivityTransitions">true</item>
+        <item name="android:windowEnterTransition">@transition/explode</item>
+        <item name="android:windowExitTransition">@transition/explode</item>-->
+    </style>
+
+
 
 </resources>
