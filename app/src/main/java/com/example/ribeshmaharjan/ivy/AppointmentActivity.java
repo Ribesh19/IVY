@@ -1,12 +1,14 @@
 package com.example.ribeshmaharjan.ivy;
 
 import android.app.DatePickerDialog;
+import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -14,7 +16,7 @@ import java.util.Locale;
 
 public class AppointmentActivity extends AppCompatActivity {
 
-
+    ImageView mbackbtn;
     EditText mdateappointment;
     Calendar myCalendar = Calendar.getInstance();
 
@@ -23,6 +25,7 @@ public class AppointmentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_appointment);
         mdateappointment=findViewById(R.id.Edittxt_date_appointment);
+        mbackbtn=findViewById(R.id.back_btn_appointment);
 
         final DatePickerDialog.OnDateSetListener date =new DatePickerDialog.OnDateSetListener(){
 
@@ -45,6 +48,13 @@ public class AppointmentActivity extends AppCompatActivity {
             }
         });
 
+        mbackbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AppointmentActivity.super.onBackPressed();
+            }
+        });
+
 
     }
     private void updateLabel() {
@@ -52,5 +62,9 @@ public class AppointmentActivity extends AppCompatActivity {
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
         mdateappointment.setText(sdf.format(myCalendar.getTime()));
+
+
     }
+
+
 }

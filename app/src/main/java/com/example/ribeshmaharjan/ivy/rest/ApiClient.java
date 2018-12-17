@@ -1,4 +1,4 @@
-package com.example.ribeshmaharjan.ivy.network;
+package com.example.ribeshmaharjan.ivy.rest;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

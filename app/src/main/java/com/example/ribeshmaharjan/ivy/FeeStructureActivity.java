@@ -40,8 +40,9 @@ public class FeeStructureActivity extends AppCompatActivity {
         mbackbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(FeeStructureActivity.this,DetailActivity.class);
-                startActivity(intent);
+                /*Intent intent=new Intent(FeeStructureActivity.this,DetailActivity.class);
+                startActivity(intent);*/
+                FeeStructureActivity.super.onBackPressed();
             }
         });
 

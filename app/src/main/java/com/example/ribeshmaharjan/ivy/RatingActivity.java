@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.transition.Fade;
 
 
+import android.view.View;
 import android.view.Window;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -16,6 +18,7 @@ public class RatingActivity extends AppCompatActivity {
 
     RatingBar mratingBarInput;
     TextView textView_schoolname;
+    ImageView mbackbtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +29,8 @@ public class RatingActivity extends AppCompatActivity {
 
 
         setContentView(R.layout.activity_rating);
+        mbackbtn=findViewById(R.id.back_btn_rating);
+
 
         textView_schoolname=findViewById(R.id.school_name_rating);
         textView_schoolname.setTextColor(Color.argb(100, 111,53,148));
@@ -35,6 +40,13 @@ public class RatingActivity extends AppCompatActivity {
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
                 mratingBarInput.setRating(rating);
                 //Toast.makeText(RatingActivity.this,String.valueOf(rating),Toast.LENGTH_LONG).show();
+            }
+        });
+
+        mbackbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RatingActivity.super.onBackPressed();
             }
         });
     }

@@ -47,8 +47,9 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Toast.makeText(RegisterActivity.this,"Button pressed",Toast.LENGTH_LONG).show();
-                Intent intent=new Intent(RegisterActivity.this,MainLayoutActivity.class);
-                startActivity(intent);
+                /*Intent intent=new Intent(RegisterActivity.this,MainLayoutActivity.class);
+                startActivity(intent);*/
+                RegisterActivity.super.onBackPressed();
             }
         });
         mfacbook.setOnClickListener(new View.OnClickListener() {

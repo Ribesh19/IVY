@@ -1,4 +1,4 @@
-package com.example.ribeshmaharjan.ivy;
+package com.example.ribeshmaharjan.ivy.model;
 
 import java.util.List;
 import com.google.gson.annotations.Expose;

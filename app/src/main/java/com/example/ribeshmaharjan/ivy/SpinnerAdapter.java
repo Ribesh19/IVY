@@ -18,15 +18,18 @@ import android.widget.ArrayAdapter;
 
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import com.example.ribeshmaharjan.ivy.model.city;
 
-public class SpinnerAdapter extends ArrayAdapter<String> {
+import java.util.ArrayList;
+import java.util.List;
+
+public class SpinnerAdapter extends ArrayAdapter<city> {
     int groupid;
     Activity context;
-    ArrayList<String> list;
+    List<city> list;
     LayoutInflater inflater;
 
-    public SpinnerAdapter(Activity context, int groupid, int id, ArrayList<String>
+    public SpinnerAdapter(Activity context, int groupid, int id, List<city>
             list){
         super(context,id,list);
         this.list=list;
@@ -41,7 +44,7 @@ public class SpinnerAdapter extends ArrayAdapter<String> {
         Typeface typeface=ResourcesCompat.getFont(getContext(),R.font.montserrat_regular);
         TextView textView=itemView.findViewById(R.id.spinner_txt_item);
         textView.setTypeface(typeface);
-        textView.setText(list.get(position));
+        textView.setText(list.get(position).getCity().toString());
         textView.setTextColor(Color.rgb(111,53,148));
         return itemView;
     }

@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -20,6 +21,7 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.InfoViewHo
         RatingBar mReviewRatingbar;
         TextView mRatingValue;
         TextView mreview;
+
         private InfoViewHolder(View itemView) {
             super(itemView);
             musername=itemView.findViewById(R.id.username);
@@ -67,4 +69,6 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.InfoViewHo
         else return 0;*/
         return 4;
     }
+
+
 }

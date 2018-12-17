@@ -1,4 +1,4 @@
-package com.example.ribeshmaharjan.ivy;
+package com.example.ribeshmaharjan.ivy.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

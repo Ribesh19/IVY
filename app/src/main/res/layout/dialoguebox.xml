@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout android:id="@+id/cardview_help"
+<android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/grey2"
-    android:padding="8dp">
+    android:theme="@android:style/Theme.Holo.Dialog"
+    >
 
    <!-- <android.support.v7.widget.CardView
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -27,16 +27,26 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="bottom"
-        android:background="@color/grey2"
-        >
+        android:background="@color/grey2">
 
+        <ImageButton
+            android:id="@+id/dialog_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:background="@null"
+            android:padding="8dp"
+            android:src="@drawable/ic_icon_cross"
+            app:layout_constraintBottom_toBottomOf="@+id/txtview_suitablefit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/txtview_suitablefit" />
 
         <TextView
             android:id="@+id/txtview_suitablefit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
             android:gravity="center"
             android:text="@string/can_t_find_a_suitable_fit"
             android:textColor="@color/grey"
@@ -50,7 +60,7 @@
             android:layout_width="0dp"
             android:layout_height="156dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="16dp"
             android:background="@drawable/ic_form_background_with_fill"
             android:hint="@string/let_us_know_how_we_can_help_you_by_typing_here"
             android:padding="8dp"
@@ -88,19 +98,8 @@
             app:layout_constraintTop_toBottomOf="@+id/email_help" />
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="8dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/phonenumber_help">
 
-            <Button
+          <!--  <Button
                 android:id="@+id/btn_dialog_cancel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -109,23 +108,27 @@
                 android:background="#0066b2"
                 android:text="@string/cancel"
                 android:textColor="@color/white"
+                android:textSize="12sp"
+                android:clickable="true"
+                android:focusable="true"/>-->
 
+        <Button
+            android:id="@+id/btn_dialog_submit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="16dp"
+            android:layout_weight="0.5"
+            android:background="@color/colorAccent"
 
-                android:textSize="12sp" />
+            android:text="@string/submit"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/phonenumber_help"
+            app:layout_constraintStart_toStartOf="@+id/phonenumber_help"
+            app:layout_constraintTop_toBottomOf="@+id/phonenumber_help" />
 
-            <Button
-                android:id="@+id/btn_dialog_submit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
-                android:layout_weight="0.5"
-                android:background="@color/colorAccent"
-                android:text="@string/submit"
-                android:textColor="@color/white"
-                android:textSize="12sp" />
-
-
-        </LinearLayout>
     </android.support.constraint.ConstraintLayout>
     <!--</android.support.v7.widget.CardView>-->
 </android.support.constraint.ConstraintLayout>

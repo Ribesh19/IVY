@@ -17,28 +17,23 @@ import android.widget.TextView;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
-import com.synnapps.carouselview.CarouselView;
-import com.synnapps.carouselview.ImageListener;
-import com.synnapps.carouselview.ViewListener;
-
-/*import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;*/
-
-
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
+import com.example.ribeshmaharjan.ivy.model.School;
+import com.example.ribeshmaharjan.ivy.model.city;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.List;
 public class SchoollistAdapter extends  RecyclerView.Adapter<SchoollistAdapter.InfoViewHolder>{
 
 
     Context mcontext;
-   // private List<Integer> mImageIds;
-    JSONArray mjsonArray;
+    private List<Integer> mImageIds;
+    private List<School> mschools;
+    List<String> imagelist =null;
     /* ArrayList<JSONObject> mjsonObjects=new ArrayList<>();*/
     class InfoViewHolder extends RecyclerView.ViewHolder {
         ImageView mSchoolImage;
@@ -65,7 +60,7 @@ public class SchoollistAdapter extends  RecyclerView.Adapter<SchoollistAdapter.I
     private final LayoutInflater mInflater;
     // Cached copy of words
 
-   /* SchoollistAdapter(Context context,List<Integer> imageIds)
+/*    SchoollistAdapter(Context context,List<Integer> imageIds)
     {
         mcontext=context;
         mInflater = LayoutInflater.from(context);
@@ -73,11 +68,11 @@ public class SchoollistAdapter extends  RecyclerView.Adapter<SchoollistAdapter.I
 
 
     }*/
-   SchoollistAdapter(Context context,JSONArray jsonArray)
+   SchoollistAdapter(Context context,List<School> schools)
    {
        mcontext=context;
        mInflater = LayoutInflater.from(context);
-       mjsonArray=jsonArray;
+       mschools=schools;
 
        }
 
@@ -91,25 +86,28 @@ public class SchoollistAdapter extends  RecyclerView.Adapter<SchoollistAdapter.I
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final InfoViewHolder holder, int position) {
-
+    public void onBindViewHolder(@NonNull final InfoViewHolder holder, final int position) {
+        int size= mschools.get(position).getImages().size();
+        //Toast.makeText(mcontext,Integer.toString(size),Toast.LENGTH_LONG).show();
+       // imagelist.addAll(mschools.get(position).getImages());
+       // imagelist.get(position);
+        imagelist=mschools.get(position).getImages();
         Typeface typeface=ResourcesCompat.getFont(mcontext,R.font.montserrat_regular);
-        try {
-            JSONObject jsonObject1=mjsonArray.getJSONObject(position);
-            String name=jsonObject1.getString("name");
-            int rating=jsonObject1.getInt("schoolaverage");
-            //Toast.makeText(mcontext.getApplicationContext(),name,Toast.LENGTH_LONG).show();
-            holder.mSchoolName.setTypeface(typeface);
-            holder.mSchoolName.setText(name);
-            holder.mRatingbar.setRating(rating);
-            holder.mDistance.setText("0.4 km from you");
-            holder.mDistance.setTypeface(typeface);
-            holder.mStatus.setText("Open");
-            holder.mDistance.setTypeface(typeface);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        Glide.with(mcontext)
 
+                .load("https://i.imgur.com/PpFGm1o.png")
+                //.load(imagelist.get(position))
+                .apply(new RequestOptions().fitCenter())
+                .into(holder.mSchoolImage);
+
+        holder.mRatingbar.setRating(mschools.get(position).getSchoolaverage());
+        holder.mSchoolName.setText(mschools.get(position).getName());
+        holder.mDistance.setText("0.4 km from you");
+        holder.mDistance.setTypeface(typeface);
+        holder.mStatus.setText("Open");
+        holder.mDistance.setTypeface(typeface);
+
+        Toast.makeText(mcontext,imagelist.get(position),Toast.LENGTH_LONG).show();
         //holder.mSchoolImage.setImageResource(mImageIds.get(position));
         holder.mPrice.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,14 +121,13 @@ public class SchoollistAdapter extends  RecyclerView.Adapter<SchoollistAdapter.I
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(mcontext.getApplicationContext(),DetailActivity.class);
+                intent.putExtra("schoolID", mschools.get(position).getId());
+                //Toast.makeText(mcontext,Integer.toString(mschools.get(position).getId()),Toast.LENGTH_LONG).show();
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 mcontext.startActivity(intent);
 
             }
         });
-
-
-
     }
 
     // getItemCount() is called many times, and when it is first called,
@@ -140,9 +137,10 @@ public class SchoollistAdapter extends  RecyclerView.Adapter<SchoollistAdapter.I
         /*if (logs != null)
             return logs.size();
         else return 0;*/
-       return mjsonArray.length() ;
-        //return 1;
+
+        return mschools.size();
     }
+
 
 
 

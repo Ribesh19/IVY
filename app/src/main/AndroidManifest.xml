@@ -35,7 +35,6 @@
         <activity android:name=".FeeStructureActivity" />
         <activity android:name=".RatingActivity" />
         <activity android:name=".AppointmentActivity" />
-        <activity android:name=".HelpActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").

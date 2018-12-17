@@ -23,13 +23,10 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
+import com.example.ribeshmaharjan.ivy.model.city;
+import com.example.ribeshmaharjan.ivy.model.cityresponse;
+import com.example.ribeshmaharjan.ivy.rest.ApiClient;
+import com.example.ribeshmaharjan.ivy.rest.ApiInterface;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.places.GeoDataClient;
@@ -44,22 +41,19 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MapStyleOptions;
-import com.google.android.gms.maps.model.Marker;
+
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
+
+import retrofit2.Call;
+import retrofit2.Callback;
 
 public class MapActivity extends FragmentActivity implements OnMapReadyCallback {
     Button mListview;
@@ -127,10 +121,30 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
 
 
 
+
         // Retrieve the content view that renders the map.
         setContentView(R.layout.activity_map);
 
         spinner=findViewById(R.id.spinner_mapview);
+        ApiInterface apiInterface=ApiClient.getClient().create(ApiInterface.class);
+        Call<cityresponse> call= apiInterface.getcity();
+        call.enqueue(new Callback<cityresponse>() {
+            @Override
+            public void onResponse(@NonNull Call<cityresponse> call, @NonNull retrofit2.Response<cityresponse> response) {
+                assert response.body() != null;
+                int statuscode=response.code();
+                List<city> cities=response.body().getResults();
+                Log.d(TAG, "Number of movies received: " + cities.size());
+                SpinnerAdapter adapter=new SpinnerAdapter(MapActivity.this,R.layout.spinner_layout,R.id.spinner_txt_item,cities);
+                spinner.setAdapter(adapter);
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<cityresponse> call, @NonNull Throwable t) {
+                Log.e(TAG, t.toString());
+
+            }
+        });
 
 
 
@@ -164,41 +178,6 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
             }
         });
 
-        StringRequest request = new StringRequest(Request.Method.GET,URL1, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                Toast.makeText(MapActivity.this, "Response Received", Toast.LENGTH_SHORT).show();
-                Log.d("MainActivity", response);
-                /*GsonBuilder gsonBuilder = new GsonBuilder();
-                Gson gson = gsonBuilder.create();
-                Citynames[] citynames = gson.fromJson(response, Citynames[].class);
-                SpinnerAdapter adapter=new SpinnerAdapter(MapActivity.this,R.layout.spinner_layout,R.id.spinner_txt_item,citynames);
-                spinner.setAdapter(adapter);*/
-                try {
-                    JSONObject jsonObject=new JSONObject(response);
-                        JSONArray jsonArray=jsonObject.getJSONArray("results");
-                        for(int i=0;i<jsonArray.length();i++){
-                            JSONObject jsonObject1=jsonArray.getJSONObject(i);
-                            String country=jsonObject1.getString("city");
-                            list.add(country);
-                        }
-                    //spinner.setAdapter(new ArrayAdapter<String>(MapActivity.this, R.layout.spinner_layout,R.id.spinner_txt_item, list));
-                    SpinnerAdapter adapter=new SpinnerAdapter(MapActivity.this,R.layout.spinner_layout,R.id.spinner_txt_item,list);
-                    spinner.setAdapter(adapter);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(MapActivity.this, "error", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        RequestQueue queue = Volley.newRequestQueue(MapActivity.this);
-        queue.add(request);
 
         /*SpinnerAdapter adapter=new SpinnerAdapter(MapActivity.this,R.layout.spinner_layout,R.id.spinner_txt_item,list);
 

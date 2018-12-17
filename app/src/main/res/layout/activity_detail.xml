@@ -21,6 +21,8 @@
         android:contentDescription="@string/back"/>
 
 
+
+
     <ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -42,6 +44,20 @@
         xmlns:tools="http://schemas.android.com/tools"
         tools:context=".DetailActivity"
         android:background="#fff">
+        <ProgressBar
+            android:id="@+id/progressBar_detail"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.synnapps.carouselview.CarouselView
             android:id="@+id/imageView2"
@@ -135,13 +151,16 @@
 
         <LinearLayout
             android:id="@+id/liner_layout_handybutton"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            android:gravity="center"
             android:orientation="horizontal"
             android:padding="4dp"
-            app:layout_constraintEnd_toEndOf="@+id/school_name"
-            app:layout_constraintStart_toStartOf="@+id/school_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_address">
 
 
@@ -149,46 +168,45 @@
                 android:id="@+id/btn_call"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
+                android:layout_marginStart="6dp"
+                android:layout_marginEnd="6dp"
                 android:background="@drawable/ic_circle_green"
                 android:drawableStart="@drawable/ic_call_icon"
                 android:paddingStart="6dp"
-                android:paddingEnd="6dp"
-                android:layout_marginStart="6dp"
-                android:layout_marginEnd="6dp"
-                />
+                android:paddingEnd="6dp" />
 
             <Button
                 android:id="@+id/btn_map"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
+                android:layout_marginStart="6dp"
+                android:layout_marginEnd="6dp"
                 android:background="@drawable/ic_circle_blue"
                 android:drawableStart="@drawable/ic_icon_map_geo"
                 android:paddingStart="6dp"
-                android:paddingEnd="6dp"
-                android:layout_marginStart="6dp"
-                android:layout_marginEnd="6dp"/>
+                android:paddingEnd="6dp" />
 
             <Button
                 android:id="@+id/btn_favourite"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
+                android:layout_marginStart="6dp"
+                android:layout_marginEnd="6dp"
                 android:background="@drawable/ic_circle_red"
                 android:drawableStart="@drawable/ic_icon_favourite"
                 android:paddingStart="6dp"
-                android:paddingEnd="6dp"
-                android:layout_marginStart="6dp"
-                android:layout_marginEnd="6dp"/>
+                android:paddingEnd="6dp" />
 
             <Button
                 android:id="@+id/btn_review"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
+                android:layout_marginStart="6dp"
+                android:layout_marginEnd="6dp"
                 android:background="@drawable/ic_circle_yellow"
                 android:drawableStart="@drawable/ic_create_black_24dp"
                 android:paddingStart="6dp"
-                android:paddingEnd="6dp"
-                android:layout_marginStart="6dp"
-                android:layout_marginEnd="6dp"/>
+                android:paddingEnd="6dp" />
         </LinearLayout>
 
         <TextView

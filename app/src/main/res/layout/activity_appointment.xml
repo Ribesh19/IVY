@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:background="#fff">
     <ImageButton
-        android:id="@+id/back_btn"
+        android:id="@+id/back_btn_appointment"
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:layout_marginStart="16dp"
