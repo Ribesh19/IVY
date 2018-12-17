@@ -2,6 +2,7 @@ package com.example.ribeshmaharjan.ivy;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.transition.Explode;
@@ -11,6 +12,16 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+
+import com.synnapps.carouselview.CarouselView;
+import com.synnapps.carouselview.ImageClickListener;
+import com.synnapps.carouselview.ImageListener;
+
+import java.util.ArrayList;
+import java.util.List;
+
+
 
 public class DetailActivity extends AppCompatActivity {
     ImageButton mbackbtn;
@@ -19,12 +30,17 @@ public class DetailActivity extends AppCompatActivity {
     Button mbookappointment;
     Button mmakefavourite;
     Button mseeallreview;
+    CarouselView mcarouselView;
 
     FavouriteFragment favouriteFragment=new FavouriteFragment();
+    int[] sampleImages = {R.drawable.preschool_img,R.drawable.school_img1,R.drawable.school_img2};
+
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
         getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
         getWindow().setExitTransition(new Fade());
         setContentView(R.layout.activity_detail);
@@ -34,6 +50,11 @@ public class DetailActivity extends AppCompatActivity {
         mmakefavourite=findViewById(R.id.btn_favourite);
         mreview=findViewById(R.id.btn_review);
         mseeallreview=findViewById(R.id.seeallreview);
+        mcarouselView=findViewById(R.id.imageView2);
+        mcarouselView.setPageCount(sampleImages.length);
+        mcarouselView.setImageListener(imageListener);
+
+
         mbackbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,7 +100,11 @@ public class DetailActivity extends AppCompatActivity {
                 startActivity(intent6);
             }
         });
-
-
-    }
+        }
+    ImageListener imageListener = new ImageListener() {
+        @Override
+        public void setImageForPosition(int position, ImageView imageView) {
+            imageView.setImageResource(sampleImages[position]);
+        }
+    };
 }

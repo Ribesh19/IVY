@@ -45,7 +45,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="56dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="16dp"
             app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="@+id/signup_name"
             app:layout_constraintStart_toStartOf="@+id/signup_name"
@@ -64,7 +64,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="56dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="16dp"
             app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="@+id/signup_email"
             app:layout_constraintStart_toStartOf="@+id/signup_email"
@@ -83,7 +83,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="56dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="16dp"
             app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="@+id/signup_password"
             app:layout_constraintStart_toStartOf="@+id/signup_password"
@@ -98,29 +98,29 @@
 
         </android.support.design.widget.TextInputLayout>
 
-        <!--<Button
+        <Button
             android:id="@+id/btn_signup_register"
             android:layout_width="0dp"
             android:layout_height="56dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="32dp"
             android:background="@color/colorPrimaryDark"
             android:text="@string/sign_up"
             android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@+id/signup_confirmpassword"
             app:layout_constraintStart_toStartOf="@+id/signup_confirmpassword"
-            app:layout_constraintTop_toBottomOf="@+id/signup_confirmpassword" />-->
-        <android.support.design.button.MaterialButton
-            android:theme="@style/AppTheme4"
+            app:layout_constraintTop_toBottomOf="@+id/signup_confirmpassword" />
+       <!-- <android.support.design.button.MaterialButton
             android:id="@+id/btn_signup_register"
             style="@style/Widget.MaterialComponents.Button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="32dp"
             android:text="@string/sign_up"
+            android:theme="@style/AppTheme4"
             app:layout_constraintEnd_toEndOf="@+id/signup_confirmpassword"
             app:layout_constraintStart_toStartOf="@+id/signup_confirmpassword"
-            app:layout_constraintTop_toBottomOf="@+id/signup_confirmpassword"/>
+            app:layout_constraintTop_toBottomOf="@+id/signup_confirmpassword" />-->
 
 
        <!-- <TextView

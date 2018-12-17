@@ -16,8 +16,7 @@
     <string name="about_us">About Us</string>
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
         sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-    </string>
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</string>
     <string name="age">2.0 - 5.0 years</string>
     <string name="age_groups">Age Groups</string>
     <string name="transportation">Transportation</string>
@@ -72,7 +71,7 @@
     <string name="tab_text_3">Tab 3</string>
     <string name="login"><b>LOGIN</b></string>
     <string name="sign_up"><b>SIGN UP</b></string>
-    <string name="PLEASE_SIGN_UP">PLEASE SIGN UP</string>
+    <string name="PLEASE_SIGN_UP">Please Sing Up</string>
     <string name="to_add_your_review">to add your review</string>
     <string name="log_in_with_facebook">LOG IN WITH FACEBOOK</string>
     <string name="log_in_with_google">LOG IN WITH GOOGLE</string>
@@ -92,4 +91,9 @@
     <string name="review">Review</string>
     <string name="username">UserName</string>
     <string name="last_active_day">Last Active Day</string>
+    <string name="cancel">CANCEL</string>
+    <string name="submit">SUBMIT</string>
+    <string name="what_s_your_priority">What’s your priority?</string>
+    <string name="how_did_you_feel_about_the_school">How did you feel about the school?</string>
+    <string name="featured">Featured</string>
 </resources>

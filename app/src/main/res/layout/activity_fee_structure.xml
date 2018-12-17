@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:background="#fff">
 <ImageButton
-    android:id="@+id/back_btn"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:id="@+id/back_btn_fee"
+    android:layout_width="32dp"
+    android:layout_height="32dp"
     android:layout_marginStart="16dp"
     android:layout_marginTop="4dp"
     android:background="#fff"
@@ -142,47 +140,32 @@ android:layout_height="match_parent"
                     android:textSize="14sp" />
             </android.support.design.widget.TextInputLayout>
 
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/age_fee"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="0dp"
-                android:layout_height="56dp"
-                android:layout_marginTop="16dp"
-                app:errorEnabled="true"
-                app:layout_constraintEnd_toEndOf="@+id/address_fee"
-                app:layout_constraintStart_toStartOf="@+id/address_fee"
-                app:layout_constraintTop_toBottomOf="@+id/address_fee">
+        <TextView
+            android:id="@+id/txtview_ageofchild"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/montserrat_regular"
+            android:text="@string/age_of_the_child"
+            android:textAllCaps="false"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/address_fee"
+            app:layout_constraintTop_toBottomOf="@+id/address_fee" />
 
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/edit_text_age_fee"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/age_of_the_child"
-                    android:inputType="number"
-                    android:textSize="14sp" />
-            </android.support.design.widget.TextInputLayout>
+        <android.widget.Spinner
+            android:id="@+id/age_fee"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_marginTop="8dp"
+            android:dropDownWidth="365dip"
+            android:dropDownVerticalOffset="40dp"
+            android:background="@drawable/ic_form_background"
+            android:spinnerMode="dropdown"
+            app:layout_constraintEnd_toEndOf="@+id/address_fee"
+            app:layout_constraintStart_toStartOf="@+id/address_fee"
+            app:layout_constraintTop_toBottomOf="@+id/txtview_ageofchild" />
 
-            <CheckBox
-                android:id="@+id/checkbox_trasportation_fee"
-                android:layout_width="wrap_content"
-                android:layout_height="56dp"
-                android:layout_marginTop="16dp"
-                android:enabled="false"
-                app:layout_constraintStart_toStartOf="@+id/age_fee"
-                app:layout_constraintTop_toBottomOf="@+id/age_fee" />
-
-            <TextView
-                android:id="@+id/transportations_required_textview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:padding="8dp"
-                android:text="@string/is_transportation_required"
-                android:textColor="@color/colorAccent"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="@+id/checkbox_trasportation_fee"
-                app:layout_constraintStart_toEndOf="@+id/checkbox_trasportation_fee"
-                app:layout_constraintTop_toTopOf="@+id/checkbox_trasportation_fee" />
 
 
         <android.support.design.widget.TextInputLayout
@@ -192,9 +175,10 @@ android:layout_height="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             app:errorEnabled="true"
+            android:hint="@string/additional_information"
             app:layout_constraintEnd_toEndOf="@+id/email_fee"
             app:layout_constraintStart_toStartOf="@+id/email_fee"
-            app:layout_constraintTop_toBottomOf="@+id/checkbox_trasportation_fee">
+            app:layout_constraintTop_toBottomOf="@+id/age_fee">
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/edit_text_additional_info_fee"
@@ -202,7 +186,7 @@ android:layout_height="match_parent"
                 android:layout_height="168dp"
                 android:ellipsize="end"
                 android:freezesText="true"
-                android:hint="@string/additional_information"
+                android:hint="@string/what_s_your_priority"
                 android:imeOptions="actionNext"
                 android:inputType="textMultiLine"
                 android:lines="2"
@@ -220,137 +204,13 @@ android:layout_height="match_parent"
                 android:padding="8dp"
                 android:background="@color/colorAccent"
                 android:text="@string/request_fee_structure"
+                android:textAllCaps="false"
                 android:textColor="@color/white"
-                android:textSize="14sp"
-                app:layout_constraintTop_toBottomOf="@id/additional_info_fee" />
-            <!--<TextView
-                android:id="@+id/feestructure"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:gravity="start"
-                android:text="@string/request_fee_structure"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/school_name_fee"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:gravity="start"
-                android:text="@string/komal_day_care_service_and_pre_nursery"
-                android:textColor="@color/colorPrimaryDark"
                 android:textSize="16sp"
-                android:textStyle="bold"
-                android:autofillHints="fullname"
-                app:layout_constraintStart_toStartOf="@+id/feestructure"
-                app:layout_constraintTop_toBottomOf="@+id/feestructure" />
+                app:layout_constraintTop_toBottomOf="@id/additional_info_fee"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
 
-            <EditText
-                android:id="@+id/name_fee"
-                android:layout_width="0dp"
-                android:layout_height="56dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="24dp"
-                android:background="@drawable/ic_form_background"
-                android:elevation="40dp"
-                android:hint="@string/name"
-                android:inputType="text"
-                android:padding="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/school_name_fee"
-                app:layout_constraintTop_toBottomOf="@+id/school_name_fee" />
-
-            <EditText
-                android:id="@+id/email_fee"
-                android:layout_width="0dp"
-                android:layout_height="56dp"
-                android:layout_marginTop="32dp"
-                android:background="@drawable/ic_form_background"
-                android:hint="@string/email"
-                android:inputType="textEmailAddress"
-                android:padding="8dp"
-                app:layout_constraintEnd_toEndOf="@+id/name_fee"
-                app:layout_constraintStart_toStartOf="@+id/name_fee"
-                app:layout_constraintTop_toBottomOf="@+id/name_fee" />
-
-            <EditText
-                android:id="@+id/phonenumber_fee"
-                android:layout_width="0dp"
-                android:layout_height="56dp"
-                android:layout_marginTop="32dp"
-                android:background="@drawable/ic_form_background"
-                android:hint="@string/phone_number"
-                android:inputType="phone"
-                android:padding="8dp"
-                app:layout_constraintEnd_toEndOf="@+id/email_fee"
-                app:layout_constraintStart_toStartOf="@+id/email_fee"
-                app:layout_constraintTop_toBottomOf="@+id/email_fee" />
-
-            <EditText
-                android:id="@+id/address_fee"
-                android:layout_width="0dp"
-                android:layout_height="56dp"
-                android:layout_marginTop="32dp"
-                android:background="@drawable/ic_form_background"
-                android:hint="@string/address"
-                android:inputType="text"
-                android:padding="8dp"
-                app:layout_constraintEnd_toEndOf="@+id/phonenumber_fee"
-                app:layout_constraintStart_toStartOf="@+id/phonenumber_fee"
-                app:layout_constraintTop_toBottomOf="@+id/phonenumber_fee" />
-
-            <EditText
-                android:id="@+id/age_fee"
-                android:layout_width="0dp"
-                android:layout_height="56dp"
-                android:layout_marginTop="32dp"
-                android:background="@drawable/ic_form_background"
-                android:hint="@string/age_of_the_child"
-                android:inputType="text"
-                android:padding="8dp"
-                app:layout_constraintEnd_toEndOf="@+id/address_fee"
-                app:layout_constraintStart_toStartOf="@+id/address_fee"
-                app:layout_constraintTop_toBottomOf="@+id/address_fee" />
-
-            <CheckBox
-                android:id="@+id/trasportation_fee"
-                android:layout_width="wrap_content"
-                android:layout_height="56dp"
-                android:layout_marginTop="32dp"
-                app:layout_constraintStart_toStartOf="@+id/age_fee"
-                app:layout_constraintTop_toBottomOf="@+id/age_fee" />
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:padding="8dp"
-                android:text="@string/is_transportation_required"
-                android:textColor="@color/grey"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="@+id/trasportation_fee"
-                app:layout_constraintStart_toEndOf="@+id/trasportation_fee"
-                app:layout_constraintTop_toTopOf="@+id/trasportation_fee" />
-
-            <EditText
-                android:id="@+id/additional_info_fee"
-                android:layout_width="0dp"
-                android:layout_height="156dp"
-                android:layout_marginTop="32dp"
-                android:background="@drawable/ic_form_background"
-                android:hint="@string/additional_information"
-                android:inputType="text"
-                android:padding="8dp"
-                app:layout_constraintEnd_toEndOf="@+id/age_fee"
-                app:layout_constraintStart_toStartOf="@+id/trasportation_fee"
-                app:layout_constraintTop_toBottomOf="@+id/textView2" />-->
 
         </android.support.constraint.ConstraintLayout>
 </ScrollView>

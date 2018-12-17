@@ -3,6 +3,7 @@ package com.example.ribeshmaharjan.ivy;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.location.Location;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -16,11 +17,19 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.ImageButton;
-import android.widget.Spinner;
-import android.widget.TextView;
 
+import android.widget.ImageButton;
+
+import android.widget.Spinner;
+import android.widget.Toast;
+
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.places.GeoDataClient;
@@ -32,15 +41,25 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Locale;
+import java.util.Objects;
 
 public class MapActivity extends FragmentActivity implements OnMapReadyCallback {
     Button mListview;
@@ -81,6 +100,10 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     private String[] mLikelyPlaceAttributions;
     private LatLng[] mLikelyPlaceLatLngs;
 
+    private static String URL1 = "https://api.ivyschool.in/api/getcity";
+
+    ArrayList<String> list=new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -107,6 +130,11 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         // Retrieve the content view that renders the map.
         setContentView(R.layout.activity_map);
 
+        spinner=findViewById(R.id.spinner_mapview);
+
+
+
+
         msignup=findViewById(R.id.signup_login_map);
         msignup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,25 +144,65 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
             }
         });
 
-        spinner=findViewById(R.id.spinner_mapview);
+       /* spinner=findViewById(R.id.spinner_mapview);
         ArrayList<ItemData> list=new ArrayList<>();
         list.add(new ItemData("Delhi"));
         list.add(new ItemData("Hauz Khas"));
         list.add(new ItemData("Lajpat Nagar"));
         list.add(new ItemData("Greater Kailash"));
         list.add(new ItemData("Rangpuri"));
-        list.add(new ItemData("Noida"));
+        list.add(new ItemData("Noida"));*/
+
 
         mListview=findViewById(R.id.btn_listview);
         mListview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+               // Toast.makeText(MapActivity.this,"List view",Toast.LENGTH_LONG).show();
+                Intent intent1=new Intent(MapActivity.this,MainLayoutActivity.class);
+                startActivity(intent1);
             }
         });
-        SpinnerAdapter adapter=new SpinnerAdapter(this,R.layout.spinner_layout,R.id.spinner_txt_item,list);
-        // adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
+
+        StringRequest request = new StringRequest(Request.Method.GET,URL1, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Toast.makeText(MapActivity.this, "Response Received", Toast.LENGTH_SHORT).show();
+                Log.d("MainActivity", response);
+                /*GsonBuilder gsonBuilder = new GsonBuilder();
+                Gson gson = gsonBuilder.create();
+                Citynames[] citynames = gson.fromJson(response, Citynames[].class);
+                SpinnerAdapter adapter=new SpinnerAdapter(MapActivity.this,R.layout.spinner_layout,R.id.spinner_txt_item,citynames);
+                spinner.setAdapter(adapter);*/
+                try {
+                    JSONObject jsonObject=new JSONObject(response);
+                        JSONArray jsonArray=jsonObject.getJSONArray("results");
+                        for(int i=0;i<jsonArray.length();i++){
+                            JSONObject jsonObject1=jsonArray.getJSONObject(i);
+                            String country=jsonObject1.getString("city");
+                            list.add(country);
+                        }
+                    //spinner.setAdapter(new ArrayAdapter<String>(MapActivity.this, R.layout.spinner_layout,R.id.spinner_txt_item, list));
+                    SpinnerAdapter adapter=new SpinnerAdapter(MapActivity.this,R.layout.spinner_layout,R.id.spinner_txt_item,list);
+                    spinner.setAdapter(adapter);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(MapActivity.this, "error", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        RequestQueue queue = Volley.newRequestQueue(MapActivity.this);
+        queue.add(request);
+
+        /*SpinnerAdapter adapter=new SpinnerAdapter(MapActivity.this,R.layout.spinner_layout,R.id.spinner_txt_item,list);
+
+        spinner.setAdapter(adapter);*/
 
         // Construct a GeoDataClient.
         mGeoDataClient = Places.getGeoDataClient(this);
@@ -148,7 +216,8 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         // Build the map.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+        Objects.requireNonNull(mapFragment).getMapAsync(this);
+
     }
 
     /**
@@ -195,9 +264,27 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     public void onMapReady(GoogleMap map) {
         mMap = map;
 
+
+       /* try {
+            // Customize the styling of the base map using a JSON object defined
+            // in a raw resource file.
+            boolean success = mMap.setMapStyle(
+                    MapStyleOptions.loadRawResourceStyle(
+                            this, R.raw.mapstyle));
+
+            if (!success) {
+                Log.e(TAG, "Style parsing failed.");
+            }
+        } catch (Resources.NotFoundException e) {
+            Log.e(TAG, "Can't find style file. Error: ", e);
+        }*/
+        mMap.setPadding(0,200,32,0);
+       LatLng pinewood = new LatLng(37.430610, -122.104842);
+        mMap.addMarker(new MarkerOptions().position(pinewood).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
+
         // Use a custom info window adapter to handle multiple lines of text in the
         // info window contents.
-        mMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
+       /* mMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
 
             @Override
             // Return null here, so that getInfoContents() is called next.
@@ -208,7 +295,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
             @Override
             public View getInfoContents(Marker marker) {
                 // Inflate the layouts for the info window, title and snippet.
-                View infoWindow = getLayoutInflater().inflate(R.layout.custom_info_contents,
+               *//* View infoWindow = getLayoutInflater().inflate(R.layout.custom_info_contents,
                         (FrameLayout) findViewById(R.id.map), false);
 
                 TextView title = ((TextView) infoWindow.findViewById(R.id.title));
@@ -217,9 +304,15 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                 TextView snippet = ((TextView) infoWindow.findViewById(R.id.snippet));
                 snippet.setText(marker.getSnippet());
 
-                return infoWindow;
+                return infoWindow;*//*
             }
-        });
+
+
+
+
+        });*/
+
+
 
         // Prompt the user for permission.
         getLocationPermission();
@@ -249,7 +342,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                             // Set the map's camera position to the current location of the device.
                             mLastKnownLocation = task.getResult();
                             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
-                                    new LatLng(mLastKnownLocation.getLatitude(),
+                                    new LatLng(Objects.requireNonNull(mLastKnownLocation).getLatitude(),
                                             mLastKnownLocation.getLongitude()), DEFAULT_ZOOM));
                         } else {
                             Log.d(TAG, "Current location is null. Using defaults.");
@@ -424,10 +517,12 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
      */
     private void updateLocationUI() {
         if (mMap == null) {
+
             return;
         }
         try {
             if (mLocationPermissionGranted) {
+
                 mMap.setMyLocationEnabled(true);
                 mMap.getUiSettings().setMyLocationButtonEnabled(true);
             } else {

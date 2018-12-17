@@ -77,7 +77,7 @@
           android:strokeAlpha="0.36"
           android:fillAlpha="0.36">
         <aapt:attr name="android:fillColor">
-          <gradient 
+          <gradient
               android:startY="301.99152"
               android:startX="837.793"
               android:endY="313.0873"
@@ -88,8 +88,6 @@
           </gradient>
         </aapt:attr>
       </path>
-      <path
-          android:pathData="M67.6,581.7h1056.4v7h-1056.4z"
-          android:fillColor="#FFFFFF"/>
+
     </group>
 </vector>

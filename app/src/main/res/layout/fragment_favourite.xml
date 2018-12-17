@@ -10,7 +10,7 @@
         android:id="@+id/Post_review"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:gravity="start"
         android:text="@string/your_favourite_schools"

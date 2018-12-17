@@ -3,6 +3,10 @@ package com.example.ribeshmaharjan.ivy;
 import android.content.Context;
 import android.content.Intent;
 
+import android.graphics.Typeface;
+import android.support.annotation.NonNull;
+import android.support.v4.content.res.ResourcesCompat;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,32 +15,44 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.support.v7.widget.RecyclerView;
+import android.widget.Toast;
 
+import com.synnapps.carouselview.CarouselView;
+import com.synnapps.carouselview.ImageListener;
+import com.synnapps.carouselview.ViewListener;
+
+/*import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;*/
+
+
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 import java.util.List;
-
-
 public class SchoollistAdapter extends  RecyclerView.Adapter<SchoollistAdapter.InfoViewHolder>{
 
 
     Context mcontext;
-    private List<Integer> mImageIds;
-
+   // private List<Integer> mImageIds;
+    JSONArray mjsonArray;
+    /* ArrayList<JSONObject> mjsonObjects=new ArrayList<>();*/
     class InfoViewHolder extends RecyclerView.ViewHolder {
         ImageView mSchoolImage;
         TextView mSchoolName;
-       //RatingBar mRatingbar;
+        RatingBar mRatingbar;
         TextView mStatus;
         TextView mDistance;
         ImageButton mPrice;
 
-
-
-
         private InfoViewHolder(View itemView) {
             super(itemView);
-           mSchoolImage=  itemView.findViewById(R.id.profileImageView);
+            mSchoolImage=  itemView.findViewById(R.id.profileImageView);
            mSchoolName=itemView.findViewById(R.id.nameTxt);
-           //mRatingbar=itemView.findViewById(R.id.rating_list);
+           mRatingbar=itemView.findViewById(R.id.rating_list);
            mStatus=itemView.findViewById(R.id.txtview_status);
            mDistance=itemView.findViewById(R.id.txtview_distance);
            mPrice=itemView.findViewById(R.id.btn_viewprice);
@@ -45,42 +61,56 @@ public class SchoollistAdapter extends  RecyclerView.Adapter<SchoollistAdapter.I
         }
     }
 
+
     private final LayoutInflater mInflater;
     // Cached copy of words
 
-    SchoollistAdapter(Context context,List<Integer> imageIds)
+   /* SchoollistAdapter(Context context,List<Integer> imageIds)
     {
         mcontext=context;
         mInflater = LayoutInflater.from(context);
         mImageIds = imageIds;
 
-    }
 
+    }*/
+   SchoollistAdapter(Context context,JSONArray jsonArray)
+   {
+       mcontext=context;
+       mInflater = LayoutInflater.from(context);
+       mjsonArray=jsonArray;
+
+       }
+
+
+    @NonNull
     @Override
-    public InfoViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public InfoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = mInflater.inflate(R.layout.school_info_layout, parent, false);
+
         return new InfoViewHolder(itemView);
     }
 
-
-
-
-
     @Override
-    public void onBindViewHolder(InfoViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final InfoViewHolder holder, int position) {
 
-
-
-        /*holder.mSchoolImage.setImageResource(mImageIds.get(position));*/
-            //holder.mSchoolImage.setBackgroundResource(R.drawable.school_img2);
-            holder.mSchoolImage.setImageResource(mImageIds.get(position));
-            holder.mSchoolName.setText(R.string.ivy_komal_pre_school);
-            // holder.mRatingbar.setRating(2);
+        Typeface typeface=ResourcesCompat.getFont(mcontext,R.font.montserrat_regular);
+        try {
+            JSONObject jsonObject1=mjsonArray.getJSONObject(position);
+            String name=jsonObject1.getString("name");
+            int rating=jsonObject1.getInt("schoolaverage");
+            //Toast.makeText(mcontext.getApplicationContext(),name,Toast.LENGTH_LONG).show();
+            holder.mSchoolName.setTypeface(typeface);
+            holder.mSchoolName.setText(name);
+            holder.mRatingbar.setRating(rating);
             holder.mDistance.setText("0.4 km from you");
+            holder.mDistance.setTypeface(typeface);
             holder.mStatus.setText("Open");
+            holder.mDistance.setTypeface(typeface);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
-
-
+        //holder.mSchoolImage.setImageResource(mImageIds.get(position));
         holder.mPrice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,7 +119,6 @@ public class SchoollistAdapter extends  RecyclerView.Adapter<SchoollistAdapter.I
                 mcontext.startActivity(intent);
             }
         });
-
         holder.mSchoolImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,6 +130,7 @@ public class SchoollistAdapter extends  RecyclerView.Adapter<SchoollistAdapter.I
         });
 
 
+
     }
 
     // getItemCount() is called many times, and when it is first called,
@@ -110,7 +140,10 @@ public class SchoollistAdapter extends  RecyclerView.Adapter<SchoollistAdapter.I
         /*if (logs != null)
             return logs.size();
         else return 0;*/
-        return 2;
+       return mjsonArray.length() ;
+        //return 1;
     }
+
+
 
 }

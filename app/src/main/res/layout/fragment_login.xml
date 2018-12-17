@@ -45,7 +45,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="56dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="16dp"
                 app:errorEnabled="true"
                 app:layout_constraintEnd_toEndOf="@+id/login_email"
                 app:layout_constraintStart_toStartOf="@+id/login_email"
@@ -59,30 +59,29 @@
                     android:inputType="textPassword" />
             </android.support.design.widget.TextInputLayout>
 
-            <!--<Button
+            <Button
                 android:id="@+id/btn_login_register"
                 android:layout_width="0dp"
                 android:layout_height="56dp"
                 android:layout_marginTop="24dp"
-                android:background="@color/colorAccent"
+                android:background="@color/colorPrimaryDark"
                 android:text="@string/login"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="@+id/login_password"
                 app:layout_constraintStart_toStartOf="@+id/login_password"
-                app:layout_constraintTop_toBottomOf="@+id/login_password" />-->
-            <android.support.design.button.MaterialButton
-                android:theme="@style/AppTheme4"
+                app:layout_constraintTop_toBottomOf="@+id/login_password" />
+            <!--<android.support.design.button.MaterialButton
                 android:id="@+id/btn_login_register"
                 style="@style/Widget.MaterialComponents.Button"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="32dp"
                 android:text="@string/login"
+                android:theme="@style/AppTheme4"
                 app:layout_constraintEnd_toEndOf="@+id/login_password"
                 app:layout_constraintStart_toStartOf="@+id/login_password"
-                app:layout_constraintTop_toBottomOf="@+id/login_password"
-                />
+                app:layout_constraintTop_toBottomOf="@+id/login_password" />-->
 
 
         </android.support.constraint.ConstraintLayout>

@@ -1,23 +1,32 @@
 package com.example.ribeshmaharjan.ivy;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
+
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.Typeface;
+
+import android.support.annotation.NonNull;
+
+import android.support.v4.content.res.ResourcesCompat;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.CheckedTextView;
+
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class SpinnerAdapter extends ArrayAdapter<ItemData> {
+public class SpinnerAdapter extends ArrayAdapter<String> {
     int groupid;
     Activity context;
-    ArrayList<ItemData> list;
+    ArrayList<String> list;
     LayoutInflater inflater;
 
-    public SpinnerAdapter(Activity context, int groupid, int id, ArrayList<ItemData>
+    public SpinnerAdapter(Activity context, int groupid, int id, ArrayList<String>
             list){
         super(context,id,list);
         this.list=list;
@@ -25,17 +34,26 @@ public class SpinnerAdapter extends ArrayAdapter<ItemData> {
         this.groupid=groupid;
     }
 
-    public View getView(int position, View convertView, ViewGroup parent ){
-        View itemView=inflater.inflate(groupid,parent,false);
-
+    @NonNull
+    public View getView(int position, View convertView, @NonNull ViewGroup parent ){
+        @SuppressLint("ViewHolder") View itemView=inflater.inflate(groupid,parent,false);
+       // View itemView=super.getView(position,convertView,parent);
+        Typeface typeface=ResourcesCompat.getFont(getContext(),R.font.montserrat_regular);
         TextView textView=itemView.findViewById(R.id.spinner_txt_item);
-        textView.setText(list.get(position).getLocationname());
+        textView.setTypeface(typeface);
+        textView.setText(list.get(position));
+        textView.setTextColor(Color.rgb(111,53,148));
         return itemView;
     }
 
     public View getDropDownView(int position, View convertView, ViewGroup
             parent){
-        return getView(position,convertView,parent);
+        View v= getView(position,convertView,parent);
+        TextView textView=v.findViewById(R.id.spinner_txt_item);
+        Typeface typeface=ResourcesCompat.getFont(getContext(),R.font.montserrat_regular);
+        textView.setTypeface(typeface);
+        textView.setTextColor(Color.GRAY);
+        return v;
 
     }
 

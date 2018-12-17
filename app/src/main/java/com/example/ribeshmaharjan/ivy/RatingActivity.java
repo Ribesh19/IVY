@@ -1,18 +1,21 @@
 package com.example.ribeshmaharjan.ivy;
 
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.transition.Explode;
+
 import android.transition.Fade;
-import android.transition.Slide;
-import android.view.View;
+
+
 import android.view.Window;
 import android.widget.RatingBar;
-import android.widget.Toast;
+import android.widget.TextView;
+
 
 public class RatingActivity extends AppCompatActivity {
 
     RatingBar mratingBarInput;
+    TextView textView_schoolname;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +27,8 @@ public class RatingActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_rating);
 
+        textView_schoolname=findViewById(R.id.school_name_rating);
+        textView_schoolname.setTextColor(Color.argb(100, 111,53,148));
         mratingBarInput=findViewById(R.id.rating_security_input);
         mratingBarInput.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
