@@ -37,9 +37,9 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
         <item name="android:fontFamily">@font/montserrat_regular</item>
-        <item name="android:textSize">12sp</item>
+        <item name="android:letterSpacing">0.1</item>
         <item name="android:windowActivityTransitions">true</item>
 
     </style>
@@ -85,6 +85,10 @@
         <item name="tabBackground">@color/white</item>
         <item name="tabSelectedTextColor">@color/colorPrimaryDark</item>
         <item name="tabTextAppearance">@color/grey2</item>
+        <item name="android:elevation">0dp</item>
+        <item name="android:textSize">32sp</item>
+        <item name="android:fontFamily">@font/montserrat_bold2</item>
+        <item name="android:letterSpacing">0.05</item>
     </style>
 
     <style name="AppTheme_withtransition" parent="Theme.AppCompat.Light.NoActionBar">

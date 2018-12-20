@@ -1,6 +1,6 @@
 package com.example.ribeshmaharjan.ivy;
 
-public class AgeGroup {
+public class  AgeGroup {
     String agegroup;
 
     public AgeGroup(String agegroup) {

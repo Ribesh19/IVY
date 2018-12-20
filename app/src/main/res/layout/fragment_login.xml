@@ -8,7 +8,7 @@
         android:layout_height="wrap_content"
         tools:context=".SignUpFragment"
         app:cardElevation="4dp"
-        app:cardCornerRadius="3dp"
+        app:cardCornerRadius="0dp"
         android:layout_marginBottom="16dp">
 
         <android.support.constraint.ConstraintLayout
@@ -37,6 +37,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/email2"
+                    android:fontFamily="@font/montserrat_regular"
                     android:inputType="textEmailAddress" />
             </android.support.design.widget.TextInputLayout>
 
@@ -56,6 +57,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/password"
+                    android:fontFamily="@font/montserrat_regular"
                     android:inputType="textPassword" />
             </android.support.design.widget.TextInputLayout>
 
@@ -64,10 +66,12 @@
                 android:layout_width="0dp"
                 android:layout_height="56dp"
                 android:layout_marginTop="24dp"
-                android:background="@color/colorPrimaryDark"
+                android:background="@drawable/roundedbutton_primary"
                 android:text="@string/login"
                 android:textColor="@color/white"
                 android:textSize="16sp"
+                android:fontFamily="@font/montserrat_regular"
+                android:letterSpacing="0.05"
                 app:layout_constraintEnd_toEndOf="@+id/login_password"
                 app:layout_constraintStart_toStartOf="@+id/login_password"
                 app:layout_constraintTop_toBottomOf="@+id/login_password" />

@@ -16,12 +16,13 @@
         android:background="@color/white"
         app:cardCornerRadius="8dp"
         app:cardElevation="6dp">
-        <ImageView
+        <ir.apend.slider.ui.Slider
             android:id="@+id/profileImageView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/school_img1"
-            android:scaleType="centerCrop"/>
+            android:layout_height="190dip"
+            app:indicatorSize="8dp"
+            app:intervalSecond="5"
+            app:loopSlides="true"/>
 
     </android.support.v7.widget.CardView>
 
@@ -29,7 +30,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:paddingTop="4dp">
+            android:paddingTop="4dp"
+            android:paddingBottom="8dp">
 
             <TextView
                 android:id="@+id/nameTxt"
@@ -38,8 +40,11 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="4dp"
                 android:text="@string/ivy_komal_pre_school"
+                android:fontFamily="@font/montserrat_regular"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.06"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -82,6 +87,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="@string/open"
+                android:fontFamily="@font/montserrat_regular"
+                android:letterSpacing="0.06"
                 android:textColor="@color/colorAccent"
                 android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="@+id/nameTxt"
@@ -89,8 +96,8 @@
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="8dp"
-                android:layout_height="8dp"
+                android:layout_width="6dp"
+                android:layout_height="6dp"
                 android:layout_marginStart="16dp"
                 android:src="@drawable/ic_circle"
                 app:layout_constraintBottom_toBottomOf="@+id/txtview_status"
@@ -104,8 +111,10 @@
                 android:layout_height="15dp"
                 android:layout_marginStart="8dp"
                 android:text="@string/distance"
-                android:textColor="@color/grey"
+                android:textColor="#95838386"
                 android:textSize="12sp"
+                android:letterSpacing="0.06"
+                android:fontFamily="@font/montserrat_regular"
                 app:layout_constraintBottom_toBottomOf="@+id/txtview_status"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
                 app:layout_constraintTop_toTopOf="@+id/txtview_status"

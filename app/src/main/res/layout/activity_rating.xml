@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:background="#fff">
+    android:orientation="vertical">
     <ImageButton
         android:id="@+id/back_btn_rating"
         android:layout_width="32dp"
@@ -24,8 +23,9 @@
         <ScrollView
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:fillViewport="true"
+            android:layout_marginBottom="60dp"
             xmlns:android="http://schemas.android.com/apk/res/android">
 
 
@@ -42,11 +42,11 @@
                     android:id="@+id/Post_review"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
+                    android:layout_marginStart="16dp"
                     android:gravity="start"
                     android:text="@string/post_review_for"
                     android:textColor="@color/colorPrimaryDark"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -55,17 +55,15 @@
                     android:id="@+id/school_name_rating"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
                     android:layout_marginTop="8dp"
-                    android:layout_marginEnd="24dp"
-                    android:autofillHints="fullname"
+                    android:layout_marginEnd="16dp"
                     android:gravity="start"
                     android:text="@string/komal_day_care_service_and_pre_nursery"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="16sp"
+                    android:textColor="#806f3594"
+                    android:textSize="14sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/Post_review"
                     app:layout_constraintTop_toBottomOf="@+id/Post_review" />
 
                 <TextView
@@ -75,9 +73,10 @@
                     android:layout_marginTop="16dp"
                     android:gravity="center"
                     android:text="@string/security"
-                    android:textColor="@color/grey"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     android:textStyle="bold"
+                    android:textColor="#80000000"
+                    android:textAllCaps="true"
                     app:layout_constraintStart_toStartOf="@+id/school_name_rating"
                     app:layout_constraintTop_toBottomOf="@+id/school_name_rating" />
 
@@ -102,8 +101,9 @@
                     android:layout_marginTop="16dp"
                     android:gravity="center"
                     android:text="@string/qualified_staff"
-                    android:textColor="@color/grey"
-                    android:textSize="18sp"
+                    android:textColor="#80000000"
+                    android:textAllCaps="true"
+                    android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@+id/security_rating"
                     app:layout_constraintTop_toBottomOf="@+id/rating_security_input" />
@@ -128,8 +128,9 @@
                     android:layout_marginTop="16dp"
                     android:gravity="center"
                     android:text="@string/infrastructure"
-                    android:textColor="@color/grey"
-                    android:textSize="18sp"
+                    android:textColor="#80000000"
+                    android:textAllCaps="true"
+                    android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@+id/Qualified_staff_rating"
                     app:layout_constraintTop_toBottomOf="@+id/Qualified_staff_rating_input" />
@@ -154,8 +155,9 @@
                     android:layout_marginTop="16dp"
                     android:gravity="center"
                     android:text="@string/curriculum"
-                    android:textColor="@color/grey"
-                    android:textSize="18sp"
+                    android:textColor="#80000000"
+                    android:textAllCaps="true"
+                    android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@+id/infrastructure_rating"
                     app:layout_constraintTop_toBottomOf="@+id/infrastructure_rating_input" />
@@ -216,22 +218,22 @@
                         android:selectAllOnFocus="true"
                         android:textSize="14sp" />
                 </android.support.design.widget.TextInputLayout>
-                <Button
-                    android:id="@+id/btn_submit_review"
-                    android:layout_width="match_parent"
-                    android:layout_height="56dp"
-                    android:layout_marginTop="24dp"
-                    android:background="@color/colorAccent"
-                    android:text="@string/submit_review"
-                    android:textColor="@color/white"
-                    android:textSize="14sp"
-                    android:padding="8dp"
-                    android:layout_marginBottom="1dp"
-                    app:layout_constraintStart_toStartOf="@id/how_do_you_feel_about_school"
-                    app:layout_constraintTop_toBottomOf="@+id/how_do_you_feel_about_school"/>
+
 
             </android.support.constraint.ConstraintLayout>
         </ScrollView>
+        <Button
+            android:id="@+id/btn_submit_review"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="24dp"
+            android:background="@color/colorAccent"
+            android:text="@string/submit_review"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:padding="8dp"
+            android:layout_marginBottom="1dp"
+            android:layout_gravity="bottom"/>
 
     </FrameLayout>
 </LinearLayout>

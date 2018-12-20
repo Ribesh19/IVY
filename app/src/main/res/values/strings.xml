@@ -1,11 +1,9 @@
 <resources>
     <string name="app_name">IVY</string>
     <string name="title_activity_listing_help">ListingHelpActivity</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
-    <string name="search">Search</string>
-    <string name="favourite">Favourite</string>
+    <string name="title_home">HOME</string>
+    <string name="search">SEARCH</string>
+    <string name="favourite">FAVOURITE</string>
     <string name="mapview">Map View</string>
     <string name="your_location">Your Location</string>
     <string name="ivy_komal_pre_school">IVY: Komal Pre-School</string>
@@ -71,10 +69,10 @@
     <string name="tab_text_3">Tab 3</string>
     <string name="login"><b>LOGIN</b></string>
     <string name="sign_up"><b>SIGN UP</b></string>
-    <string name="PLEASE_SIGN_UP">Please Sing Up</string>
+    <string name="PLEASE_SIGN_UP">Please SingUp</string>
     <string name="to_add_your_review">to add your review</string>
-    <string name="log_in_with_facebook">LOG IN WITH FACEBOOK</string>
-    <string name="log_in_with_google">LOG IN WITH GOOGLE</string>
+    <string name="log_in_with_facebook">LOGIN WITH FACEBOOK</string>
+    <string name="log_in_with_google">LOGIN WITH GOOGLE</string>
     <string name="or">OR</string>
     <string name="name1">NAME</string>
     <string name="enter_your_name">Enter your name</string>

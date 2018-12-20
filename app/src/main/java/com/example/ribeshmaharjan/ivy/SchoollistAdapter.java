@@ -6,10 +6,11 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.v4.content.res.ResourcesCompat;
-import android.support.v4.view.ViewPager;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
@@ -17,16 +18,20 @@ import android.widget.TextView;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
+/*
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
+*/
 import com.example.ribeshmaharjan.ivy.model.School;
-import com.example.ribeshmaharjan.ivy.model.city;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import ir.apend.slider.model.Slide;
+import ir.apend.slider.ui.Slider;
+
 public class SchoollistAdapter extends  RecyclerView.Adapter<SchoollistAdapter.InfoViewHolder>{
 
 
@@ -42,10 +47,12 @@ public class SchoollistAdapter extends  RecyclerView.Adapter<SchoollistAdapter.I
         TextView mStatus;
         TextView mDistance;
         ImageButton mPrice;
+        Slider slider;
 
         private InfoViewHolder(View itemView) {
             super(itemView);
-            mSchoolImage=  itemView.findViewById(R.id.profileImageView);
+           // mSchoolImage=  itemView.findViewById(R.id.profileImageView);
+            slider=itemView.findViewById(R.id.profileImageView);
            mSchoolName=itemView.findViewById(R.id.nameTxt);
            mRatingbar=itemView.findViewById(R.id.rating_list);
            mStatus=itemView.findViewById(R.id.txtview_status);
@@ -87,27 +94,52 @@ public class SchoollistAdapter extends  RecyclerView.Adapter<SchoollistAdapter.I
 
     @Override
     public void onBindViewHolder(@NonNull final InfoViewHolder holder, final int position) {
-        int size= mschools.get(position).getImages().size();
+       // int size= mschools.get(position).getImages().size();
         //Toast.makeText(mcontext,Integer.toString(size),Toast.LENGTH_LONG).show();
        // imagelist.addAll(mschools.get(position).getImages());
        // imagelist.get(position);
-        imagelist=mschools.get(position).getImages();
+        //imagelist=mschools.get(position).getImages();
+
         Typeface typeface=ResourcesCompat.getFont(mcontext,R.font.montserrat_regular);
-        Glide.with(mcontext)
+        /*Glide.with(mcontext)
 
-                .load("https://i.imgur.com/PpFGm1o.png")
-                //.load(imagelist.get(position))
-                .apply(new RequestOptions().fitCenter())
-                .into(holder.mSchoolImage);
+                //.load("https://i.imgur.com/PpFGm1o.png")
+                .load(imagelist.get(position))
+                .apply(new RequestOptions().override(630 ,586))
+                .into(holder.mSchoolImage);*/
 
-        holder.mRatingbar.setRating(mschools.get(position).getSchoolaverage());
+      /*  if(mschools.get(position).getImages().size()!=0) {
+
+            List<Slide> slideList1 = new ArrayList<>();
+            for (int i = 0; i < mschools.get(position).getImages().size(); i++) {
+                slideList1.add((new Slide(i, mschools.get(position).getImages().get(i), mcontext.getResources().getDimensionPixelSize(R.dimen.slider_image_corner))));
+            }
+            holder.slider.addSlides(slideList1);
+        }
+        else
+        {*/
+            List<Slide> slideList2 = new ArrayList<>();
+
+                slideList2.add((new Slide(0,"https://i.imgur.com/PpFGm1o.png", mcontext.getResources().getDimensionPixelSize(R.dimen.slider_image_corner))));
+
+            holder.slider.addSlides(slideList2);
+       // }
+        if (mschools.get(position).getSchoolaverage()!=null)
+        {
+            holder.mRatingbar.setRating(mschools.get(position).getSchoolaverage());
+        }
+        else
+        {
+            holder.mRatingbar.setRating(0);
+        }
+
         holder.mSchoolName.setText(mschools.get(position).getName());
         holder.mDistance.setText("0.4 km from you");
         holder.mDistance.setTypeface(typeface);
         holder.mStatus.setText("Open");
         holder.mDistance.setTypeface(typeface);
 
-        Toast.makeText(mcontext,imagelist.get(position),Toast.LENGTH_LONG).show();
+       // Toast.makeText(mcontext,imagelist.get(position),Toast.LENGTH_LONG).show();
         //holder.mSchoolImage.setImageResource(mImageIds.get(position));
         holder.mPrice.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,7 +149,7 @@ public class SchoollistAdapter extends  RecyclerView.Adapter<SchoollistAdapter.I
                 mcontext.startActivity(intent);
             }
         });
-        holder.mSchoolImage.setOnClickListener(new View.OnClickListener() {
+       /* holder.mSchoolImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(mcontext.getApplicationContext(),DetailActivity.class);
@@ -126,6 +158,16 @@ public class SchoollistAdapter extends  RecyclerView.Adapter<SchoollistAdapter.I
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 mcontext.startActivity(intent);
 
+            }
+        });*/
+        holder.slider.setItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                //do what you want
+                Intent intent=new Intent(mcontext.getApplicationContext(),DetailActivity.class);
+                intent.putExtra("schoolID", mschools.get(position).getId());
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                mcontext.startActivity(intent);
             }
         });
     }

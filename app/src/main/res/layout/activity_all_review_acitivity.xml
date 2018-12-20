@@ -29,6 +29,7 @@
         android:textColor="@color/colorPrimaryDark"
         android:textSize="18sp"
         android:textStyle="bold"
+        android:fontFamily="@font/montserrat_regular"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -37,10 +38,10 @@
         android:id="@+id/averageratting_whole"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
-        android:background="#f0f0f0"
+        android:layout_marginEnd="16dp"
+        android:background="#50D4D4D5"
         android:padding="4dp"
         android:theme="@style/AppTheme2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -51,12 +52,15 @@
             android:id="@+id/avgreview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
+            android:fontFamily="@font/montserrat_regular"
             android:gravity="center"
+            android:letterSpacing="0.05"
             android:text="@string/average_review"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="14sp"
+            android:textSize="16sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -65,15 +69,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:fontFamily="@font/montserrat_regular"
             android:gravity="center"
             android:text="@string/security"
+            android:textAllCaps="true"
             android:textColor="@color/grey"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="@+id/avgreview"
             app:layout_constraintTop_toBottomOf="@+id/avgreview" />
 
         <RatingBar
-            android:id="@+id/rating_security"
+            android:id="@+id/rating_security_allreview"
             style="@style/Base.Widget.AppCompat.RatingBar.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -91,15 +97,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:fontFamily="@font/montserrat_regular"
             android:gravity="center"
             android:text="@string/qualified_staff"
+            android:textAllCaps="true"
             android:textColor="@color/grey"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="@+id/security"
             app:layout_constraintTop_toBottomOf="@+id/security" />
 
         <RatingBar
-            android:id="@+id/rating_qualified_staff"
+            android:id="@+id/rating_qualified_staff_allreview"
             style="@style/Base.Widget.AppCompat.RatingBar.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -117,15 +125,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:fontFamily="@font/montserrat_regular"
             android:gravity="center"
             android:text="@string/infrastructure"
+            android:textAllCaps="true"
             android:textColor="@color/grey"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="@+id/Qualified_staff"
             app:layout_constraintTop_toBottomOf="@+id/Qualified_staff" />
 
         <RatingBar
-            android:id="@+id/rating_infrastructure"
+            android:id="@+id/rating_infrastructure_allreview"
             style="@style/Base.Widget.AppCompat.RatingBar.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -143,15 +153,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/montserrat_regular"
             android:gravity="center"
             android:text="@string/curriculum"
+            android:textAllCaps="true"
             android:textColor="@color/grey"
             android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/infrastructure"
             app:layout_constraintTop_toBottomOf="@+id/infrastructure" />
 
         <RatingBar
-            android:id="@+id/rating_curriculum"
+            android:id="@+id/rating_curriculum_allreview"
             style="@style/Base.Widget.AppCompat.RatingBar.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -179,6 +193,19 @@
         app:layout_constraintTop_toBottomOf="@+id/averageratting_whole">
 
     </android.support.v7.widget.RecyclerView>
+
+    <ProgressBar
+        android:id="@+id/progressBar_reviews"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reviewALL" />
 
 
 </android.support.constraint.ConstraintLayout>

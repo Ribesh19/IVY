@@ -1,23 +1,24 @@
 package com.example.ribeshmaharjan.ivy.model;
-import java.util.List;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-public class DetailResponse {
 
+import java.util.List;
+
+public class ReviewResponse {
 
     @SerializedName("status")
     @Expose
     private Integer status;
     @SerializedName("response_time")
     @Expose
-    private Double responseTime;
+    private Float responseTime;
     @SerializedName("results")
     @Expose
-    private Detail results;
+    private Review results;
     @SerializedName("request")
     @Expose
-    private List<Object> request = null;
+    private List<Review> request;
 
     public Integer getStatus() {
         return status;
@@ -27,29 +28,28 @@ public class DetailResponse {
         this.status = status;
     }
 
-    public Double getResponseTime() {
+    public Float getResponseTime() {
         return responseTime;
     }
 
-    public void setResponseTime(Double responseTime) {
+    public void setResponseTime(Float responseTime) {
         this.responseTime = responseTime;
     }
 
-    public Detail getResults() {
+    public Review getResults() {
         return results;
     }
 
-    public void setResults(Detail results) {
+    public void setResults(Review results) {
         this.results = results;
     }
 
-    public List<Object> getRequest() {
+    public List<Review> getRequest() {
         return request;
     }
 
-    public void setRequest(List<Object> request) {
+    public void setRequest(List<Review> request) {
         this.request = request;
     }
-
 
 }

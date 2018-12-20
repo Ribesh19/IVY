@@ -28,12 +28,10 @@ public class FeeStructureActivity extends AppCompatActivity {
 
         spinner=findViewById(R.id.age_fee);
         ArrayList<AgeGroup> list=new ArrayList<>();
-        list.add(new AgeGroup("2 - 3 months"));
-        list.add(new AgeGroup("3 - 4 months"));
-        list.add(new AgeGroup("4 - 6 months"));
-        list.add(new AgeGroup("6 - 8 months"));
-        list.add(new AgeGroup("8 - 10 months"));
-        list.add(new AgeGroup("10 - 12 months"));
+        list.add(new AgeGroup(" Age of Child"));
+        list.add(new AgeGroup("1.5 - 2.5 Years Old"));
+        list.add(new AgeGroup("2.5 - 3.5 Years Old"));
+        list.add(new AgeGroup("3.5 - 4.5 Years Old"));
         AgeGroupSpinnerAdapter adapter=new AgeGroupSpinnerAdapter(FeeStructureActivity.this,R.layout.spinner_layout,R.id.spinner_txt_item,list);
         spinner.setAdapter(adapter);
 

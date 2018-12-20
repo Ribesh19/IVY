@@ -71,7 +71,6 @@ public class ListingHelpFragment extends Fragment {
         progressBar=rootview.findViewById(R.id.progressBar_mainlayout);
         final RecyclerView recyclerView =rootview.findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(Objects.requireNonNull(getActivity()).getApplicationContext()));
-        //JSONArray jsonArray = response.getJSONArray("results");
         progressBar.setVisibility(View.VISIBLE);
         final ApiInterface apiInterface=ApiClient.getClient().create(ApiInterface.class);
 
@@ -83,9 +82,11 @@ public class ListingHelpFragment extends Fragment {
                         assert response.body() != null;
                         int statuscode = response.code();
                         citieslist = response.body().getResults();
-                        Log.d(TAG, "Number of movies received: " + citieslist.size());
-                        SpinnerAdapter adapter = new SpinnerAdapter(getActivity(), R.layout.spinner_layout, R.id.spinner_txt_item, citieslist);
-                        spinner.setAdapter(adapter);
+                        Log.d(TAG, "Number of cities received: " + citieslist.size());
+                        if(getActivity()!=null) {
+                            SpinnerAdapter adapter = new SpinnerAdapter(getContext(), R.layout.spinner_layout, R.id.spinner_txt_item, citieslist);
+                            spinner.setAdapter(adapter);
+                        }
 
                     }
                     @Override
@@ -98,105 +99,44 @@ public class ListingHelpFragment extends Fragment {
             }
             else
             {
-                SpinnerAdapter adapter = new SpinnerAdapter(getActivity(), R.layout.spinner_layout, R.id.spinner_txt_item, citieslist);
+                SpinnerAdapter adapter = new SpinnerAdapter(getContext(), R.layout.spinner_layout, R.id.spinner_txt_item, citieslist);
                 spinner.setAdapter(adapter);
             }
 
-        if(schoolslist==null)
-        {
-
-        }
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
            @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                // String city = adapterView.getItemAtPosition(spinner.getSelectedItemPosition()).toString();
-             //  String city=adapterView.getItemAtPosition(adapterView.getSelectedItemPosition()).toString();
-               int city=spinner.getSelectedItemPosition();
-               // Toast.makeText(getContext(),Integer.toString(city),Toast.LENGTH_LONG).show();
-               if(city==0)
-                {
-                    Call<SchoolResponse> call1=apiInterface.getschools("Kathmandu");
-                    call1.enqueue(new Callback<SchoolResponse>() {
-                        @Override
-                        public void onResponse(@NonNull Call<SchoolResponse> call1, @NonNull retrofit2.Response<SchoolResponse> response) {
-                            Toast.makeText(getContext(),"Kathmandu Success",Toast.LENGTH_LONG).show();
-                            assert response.body() != null;
-                            progressBar.setVisibility(View.GONE);
-                            schoolslist=response.body().getResults();
-                            SchoollistAdapter recyclerview_adapter = new SchoollistAdapter(Objects.requireNonNull(getActivity()).getApplicationContext(),schoolslist);
-                            recyclerView.setAdapter(recyclerview_adapter);
-                        }
+               // String cityname=adapterView.getSelectedItem().toString();
+               int city = spinner.getSelectedItemPosition();
+               if (citieslist != null) {
+                   String cityname = citieslist.get(city).getCity();
+                   //Toast.makeText(getContext(), cityname, Toast.LENGTH_LONG).show();
+                   Call<SchoolResponse> call1 = apiInterface.getschools(cityname);
+                   call1.enqueue(new Callback<SchoolResponse>() {
+                       @Override
+                       public void onResponse(@NonNull Call<SchoolResponse> call1, @NonNull retrofit2.Response<SchoolResponse> response) {
+                          // Toast.makeText(getContext(), "Kathmandu Success", Toast.LENGTH_LONG).show();
+                           assert response.body() != null;
+                           progressBar.setVisibility(View.GONE);
+                           schoolslist = response.body().getResults();
+                           SchoollistAdapter recyclerview_adapter = new SchoollistAdapter(Objects.requireNonNull(getActivity()).getApplicationContext(), schoolslist);
+                           recyclerView.setAdapter(recyclerview_adapter);
+                       }
 
-                        @Override
-                        public void onFailure(@NonNull Call<SchoolResponse> call1, @NonNull Throwable t) {
-                            //Toast.makeText(getContext(),t.getCause().getMessage(),Toast.LENGTH_LONG).show();
-
-                        }
-                    });
-                }
-                else if (city==1)
-                {
-                    Call<SchoolResponse> call1=apiInterface.getschools("Kirtipur");
-                    call1.enqueue(new Callback<SchoolResponse>() {
-                        @Override
-                        public void onResponse(@NonNull Call<SchoolResponse> call1, @NonNull retrofit2.Response<SchoolResponse> response) {
-                            progressBar.setVisibility(View.GONE);
-                            assert response.body() != null;
-                            recyclerView.removeAllViews();
-                            schoolslist=response.body().getResults();
-                            SchoollistAdapter recyclerview_adapter = new SchoollistAdapter(Objects.requireNonNull(getActivity()).getApplicationContext(),schoolslist);
-                            recyclerView.setAdapter(recyclerview_adapter);
-                        }
-
-                        @Override
-                        public void onFailure(@NonNull Call<SchoolResponse> call1, @NonNull Throwable t) {
-                            Toast.makeText(getContext(),"Kathmandu Error",Toast.LENGTH_LONG).show();
-                        }
-                    });
-
-                }
-                else
-                {
-                    Call<SchoolResponse> call2=apiInterface.getschools("Lalitpur");
-                    call2.enqueue(new Callback<SchoolResponse>() {
-                        @Override
-                        public void onResponse(@NonNull Call<SchoolResponse> call2, @NonNull retrofit2.Response<SchoolResponse> response2) {
-                            progressBar.setVisibility(View.GONE);
-                            assert response2.body() != null;
-                            int statuscode =response2.code();
-                            Toast.makeText(getActivity(),"SUCCESS",Toast.LENGTH_LONG).show();
-                            schoolslist=response2.body().getResults();
-                            SchoollistAdapter recyclerview_adapter = new SchoollistAdapter(Objects.requireNonNull(getActivity()).getApplicationContext(),schoolslist);
-                            recyclerView.setAdapter(recyclerview_adapter);
-                        }
-
-                        @Override
-                        public void onFailure(@NonNull Call<SchoolResponse> call, @NonNull Throwable t) {
-                            Toast.makeText(getActivity(),"ERROR",Toast.LENGTH_LONG).show();
-                        }
-                    });
-                }
-                }
-
+                       @Override
+                       public void onFailure(@NonNull Call<SchoolResponse> call1, @NonNull Throwable t) {
+                           //Toast.makeText(getContext(),t.getCause().getMessage(),Toast.LENGTH_LONG).show();
+                       }
+                   });
+               }
+           }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
                 // DO Nothing here
             }
         });
 
-
-
-        /*ArrayList<ItemData> list=new ArrayList<>();
-        list.add(new ItemData("Delhi"));
-        list.add(new ItemData("Hauz Khas"));
-        list.add(new ItemData("Lajpat Nagar"));
-        list.add(new ItemData("Greater Kailash"));
-        list.add(new ItemData("Rangpuri"));
-        list.add(new ItemData("Noida"));
-        SpinnerAdapter adapter=new SpinnerAdapter(getActivity(),R.layout.spinner_layout,R.id.spinner_txt_item,list);
-        spinner.setAdapter(adapter);*/
-        /*SpinnerAdapter adapter=new SpinnerAdapter(getActivity(),R.layout.spinner_layout,R.id.spinner_txt_item,list);
-        spinner.setAdapter(adapter);*/
         mbtnmapview=rootview.findViewById(R.id.btn_mapview);
         mbtnmapview.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -206,9 +146,6 @@ public class ListingHelpFragment extends Fragment {
             }
         });
 
-        /*final SchoollistAdapter recyclerview_adapter = new SchoollistAdapter(Objects.requireNonNull(getActivity()).getApplicationContext(),ImageAssets.getAll());
-        recyclerView.setAdapter(recyclerview_adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));*/
         mbtnsignuplogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

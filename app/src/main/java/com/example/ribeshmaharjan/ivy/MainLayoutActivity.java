@@ -1,5 +1,6 @@
 package com.example.ribeshmaharjan.ivy;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.graphics.Rect;
@@ -141,13 +142,16 @@ public class MainLayoutActivity extends AppCompatActivity {
         KeyboardVisibilityEvent.setEventListener(
                 this,
                 new KeyboardVisibilityEventListener() {
+                    @SuppressLint("RestrictedApi")
                     @Override
                     public void onVisibilityChanged(boolean isOpen) {
                         if(isOpen){
-                            navigation.setVisibility(View.INVISIBLE);
+                            navigation.setVisibility(View.GONE);
+                            floatingActionButton.setVisibility(View.GONE);
                         }else{
 
                         navigation.setVisibility(View.VISIBLE);
+                        floatingActionButton.setVisibility(View.VISIBLE);
                         }
                     }
                 });

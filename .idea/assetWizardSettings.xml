@@ -19,8 +19,8 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="ic_icon_down_arrow" />
-                            <entry key="sourceFile" value="$PROJECT_DIR$/../../app-slices-svg/icon_down_arrow.svg" />
+                            <entry key="outputName" value="ic_blue_textviewbg" />
+                            <entry key="sourceFile" value="$USER_HOME$/Desktop/blue_textviewbg.svg" />
                           </map>
                         </option>
                       </PersistentState>

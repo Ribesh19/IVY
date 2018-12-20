@@ -12,13 +12,12 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 
 import android.widget.ImageButton;
+import android.Manifest;
 
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -42,6 +41,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 
+import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -101,26 +101,10 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       /* setContentView(R.layout.activity_map);*/
-
-       /*String [] location={"Delhi","Hauz Khas", "Lajpat Nagar","Greater Kailash","Rangpuri", "Noida"};
-        ArrayAdapter<String> adapter =new ArrayAdapter<String>(this,R.layout.support_simple_spinner_dropdown_item,location);
-        spinner.setAdapter(adapter);*/
-
-
-       /* // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-        assert mapFragment != null;
-        mapFragment.getMapAsync(this);*/
         if (savedInstanceState != null) {
             mLastKnownLocation = savedInstanceState.getParcelable(KEY_LOCATION);
             mCameraPosition = savedInstanceState.getParcelable(KEY_CAMERA_POSITION);
         }
-
-
-
-
 
         // Retrieve the content view that renders the map.
         setContentView(R.layout.activity_map);
@@ -145,9 +129,6 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
 
             }
         });
-
-
-
 
         msignup=findViewById(R.id.signup_login_map);
         msignup.setOnClickListener(new View.OnClickListener() {
@@ -177,7 +158,6 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                 startActivity(intent1);
             }
         });
-
 
         /*SpinnerAdapter adapter=new SpinnerAdapter(MapActivity.this,R.layout.spinner_layout,R.id.spinner_txt_item,list);
 
@@ -216,24 +196,24 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
      * @param menu The options menu.
      * @return Boolean.
      */
-    @Override
+   /* @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.current_place_menu, menu);
         return true;
     }
 
-    /**
+    *//**
      * Handles a click on the menu option to get a place.
      * @param item The menu item to handle.
      * @return Boolean.
-     */
+     *//*
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.option_get_place) {
             showCurrentPlace();
         }
         return true;
-    }
+    }*/
 
     /**
      * Manipulates the map when it's available.
@@ -244,7 +224,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         mMap = map;
 
 
-       /* try {
+        try {
             // Customize the styling of the base map using a JSON object defined
             // in a raw resource file.
             boolean success = mMap.setMapStyle(
@@ -256,10 +236,10 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
             }
         } catch (Resources.NotFoundException e) {
             Log.e(TAG, "Can't find style file. Error: ", e);
-        }*/
+        }
         mMap.setPadding(0,200,32,0);
-       LatLng pinewood = new LatLng(37.430610, -122.104842);
-        mMap.addMarker(new MarkerOptions().position(pinewood).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
+       //LatLng pinewood = new LatLng(37.430610, -122.104842);
+       // mMap.addMarker(new MarkerOptions().position(pinewood).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
 
         // Use a custom info window adapter to handle multiple lines of text in the
         // info window contents.
@@ -291,16 +271,15 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
 
         });*/
 
-
-
         // Prompt the user for permission.
         getLocationPermission();
-
         // Turn on the My Location layer and the related control on the map.
         updateLocationUI();
-
         // Get the current location of the device and set the position of the map.
         getDeviceLocation();
+
+
+
     }
 
     /**
@@ -352,6 +331,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                 android.Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
             mLocationPermissionGranted = true;
+            getDeviceLocation();//added
         } else {
             ActivityCompat.requestPermissions(this,
                     new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
@@ -375,8 +355,11 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                     mLocationPermissionGranted = true;
                 }
             }
+            getDeviceLocation();
+            updateLocationUI();
         }
-        updateLocationUI();
+
+
     }
 
     /**
@@ -387,8 +370,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         if (mMap == null) {
             return;
         }
-
-        if (mLocationPermissionGranted) {
+        /*if (mLocationPermissionGranted) {
             // Get the likely places - that is, the businesses and other points of interest that
             // are the best match for the device's current location.
             @SuppressWarnings("MissingPermission") final
@@ -447,18 +429,19 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
             Log.i(TAG, "The user did not grant location permission.");
 
             // Add a default marker, because the user hasn't selected a place.
-            mMap.addMarker(new MarkerOptions()
-                    .title(getString(R.string.default_info_title))
-                    .position(mDefaultLocation)
-                    .snippet(getString(R.string.default_info_snippet)));
-            // Prompt the user for permission.
-            getLocationPermission();
-        }
+
+        }*/
+        mMap.addMarker(new MarkerOptions()
+                .title(getString(R.string.default_info_title))
+                .position(mDefaultLocation)
+                .snippet(getString(R.string.default_info_snippet)));
+        // Prompt the user for permission.
+       //getLocationPermission();
     }
 
-    /**
+   /* *//**
      * Displays a form allowing the user to select a place from a list of likely places.
-     */
+     *//*
     private void openPlacesDialog() {
         // Ask the user to choose the place where they are now.
         DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
@@ -489,7 +472,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                 .setTitle("Pick Place")
                 .setItems(mLikelyPlaceNames, listener)
                 .show();
-    }
+    }*/
 
     /**
      * Updates the map's UI settings based on whether the user has granted location permission.
@@ -501,14 +484,14 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         }
         try {
             if (mLocationPermissionGranted) {
-
                 mMap.setMyLocationEnabled(true);
                 mMap.getUiSettings().setMyLocationButtonEnabled(true);
+                mMap.getUiSettings().setZoomControlsEnabled(true);
             } else {
                 mMap.setMyLocationEnabled(false);
                 mMap.getUiSettings().setMyLocationButtonEnabled(false);
                 mLastKnownLocation = null;
-                getLocationPermission();
+                //getLocationPermission();
             }
         } catch (SecurityException e)  {
             Log.e("Exception: %s", e.getMessage());

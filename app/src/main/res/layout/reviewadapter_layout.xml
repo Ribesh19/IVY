@@ -24,6 +24,8 @@
         android:fontFamily="@font/montserrat_regular"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="16sp"
+
+        android:letterSpacing="0.05"
         app:layout_constraintStart_toEndOf="@+id/imageView4"
         app:layout_constraintTop_toTopOf="@+id/imageView4" />
 
@@ -37,6 +39,7 @@
         android:fontFamily="@font/montserrat_regular"
         android:textColor="@color/grey"
         android:textSize="12sp"
+        android:letterSpacing="0.05"
         app:layout_constraintStart_toStartOf="@+id/username"
         app:layout_constraintTop_toBottomOf="@+id/username" />
 
@@ -46,11 +49,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="16dp"
         android:isIndicator="true"
         android:numStars="5"
-        android:rating="3.5"
-        android:stepSize="1"
+        android:stepSize="0.5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/username"
@@ -63,6 +64,7 @@
         android:layout_marginTop="8dp"
         android:gravity="center"
         android:text="Value"
+        android:letterSpacing="0.05"
         android:fontFamily="@font/montserrat_regular"
         android:textColor="@color/grey"
         android:textSize="12sp"
@@ -80,6 +82,7 @@
         android:padding="4dp"
         android:textColor="@color/grey"
         android:textSize="14sp"
+        android:letterSpacing="0.05"
         app:layout_constraintEnd_toEndOf="@+id/rating_review"
         app:layout_constraintStart_toStartOf="@+id/imageView4"
         app:layout_constraintTop_toBottomOf="@+id/imageView4" />

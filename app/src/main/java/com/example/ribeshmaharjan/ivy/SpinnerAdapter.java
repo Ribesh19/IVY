@@ -29,7 +29,7 @@ public class SpinnerAdapter extends ArrayAdapter<city> {
     List<city> list;
     LayoutInflater inflater;
 
-    public SpinnerAdapter(Activity context, int groupid, int id, List<city>
+    public SpinnerAdapter(Context context, int groupid, int id, List<city>
             list){
         super(context,id,list);
         this.list=list;
@@ -44,7 +44,7 @@ public class SpinnerAdapter extends ArrayAdapter<city> {
         Typeface typeface=ResourcesCompat.getFont(getContext(),R.font.montserrat_regular);
         TextView textView=itemView.findViewById(R.id.spinner_txt_item);
         textView.setTypeface(typeface);
-        textView.setText(list.get(position).getCity().toString());
+        textView.setText(list.get(position).getCity());
         textView.setTextColor(Color.rgb(111,53,148));
         return itemView;
     }

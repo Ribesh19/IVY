@@ -28,7 +28,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:background="#fff"
-
+        android:theme="@style/AppTheme4"
         app:menu="@menu/navigation"
         android:layout_marginTop="32dp"/>
     <android.support.design.widget.FloatingActionButton

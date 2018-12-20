@@ -38,7 +38,7 @@ public class AgeGroupSpinnerAdapter extends ArrayAdapter<AgeGroup> {
         TextView textView=itemView.findViewById(R.id.spinner_txt_item);
         textView.setTypeface(typeface);
         textView.setText(list.get(position).getAgegroup());
-        textView.setTextColor(Color.rgb(0,180,240));
+        //textView.setTextColor(Color.rgb(0,180,240));
         return itemView;
     }
 

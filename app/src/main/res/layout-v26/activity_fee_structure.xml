@@ -42,7 +42,7 @@
                 android:gravity="start"
                 android:text="@string/request_fee_structure"
                 android:textColor="@color/colorPrimaryDark"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -54,8 +54,8 @@
                 android:layout_marginTop="8dp"
                 android:gravity="start"
                 android:text="@string/komal_day_care_service_and_pre_nursery"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="16sp"
+                android:textColor="#806f3594"
+                android:textSize="14sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/feestructure"
                 app:layout_constraintTop_toBottomOf="@+id/feestructure" />
@@ -151,8 +151,9 @@
                 android:fontFamily="@font/montserrat_regular"
                 android:text="@string/age_of_the_child"
                 android:textAllCaps="false"
+                android:letterSpacing="0.05"
                 android:textColor="@color/grey"
-                android:textSize="14sp"
+                android:textSize="15sp"
                 app:layout_constraintStart_toStartOf="@+id/address_fee"
                 app:layout_constraintTop_toBottomOf="@+id/address_fee" />
 
@@ -164,9 +165,11 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="2dp"
                 android:background="@drawable/ic_form_background"
-                android:dropDownWidth="365dip"
-                android:dropDownVerticalOffset="40dp"
+                android:dropDownWidth="wrap_content"
+                android:dropDownVerticalOffset="60dp"
                 android:spinnerMode="dropdown"
+                android:foregroundTint="@color/grey"
+                android:backgroundTint="@color/grey"
                 app:layout_constraintEnd_toEndOf="@+id/address_fee"
                 app:layout_constraintStart_toStartOf="@+id/address_fee"
                 app:layout_constraintTop_toBottomOf="@+id/txtview_ageofchild" />

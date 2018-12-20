@@ -21,627 +21,621 @@
         android:contentDescription="@string/back"/>
 
 
-
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
     <ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
         android:fillViewport="true"
+        android:layout_marginBottom="64dp"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        xmlns:android="http://schemas.android.com/apk/res/android">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-         android:layout_height="match_parent"
+         android:layout_height="wrap_content"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         tools:context=".DetailActivity"
-        android:background="#fff">
-        <ProgressBar
-            android:id="@+id/progressBar_detail"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        android:background="#fff"
+        android:layout_marginBottom="64dp">
 
-        <com.synnapps.carouselview.CarouselView
-            android:id="@+id/imageView2"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginEnd="24dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/preschool_img"
-            android:background="@drawable/preschool_img"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline"
-            app:disableAutoPlayOnUserInteraction="true"
-            app:fillColor="#FFFFFFFF"
-            app:pageColor="#00000000"
-            app:radius="4dp"
-            app:slideInterval="3000"/>
-        <TextView
-        android:id="@+id/txtview_status_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/open"
-        android:textColor="@color/colorAccent"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
-
-    <RatingBar
-        android:id="@+id/rating2"
-        style="@style/Base.Widget.AppCompat.RatingBar.Small"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:isIndicator="true"
-        android:numStars="5"
-        android:stepSize="0.1"
-        app:layout_constraintBottom_toBottomOf="@+id/txtview_status_2"
-        app:layout_constraintEnd_toEndOf="@+id/imageView2"
-        app:layout_constraintTop_toTopOf="@+id/txtview_status_2" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="31dp" />
-
-    <TextView
-        android:id="@+id/school_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:gravity="center"
-        android:text="@string/ivy_kids_safe_home"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtview_status_2" />
-
-        <TextView
-            android:id="@+id/school_category"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Pre-school"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="@+id/school_name"
-            app:layout_constraintHorizontal_bias="0.493"
-            app:layout_constraintStart_toStartOf="@+id/school_name"
-            app:layout_constraintTop_toBottomOf="@+id/school_name" />
-
-    <TextView
-        android:id="@+id/txt_address"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="4711 KishanGarh,  Delhi"
-        app:layout_constraintEnd_toEndOf="@+id/school_name"
-        app:layout_constraintStart_toStartOf="@+id/school_name"
-        app:layout_constraintTop_toBottomOf="@+id/school_category"
-        android:textColor="@color/grey"
-        android:textSize="12sp"/>
-
-        <LinearLayout
-            android:id="@+id/liner_layout_handybutton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="32dp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:padding="4dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_address">
-
-
-            <Button
-                android:id="@+id/btn_call"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:layout_marginStart="6dp"
-                android:layout_marginEnd="6dp"
-                android:background="@drawable/ic_circle_green"
-                android:drawableStart="@drawable/ic_call_icon"
-                android:paddingStart="6dp"
-                android:paddingEnd="6dp" />
-
-            <Button
-                android:id="@+id/btn_map"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:layout_marginStart="6dp"
-                android:layout_marginEnd="6dp"
-                android:background="@drawable/ic_circle_blue"
-                android:drawableStart="@drawable/ic_icon_map_geo"
-                android:paddingStart="6dp"
-                android:paddingEnd="6dp" />
-
-            <Button
-                android:id="@+id/btn_favourite"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:layout_marginStart="6dp"
-                android:layout_marginEnd="6dp"
-                android:background="@drawable/ic_circle_red"
-                android:drawableStart="@drawable/ic_icon_favourite"
-                android:paddingStart="6dp"
-                android:paddingEnd="6dp" />
-
-            <Button
-                android:id="@+id/btn_review"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:layout_marginStart="6dp"
-                android:layout_marginEnd="6dp"
-                android:background="@drawable/ic_circle_yellow"
-                android:drawableStart="@drawable/ic_create_black_24dp"
-                android:paddingStart="6dp"
-                android:paddingEnd="6dp" />
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
-            android:background="@drawable/ic_blue_textviewbg"
-            android:paddingStart="16dp"
-            android:paddingTop="2dp"
-            android:paddingEnd="16dp"
-            android:paddingBottom="2dp"
-            android:text="@string/preschool"
-            android:textColor="@color/colorAccent"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/liner_layout_handybutton" />
-
-        <TextView
-            android:id="@+id/aboutus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:gravity="center"
-            android:text="@string/about_us"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="@+id/imageView2"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-        <TextView
-            android:id="@+id/aboutus_content"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:padding="2dp"
-            android:text="@string/lorem_ipsum"
-            android:textColor="@color/grey"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="@+id/rating2"
-            app:layout_constraintStart_toStartOf="@+id/aboutus"
-            app:layout_constraintTop_toBottomOf="@+id/aboutus" />
-
-        <TextView
-            android:id="@+id/transportation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:gravity="center"
-            android:text="@string/transportation"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="@+id/aboutus"
-            app:layout_constraintTop_toBottomOf="@+id/aboutus_content" />
-
-        <TextView
-            android:id="@+id/agegroup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:gravity="center"
-            android:text="@string/age_groups"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="@+id/aboutus"
-            app:layout_constraintTop_toBottomOf="@+id/transportation" />
-
-        <TextView
-            android:id="@+id/txtview_agegroup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:text="@string/age"
-            android:textColor="@color/colorAccent"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toTopOf="@+id/facilities"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/agegroup"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <TextView
-            android:id="@+id/facilities"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:gravity="center"
-            android:text="@string/facilities"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="@id/aboutus"
-            app:layout_constraintTop_toBottomOf="@id/agegroup"
-            />
-
-        <TextView
-            android:id="@+id/facilities_content"
-            android:layout_width="wrap_content"
-            android:layout_height="25dp"
-            android:padding="2dp"
-            android:text="@string/lorem_ipsum2"
-            android:textColor="@color/grey"
-            android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="@+id/facilities"
-            app:layout_constraintTop_toBottomOf="@+id/facilities" />
-
-        <TextView
-            android:id="@+id/reviewtxt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:gravity="center"
-            android:text="@string/reviews"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="@+id/facilities"
-            app:layout_constraintTop_toBottomOf="@+id/facilities_content" />
-
-        <Button
-            android:id="@+id/seeallreview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:text="@string/see_all_reviews"
-            android:textColor="@color/colorAccent"
-            android:textSize="12sp"
-            android:textAllCaps="false"
-            app:layout_constraintBottom_toBottomOf="@+id/reviewtxt"
-            app:layout_constraintEnd_toEndOf="@+id/txtview_agegroup"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/reviewtxt"
-            app:layout_constraintTop_toTopOf="@+id/reviewtxt"
-            android:background="@null"/>
-
-        <android.support.constraint.ConstraintLayout
-            android:id="@+id/averageratting_whole"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:background="#f0f0f0"
-            android:padding="4dp"
-            app:layout_constraintEnd_toEndOf="@+id/seeallreview"
-            app:layout_constraintStart_toStartOf="@id/reviewtxt"
-            app:layout_constraintTop_toBottomOf="@+id/reviewtxt">
-
-            <TextView
-                android:id="@+id/avgreview"
+            <ProgressBar
+                android:id="@+id/progressBar_detail"
+                style="?android:attr/progressBarStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:gravity="center"
-                android:text="@string/average_review"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="14sp"
-                android:fontFamily="@font/montserrat_regular"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <com.synnapps.carouselview.CarouselView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/preschool_img"
+                android:scaleType="centerCrop"
+                android:src="@drawable/preschool_img"
+                app:disableAutoPlayOnUserInteraction="true"
+                app:fillColor="#FFFFFFFF"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideline"
+                app:pageColor="#00000000"
+                app:radius="4dp"
+                app:slideInterval="3000" />
+
             <TextView
-                android:id="@+id/security"
+                android:id="@+id/txtview_status_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:gravity="center"
-                android:text="@string/security"
-                android:textColor="@color/grey"
-                android:textSize="14sp"
+                android:layout_marginTop="16dp"
                 android:fontFamily="@font/montserrat_regular"
-                app:layout_constraintStart_toStartOf="@+id/avgreview"
-                app:layout_constraintTop_toBottomOf="@+id/avgreview" />
+                android:letterSpacing="0.05"
+                android:text="@string/open"
+                android:textColor="@color/colorAccent"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@+id/imageView2"
+                app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
             <RatingBar
-                android:id="@+id/rating_security"
+                android:id="@+id/rating2"
                 style="@style/Base.Widget.AppCompat.RatingBar.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
                 android:isIndicator="true"
                 android:numStars="5"
-                android:rating="3.5"
                 android:stepSize="0.1"
-                app:layout_constraintBottom_toBottomOf="@+id/security"
-                app:layout_constraintStart_toEndOf="@+id/security"
-                app:layout_constraintTop_toTopOf="@+id/security" />
+                app:layout_constraintBottom_toBottomOf="@+id/txtview_status_2"
+                app:layout_constraintEnd_toEndOf="@+id/imageView2"
+                app:layout_constraintTop_toTopOf="@+id/txtview_status_2" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="31dp" />
 
             <TextView
-                android:id="@+id/Qualified_staff"
+                android:id="@+id/school_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="32dp"
+                android:fontFamily="@font/montserrat_regular"
+                android:gravity="center"
+                android:letterSpacing="0.05"
+                android:padding="0dp"
+                android:text="@string/ivy_kids_safe_home"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtview_status_2" />
+
+
+            <TextView
+                android:id="@+id/txt_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:gravity="center"
-                android:text="@string/qualified_staff"
-                android:textColor="@color/grey"
-                android:textSize="14sp"
                 android:fontFamily="@font/montserrat_regular"
-                app:layout_constraintStart_toStartOf="@+id/security"
-                app:layout_constraintTop_toBottomOf="@+id/security" />
+                android:letterSpacing="0.05"
+                android:text="4711 KishanGarh,  Delhi"
+                android:textColor="@color/grey"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@+id/school_name"
+                app:layout_constraintStart_toStartOf="@+id/school_name"
+                app:layout_constraintTop_toBottomOf="@+id/school_name" />
 
-            <RatingBar
-                android:id="@+id/rating_qualified_staff"
-                style="@style/Base.Widget.AppCompat.RatingBar.Small"
+            <LinearLayout
+                android:id="@+id/liner_layout_handybutton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="32dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="4dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_address">
+
+
+                <Button
+                    android:id="@+id/btn_call"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginEnd="6dp"
+                    android:background="@drawable/ic_circle_green"
+                    android:drawableStart="@drawable/ic_call_icon"
+                    android:paddingStart="7dp"
+                    android:paddingEnd="6dp" />
+
+                <Button
+                    android:id="@+id/btn_map"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginEnd="6dp"
+                    android:background="@drawable/ic_circle_blue"
+                    android:drawableStart="@drawable/ic_location_icon_blue"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:paddingStart="7dp"
+                    android:paddingEnd="6dp" />
+
+                <ToggleButton
+                    android:id="@+id/btn_favourite"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginEnd="6dp"
+                    android:background="@drawable/ic_circle"
+                    android:drawableStart="@drawable/ic_icon_favourite"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:paddingStart="7dp"
+                    android:paddingEnd="6dp" />
+
+                <Button
+                    android:id="@+id/btn_review"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginEnd="6dp"
+                    android:background="@drawable/ic_circle_yellow"
+                    android:drawableStart="@drawable/ic_create_black_24dp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:paddingStart="7dp"
+                    android:paddingEnd="6dp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/ic_blue_textviewbg"
+                android:fontFamily="@font/montserrat_regular"
+                android:letterSpacing="0.05"
+                android:paddingStart="16dp"
+                android:paddingTop="2dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="2dp"
+                android:text="@string/preschool"
+
+                android:textColor="@color/colorAccent"
+                android:textSize="13sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/liner_layout_handybutton" />
+
+            <TextView
+                android:id="@+id/aboutus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/montserrat_regular"
+                android:gravity="center"
+                android:letterSpacing="0.05"
+                android:text="@string/about_us"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/imageView2"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+            <TextView
+                android:id="@+id/aboutus_content"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/montserrat_regular"
+                android:letterSpacing="0.05"
+                android:padding="2dp"
+                android:text="@string/lorem_ipsum"
+                android:textColor="#96838386"
+                android:textSize="14sp"
+
+                app:layout_constraintEnd_toEndOf="@+id/rating2"
+                app:layout_constraintStart_toStartOf="@+id/aboutus"
+                app:layout_constraintTop_toBottomOf="@+id/aboutus" />
+
+            <TextView
+                android:id="@+id/transportation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/montserrat_regular"
+                android:gravity="center"
+                android:letterSpacing="0.05"
+                android:text="@string/transportation"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/aboutus"
+                app:layout_constraintTop_toBottomOf="@+id/aboutus_content" />
+
+            <TextView
+                android:id="@+id/agegroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/montserrat_regular"
+                android:gravity="center"
+                android:letterSpacing="0.05"
+                android:text="@string/age_groups"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/aboutus"
+                app:layout_constraintTop_toBottomOf="@+id/transportation" />
+
+            <TextView
+                android:id="@+id/txtview_agegroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_regular"
+                android:letterSpacing="0.05"
+                android:text="@string/age"
+                android:textColor="@color/colorAccent"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@+id/facilities"
+                app:layout_constraintEnd_toEndOf="@+id/aboutus_content"
+                app:layout_constraintTop_toTopOf="@+id/agegroup"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/facilities"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/montserrat_regular"
+                android:gravity="center"
+                android:letterSpacing="0.05"
+                android:text="@string/facilities"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/aboutus"
+                app:layout_constraintTop_toBottomOf="@id/agegroup" />
+
+            <TextView
+                android:id="@+id/facilities_content"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:fontFamily="@font/montserrat_regular"
+                android:letterSpacing="0.05"
+                android:padding="2dp"
+                android:text="@string/lorem_ipsum2"
+                android:textColor="#96838386"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@+id/facilities"
+                app:layout_constraintTop_toBottomOf="@+id/facilities" />
+
+            <TextView
+                android:id="@+id/reviewtxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/montserrat_regular"
+                android:gravity="center"
+                android:letterSpacing="0.05"
+                android:text="@string/reviews"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/facilities"
+                app:layout_constraintTop_toBottomOf="@+id/facilities_content" />
+
+            <Button
+                android:id="@+id/seeallreview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:background="@null"
+                android:fontFamily="@font/montserrat_regular"
+                android:letterSpacing="0.05"
+                android:text="@string/see_all_reviews"
+                android:textAllCaps="false"
+                android:textColor="@color/colorAccent"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/reviewtxt"
+                app:layout_constraintEnd_toEndOf="@+id/txtview_agegroup"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/reviewtxt"
+                app:layout_constraintTop_toTopOf="@+id/reviewtxt" />
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/averageratting_whole"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="#50D4D4D5"
+                android:padding="4dp"
+                app:layout_constraintEnd_toEndOf="@+id/aboutus_content"
+                app:layout_constraintStart_toStartOf="@id/reviewtxt"
+                app:layout_constraintTop_toBottomOf="@+id/reviewtxt">
+
+                <TextView
+                    android:id="@+id/avgreview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:gravity="center"
+                    android:letterSpacing="0.05"
+                    android:text="@string/average_review"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/security"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:gravity="center"
+                    android:letterSpacing="0.05"
+                    android:text="@string/security"
+                    android:textColor="@color/grey"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="@+id/avgreview"
+                    app:layout_constraintTop_toBottomOf="@+id/avgreview" />
+
+                <RatingBar
+                    android:id="@+id/rating_security"
+                    style="@style/Base.Widget.AppCompat.RatingBar.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:isIndicator="true"
+                    android:numStars="5"
+                    android:stepSize="0.1"
+
+                    app:layout_constraintBottom_toBottomOf="@+id/security"
+                    app:layout_constraintStart_toEndOf="@+id/security"
+                    app:layout_constraintTop_toTopOf="@+id/security" />
+
+                <TextView
+                    android:id="@+id/Qualified_staff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:gravity="center"
+                    android:letterSpacing="0.05"
+                    android:text="@string/qualified_staff"
+                    android:textColor="@color/grey"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/security"
+                    app:layout_constraintTop_toBottomOf="@+id/security" />
+
+                <RatingBar
+                    android:id="@+id/rating_qualified_staff"
+                    style="@style/Base.Widget.AppCompat.RatingBar.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:isIndicator="true"
+                    android:numStars="5"
+                    android:stepSize="0.1"
+                    app:layout_constraintBottom_toBottomOf="@+id/Qualified_staff"
+                    app:layout_constraintStart_toEndOf="@+id/Qualified_staff"
+                    app:layout_constraintTop_toTopOf="@+id/Qualified_staff" />
+
+                <TextView
+                    android:id="@+id/infrastructure"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:gravity="center"
+                    android:letterSpacing="0.05"
+                    android:text="@string/infrastructure"
+                    android:textColor="@color/grey"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/Qualified_staff"
+                    app:layout_constraintTop_toBottomOf="@+id/Qualified_staff" />
+
+                <RatingBar
+                    android:id="@+id/rating_infrastructure"
+                    style="@style/Base.Widget.AppCompat.RatingBar.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:isIndicator="true"
+                    android:numStars="5"
+                    android:stepSize="0.1"
+                    app:layout_constraintBottom_toBottomOf="@+id/infrastructure"
+                    app:layout_constraintStart_toEndOf="@+id/infrastructure"
+                    app:layout_constraintTop_toTopOf="@+id/infrastructure" />
+
+                <TextView
+                    android:id="@+id/curriculum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:gravity="center"
+                    android:letterSpacing="0.05"
+                    android:text="@string/curriculum"
+                    android:textColor="@color/grey"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/infrastructure"
+                    app:layout_constraintTop_toBottomOf="@+id/infrastructure" />
+
+                <RatingBar
+                    android:id="@+id/rating_curriculum"
+                    style="@style/Base.Widget.AppCompat.RatingBar.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:isIndicator="true"
+                    android:numStars="5"
+                    android:stepSize="0.1"
+                    app:layout_constraintBottom_toBottomOf="@+id/curriculum"
+                    app:layout_constraintStart_toEndOf="@+id/curriculum"
+                    app:layout_constraintTop_toTopOf="@+id/curriculum" />
+
+
+            </android.support.constraint.ConstraintLayout>
+
+            <ImageView
+                android:id="@+id/imageView4_review_detail"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/ic_circle"
+                app:layout_constraintStart_toStartOf="@+id/averageratting_whole"
+                app:layout_constraintTop_toBottomOf="@+id/averageratting_whole" />
+
+            <TextView
+                android:id="@+id/username_review_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/montserrat_regular"
+                android:gravity="center"
+                android:letterSpacing="0.05"
+                android:text="Ruchi Devi Verma"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@+id/imageView4_review_detail"
+                app:layout_constraintTop_toTopOf="@+id/imageView4_review_detail" />
+
+            <TextView
+                android:id="@+id/lastactive_review_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/montserrat_regular"
+                android:gravity="center"
+                android:letterSpacing="0.05"
+                android:text="1 day ago"
+                android:textColor="@color/grey"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@+id/username_review_detail"
+                app:layout_constraintTop_toBottomOf="@+id/username_review_detail" />
+
+            <RatingBar
+                android:id="@+id/rating_review_review_detail"
+                style="@style/Base.Widget.AppCompat.RatingBar.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:isIndicator="true"
                 android:numStars="5"
                 android:rating="4"
                 android:stepSize="0.1"
-                android:fontFamily="@font/montserrat_regular"
-                app:layout_constraintBottom_toBottomOf="@+id/Qualified_staff"
-                app:layout_constraintStart_toEndOf="@+id/Qualified_staff"
-                app:layout_constraintTop_toTopOf="@+id/Qualified_staff" />
+                app:layout_constraintEnd_toEndOf="@+id/averageratting_whole"
+                app:layout_constraintTop_toTopOf="@+id/username_review_detail" />
 
             <TextView
-                android:id="@+id/infrastructure"
+                android:id="@+id/ratingvalue_review_detail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:gravity="center"
-                android:text="@string/infrastructure"
-                android:textColor="@color/grey"
-                android:textSize="14sp"
                 android:fontFamily="@font/montserrat_regular"
-                app:layout_constraintStart_toStartOf="@+id/Qualified_staff"
-                app:layout_constraintTop_toBottomOf="@+id/Qualified_staff" />
-
-            <RatingBar
-                android:id="@+id/rating_infrastructure"
-                style="@style/Base.Widget.AppCompat.RatingBar.Small"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:isIndicator="true"
-                android:numStars="5"
-                android:rating="3"
-                android:stepSize="0.1"
-                app:layout_constraintBottom_toBottomOf="@+id/infrastructure"
-                app:layout_constraintStart_toEndOf="@+id/infrastructure"
-                app:layout_constraintTop_toTopOf="@+id/infrastructure" />
+                android:gravity="center"
+                android:letterSpacing="0.05"
+                android:text="4 of 5"
+                android:textColor="@color/grey"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/lastactive_review_detail"
+                app:layout_constraintStart_toStartOf="@+id/rating_review_review_detail"
+                app:layout_constraintTop_toBottomOf="@+id/rating_review_review_detail" />
 
             <TextView
-                android:id="@+id/curriculum"
-                android:layout_width="wrap_content"
+                android:id="@+id/Reviewbody_review_detail"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:gravity="center"
-                android:text="@string/curriculum"
+                android:fontFamily="@font/montserrat_regular"
+                android:letterSpacing="0.05"
+                android:padding="4dp"
+                android:text="@string/lorem_ipsum2"
                 android:textColor="@color/grey"
                 android:textSize="14sp"
-                android:fontFamily="@font/montserrat_regular"
-                app:layout_constraintStart_toStartOf="@+id/infrastructure"
-                app:layout_constraintTop_toBottomOf="@+id/infrastructure" />
+                app:layout_constraintEnd_toEndOf="@+id/rating_review_review_detail"
+                app:layout_constraintStart_toStartOf="@+id/imageView4_review_detail"
+                app:layout_constraintTop_toBottomOf="@+id/imageView4_review_detail" />
+    </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+    <LinearLayout
+        android:id="@+id/btn_linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="6dp">
 
-            <RatingBar
-                android:id="@+id/rating_curriculum"
-                style="@style/Base.Widget.AppCompat.RatingBar.Small"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:isIndicator="true"
-                android:numStars="5"
-                android:rating="4.5"
-                android:stepSize="0.1"
-                app:layout_constraintBottom_toBottomOf="@+id/curriculum"
-                app:layout_constraintStart_toEndOf="@+id/curriculum"
-                app:layout_constraintTop_toTopOf="@+id/curriculum" />
-
-
-        </android.support.constraint.ConstraintLayout>
-
-        <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="16dp"
-            android:src="@drawable/ic_circle"
-            app:layout_constraintStart_toStartOf="@+id/averageratting_whole"
-            app:layout_constraintTop_toBottomOf="@+id/averageratting_whole" />
-
-        <TextView
-            android:id="@+id/username"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:gravity="center"
-            android:text="Ruchi Devi Verma"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="16sp"
-            android:fontFamily="@font/montserrat_regular"
-            app:layout_constraintStart_toEndOf="@+id/imageView4"
-            app:layout_constraintTop_toTopOf="@+id/imageView4" />
-
-        <TextView
-            android:id="@+id/lastactive"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:gravity="center"
-            android:text="1 day ago"
-            android:textColor="@color/grey"
-            android:textSize="12sp"
-
-            app:layout_constraintStart_toStartOf="@+id/username"
-            app:layout_constraintTop_toBottomOf="@+id/username" />
-
-        <RatingBar
-            android:id="@+id/rating_review"
-            style="@style/Base.Widget.AppCompat.RatingBar.Small"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="16dp"
-            android:isIndicator="true"
-            android:numStars="5"
-            android:rating="4"
-            android:stepSize="1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/username"
-            app:layout_constraintTop_toTopOf="@+id/username" />
-
-        <TextView
-            android:id="@+id/ratingvalue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:gravity="center"
-            android:text="4 of 5"
-            android:textColor="@color/grey"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="@+id/lastactive"
-            app:layout_constraintStart_toStartOf="@+id/rating_review"
-            app:layout_constraintTop_toBottomOf="@+id/rating_review" />
-
-        <TextView
-            android:id="@+id/Reviewbody"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/lorem_ipsum2"
-            android:layout_marginTop="8dp"
-            android:padding="4dp"
-            android:textColor="@color/grey"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="@+id/rating_review"
-            app:layout_constraintStart_toStartOf="@+id/imageView4"
-            app:layout_constraintTop_toBottomOf="@+id/imageView4" />
-
-        <LinearLayout
+        <Button
+            android:id="@+id/btn_requestfeestructure_detail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginStart="4dp"
+            android:background="#d9f4fd"
+            android:layout_weight="1"
+            android:text="@string/request_fee_structure"
+            android:textColor="#90838386"
+            android:textSize="12sp"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:padding="8dp"
+            android:letterSpacing="0.05"
+            android:fontFamily="@font/montserrat_regular"
             android:layout_marginEnd="4dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="16dp"
-            android:layout_alignParentBottom="true"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Reviewbody">
-            <Button
-                android:id="@+id/btn_requestfeestructure_detail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#d9f4fd"
-                android:layout_weight="0.5"
-                android:text="@string/request_fee_structure"
-                android:textColor="@color/grey"
-                android:textSize="14sp"
-                android:textAllCaps="false"
-                android:textStyle="bold"
-                android:layout_marginEnd="2dp" />
+            android:elevation="4dp"
+            android:layout_marginStart="4dp"/>
 
         <Button
             android:id="@+id/btn_bookanappointment_detail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorAccent"
-            android:layout_weight="0.5"
+            android:layout_weight="1"
             android:textAllCaps="false"
             android:text="@string/book_an_appointment"
             android:textColor="@color/white"
-            android:textSize="14sp"
+            android:textSize="12sp"
             android:textStyle="bold"
-            android:layout_marginStart="2dp" />
-
-
-        </LinearLayout>
-
-        <!--<Button
-            android:id="@+id/btn_requestfeestructure_detail"
-            style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="2dp"
-            android:layout_marginBottom="8dp"
-            android:background="#0066b2"
-            android:padding="4dp"
-            android:text="@string/request_fee_structure"
-            android:textColor="@color/white"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btn_bookanappointment_detail"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/averageratting_whole" />
-
-        <Button
-            android:id="@+id/btn_bookanappointment_detail"
-            style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="2dp"
-            android:layout_marginEnd="4dp"
-            android:background="@color/colorAccent"
-            android:padding="4dp"
-            android:text="@string/book_an_appointment"
-            android:textColor="@color/white"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="@+id/btn_requestfeestructure_detail"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/btn_requestfeestructure_detail"
-            app:layout_constraintTop_toTopOf="@+id/btn_requestfeestructure_detail" />-->
-
-    </android.support.constraint.ConstraintLayout>
-        <!--<android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="8dp"
             android:padding="8dp"
-            style="?android:attr/buttonBarStyle">-->
+            android:letterSpacing="0.05"
+            android:fontFamily="@font/montserrat_regular"
+            android:elevation="4dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"/>
     </LinearLayout>
+</FrameLayout>
 
-</ScrollView>
 </LinearLayout>

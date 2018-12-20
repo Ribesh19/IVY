@@ -11,65 +11,69 @@
         android:id="@+id/search_school_card"
         android:layout_width="0dp"
         android:layout_height="38dp"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        android:padding="8dp"
+        android:layout_marginEnd="16dp"
         android:background="@color/colorPrimaryDark"
+        android:backgroundTint="#f3f7fb"
+        android:padding="8dp"
+        app:cardCornerRadius="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:cardCornerRadius="16dp"
-        android:backgroundTint="#f3f7fb">
+        app:layout_constraintTop_toTopOf="parent">
 
         <android.support.v7.widget.SearchView
             android:id="@+id/search_school"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:hapticFeedbackEnabled="true"
+            app:defaultQueryHint="Search Day Care and others"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:defaultQueryHint="Search Day Care and others"
-            android:hapticFeedbackEnabled="true"
             app:searchIcon="@drawable/ic_icon_search_grey"
 
-           />
+            />
     </android.support.v7.widget.CardView>
+
     <android.support.v7.widget.CardView
         android:id="@+id/search_location_card"
         android:layout_width="0dp"
         android:layout_height="38dp"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
-        android:padding="8dp"
+        android:layout_marginEnd="16dp"
         android:background="@color/colorPrimaryDark"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search_school_card"
+        android:backgroundTint="#f3f7fb"
+        android:padding="8dp"
         app:cardCornerRadius="16dp"
-        android:backgroundTint="#f3f7fb">
-    <android.support.v7.widget.SearchView
-        android:id="@+id/search_location"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:queryHint="Kishangadh, Delhi"
-        app:searchIcon="@drawable/ic_location_icon_grey"
-        android:hapticFeedbackEnabled="true" />
+        app:layout_constraintTop_toBottomOf="@+id/search_school_card">
+
+        <android.support.v7.widget.SearchView
+            android:id="@+id/search_location"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hapticFeedbackEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:queryHint="Kishangadh, Delhi"
+            app:searchIcon="@drawable/ic_location_icon_grey" />
     </android.support.v7.widget.CardView>
+
     <TextView
         android:id="@+id/recentsearch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:gravity="start"
-        android:text="@string/recent_search"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/montserrat_regular"
+        android:gravity="start"
+        android:letterSpacing="0.05"
+        android:text="@string/recent_search"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/search_location_card"
         app:layout_constraintTop_toBottomOf="@+id/search_location_card" />
@@ -89,13 +93,14 @@
         android:id="@+id/recommendation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/montserrat_regular"
         android:gravity="start"
         android:text="@string/featured"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textStyle="bold"
-        android:fontFamily="@font/montserrat_regular"
+        android:letterSpacing="0.05"
         app:layout_constraintStart_toStartOf="@+id/recentsearch_recyclerview"
         app:layout_constraintTop_toBottomOf="@+id/recentsearch_recyclerview" />
 
