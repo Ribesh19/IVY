@@ -2,16 +2,16 @@ package com.example.ribeshmaharjan.ivy;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
-import android.graphics.Color;
+
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Layout;
-import android.transition.Explode;
+
 import android.transition.Fade;
-import android.transition.Slide;
+
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,11 +31,12 @@ import com.example.ribeshmaharjan.ivy.model.Detail;
 import com.example.ribeshmaharjan.ivy.model.DetailResponse;
 import com.example.ribeshmaharjan.ivy.rest.ApiClient;
 import com.example.ribeshmaharjan.ivy.rest.ApiInterface;
-import com.synnapps.carouselview.CarouselView;
-import com.synnapps.carouselview.ImageListener;
 
+
+import java.util.ArrayList;
 import java.util.List;
 
+import ir.apend.slider.ui.Slider;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -48,8 +49,8 @@ public class DetailActivity extends AppCompatActivity {
     Button mbookappointment;
     ToggleButton mmakefavourite;
     Button mseeallreview;
-    CarouselView mcarouselView;
     ProgressBar mprogressbar;
+    Slider slider;
 
     TextView mschoolname;
     TextView maddress;
@@ -64,13 +65,10 @@ public class DetailActivity extends AppCompatActivity {
     TextView mratingvalue_review_detail_review;
     TextView mReviewbody_review_detail;
     RatingBar mrating_review_review_detail;
+    TextView mlastactive_review_detail;
+    ImageView mimageView4_review_detail;
 
     Detail detail=null;
-
-    FavouriteFragment favouriteFragment=new FavouriteFragment();
-    int[] sampleImages = {R.drawable.preschool_img,R.drawable.school_img1,R.drawable.school_img2};
-
-
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,6 +92,9 @@ public class DetailActivity extends AppCompatActivity {
         mratingvalue_review_detail_review=findViewById(R.id.ratingvalue_review_detail);
         mReviewbody_review_detail=findViewById(R.id.Reviewbody_review_detail);
         mrating_review_review_detail=findViewById(R.id.rating_review_review_detail);
+        slider=findViewById(R.id.imageView2);
+        mlastactive_review_detail=findViewById(R.id.lastactive_review_detail);
+        mimageView4_review_detail=findViewById(R.id.imageView4_review_detail);
 
         mprogressbar=findViewById(R.id.progressBar_detail);
         mbackbtn=findViewById(R.id.back_btn);
@@ -102,9 +103,9 @@ public class DetailActivity extends AppCompatActivity {
         mmakefavourite=findViewById(R.id.btn_favourite);
         mreview=findViewById(R.id.btn_review);
         mseeallreview=findViewById(R.id.seeallreview);
-        mcarouselView=findViewById(R.id.imageView2);
+        /*mcarouselView=findViewById(R.id.imageView2);
         mcarouselView.setPageCount(sampleImages.length);
-        mcarouselView.setImageListener(imageListener);
+        mcarouselView.setImageListener(imageListener);*/
         mprogressbar.setVisibility(View.VISIBLE);
 
        /* mmakefavourite.setChecked(false);
@@ -116,39 +117,72 @@ public class DetailActivity extends AppCompatActivity {
             @Override
             public void onResponse(@NonNull Call<DetailResponse> call, @NonNull Response<DetailResponse> response) {
                 mprogressbar.setVisibility(View.GONE);
-               Toast.makeText(DetailActivity.this, "Detail Activity Success",Toast.LENGTH_LONG).show();
+                //Toast.makeText(DetailActivity.this, "Detail Activity Success", Toast.LENGTH_LONG).show();
                 int statuscode = response.code();
+                //Toast.makeText(DetailActivity.this, Integer.toString(statuscode),Toast.LENGTH_LONG).show();
                 assert response.body() != null;
-                detail=response.body().getResults();
+                detail = response.body().getResults();
+                List<ir.apend.slider.model.Slide> slideList1 = new ArrayList<>();
+                for (int i = 0; i < detail.getImages().size(); i++) {
+                    slideList1.add((new ir.apend.slider.model.Slide(i, detail.getImages().get(i), getResources().getDimensionPixelSize(R.dimen.slider_image_corner))));
+                }
+                slider.addSlides(slideList1);
                 //Toast.makeText(DetailActivity.this,detail.getName() ,Toast.LENGTH_LONG).show();
                 mschoolname.setText(detail.getName());
-                String address= detail.getAddress()+", "+detail.getCity()+", State - "+detail.getState()+", "+detail.getPostCode()+", "+detail.getCountry();
+                String address = detail.getAddress() + ", " + detail.getCity() + ", State - " + detail.getState() + ", " + detail.getPostCode() + ", " + detail.getCountry();
                 maddress.setText(address);
-                int fav_id = detail.getFavorite().get(0).getIsFavorite();
-                if(fav_id==0){
+                if(detail.getFavorite().size()!=0)
+                {
+                    int fav_id = detail.getFavorite().get(0).getIsFavorite();
+                    if (fav_id == 0) {
 
-                    mmakefavourite.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_circle));
+                        mmakefavourite.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_circle));
+                    } else {
+                        mmakefavourite.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_circle_red));
+                    }
                 }
                 else
                 {
-                    mmakefavourite.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_circle_red));
+                    mmakefavourite.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_circle));
                 }
                 maboutuscontent.setText(detail.getDescription());
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                     maboutuscontent.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
                 }
                 magegroup.setText(detail.getAgeGroup());
-                mratingbar2.setRating(detail.getSchoolaverage());
-                ratingBar_security.setRating(detail.getSecurityaverage());
-                ratingBar_staff.setRating(detail.getStaffaverage());
-                ratingBar_curriculum.setRating(detail.getCurriculumaverage());
-                ratingBar_infrastructure.setRating(detail.getInfrastructureaverage());
+                if(detail.getSchoolaverage()!=null) {
+                    mratingbar2.setRating(detail.getSchoolaverage());
+                    ratingBar_security.setRating(detail.getSecurityaverage());
+                    ratingBar_staff.setRating(detail.getStaffaverage());
+                    ratingBar_curriculum.setRating(detail.getCurriculumaverage());
+                    ratingBar_infrastructure.setRating(detail.getInfrastructureaverage());
+                }
+                else
+                {
+                    mratingbar2.setRating(0);
+                    ratingBar_security.setRating(0);
+                    ratingBar_staff.setRating(0);
+                    ratingBar_curriculum.setRating(0);
+                    ratingBar_infrastructure.setRating(0);
+                }
+                if (detail.getLatestReview() != null) {
                     musername_review_detail_review.setText(detail.getLatestReview().getUsername());
                     mReviewbody_review_detail.setText(detail.getLatestReview().getMessage());
                     mrating_review_review_detail.setRating(detail.getLatestReview().getUseraveragereview());
                     mratingvalue_review_detail_review.setText(detail.getLatestReview().getUseraveragereview().toString() + " of 5");
 
                 }
+                else
+                {
+                    musername_review_detail_review.setVisibility(View.GONE);
+                    mReviewbody_review_detail.setVisibility(View.GONE);
+                    mrating_review_review_detail.setVisibility(View.GONE);
+                    mratingvalue_review_detail_review.setVisibility(View.GONE);
+                    mlastactive_review_detail.setVisibility(View.GONE);
+                    mimageView4_review_detail.setVisibility(View.GONE);
+
+                }
+            }
 
             @Override
             public void onFailure(@NonNull Call<DetailResponse> call, @NonNull Throwable t) {
@@ -167,6 +201,7 @@ public class DetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent2=new Intent(DetailActivity.this,FeeStructureActivity.class);
+                intent2.putExtra("schoolID",schoolid);
                 startActivity(intent2);
             }
         });
@@ -174,6 +209,7 @@ public class DetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent3=new Intent(DetailActivity.this,RatingActivity.class);
+                intent3.putExtra("schoolID",schoolid);
                startActivity(intent3,ActivityOptions.makeSceneTransitionAnimation(DetailActivity.this).toBundle());
                 //startActivity(intent3);
             }
@@ -182,7 +218,9 @@ public class DetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent4=new Intent(DetailActivity.this,AppointmentActivity.class);
+                intent4.putExtra("schoolID",schoolid);
                 startActivity(intent4);
+
             }
         });
         mseeallreview.setOnClickListener(new View.OnClickListener() {
@@ -223,12 +261,6 @@ public class DetailActivity extends AppCompatActivity {
             }
         });
         }
-    ImageListener imageListener = new ImageListener() {
-        @Override
-        public void setImageForPosition(int position, ImageView imageView) {
-            imageView.setImageResource(sampleImages[position]);
-        }
-    };
 
 
 }

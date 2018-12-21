@@ -2,6 +2,7 @@ package com.example.ribeshmaharjan.ivy;
 
 import android.content.Context;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,8 +11,13 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
+import com.example.ribeshmaharjan.ivy.model.School;
+
+import java.util.List;
+
 public class RecentSearchAdapter extends RecyclerView.Adapter<RecentSearchAdapter.InfoViewHolder> {
     Context mcontext;
+    private List<School> mschools;
 
     class InfoViewHolder extends RecyclerView.ViewHolder {
         TextView mrecentsearch;
@@ -30,10 +36,11 @@ public class RecentSearchAdapter extends RecyclerView.Adapter<RecentSearchAdapte
     private final LayoutInflater mInflater;
     // Cached copy of words
 
-    RecentSearchAdapter(Context context)
+    RecentSearchAdapter(Context context,List<School> schools)
     {
         mcontext=context;
         mInflater = LayoutInflater.from(context);
+        mschools=schools;
 
     }
 
@@ -44,11 +51,22 @@ public class RecentSearchAdapter extends RecyclerView.Adapter<RecentSearchAdapte
     }
 
     @Override
-    public void onBindViewHolder(RecentSearchAdapter.InfoViewHolder holder, int position) {
+    public void onBindViewHolder(RecentSearchAdapter.InfoViewHolder holder, final int position) {
 
-        String [] schools={"Kid Zone","Safe Heaven","Orange Day"};
-        holder.mrecentsearch.setText(schools[position]);
-        holder.mrecentsearch.setTextColor(Color.argb(100, 111,53,148));
+       /* String [] schools={"Kid Zone","Safe Heaven","Orange Day"};
+        holder.mrecentsearch.setText(schools[position]);*/
+       holder.mrecentsearch.setText(mschools.get(position).getName());
+        holder.mrecentsearch.setTextColor(Color.argb(190, 111,53,148));
+
+        holder.mrecentsearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mcontext.getApplicationContext(), DetailActivity.class);
+                intent.putExtra("schoolID", mschools.get(position).getId());
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                mcontext.startActivity(intent);
+            }
+        });
 
 
     }
@@ -60,6 +78,6 @@ public class RecentSearchAdapter extends RecyclerView.Adapter<RecentSearchAdapte
         /*if (logs != null)
             return logs.size();
         else return 0;*/
-        return 3;
+        return mschools.size();
     }
 }

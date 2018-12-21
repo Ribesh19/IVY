@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         style="?android:attr/spinnerItemStyle"
         android:layout_height="wrap_content"
-        android:textSize="17sp"
+        android:textSize="14sp"
         android:letterSpacing="0.05"
         android:layout_marginTop="4dp"
         android:layout_marginBottom="4dp"

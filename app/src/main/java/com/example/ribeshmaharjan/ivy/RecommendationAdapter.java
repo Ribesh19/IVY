@@ -11,9 +11,14 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.ribeshmaharjan.ivy.model.Featured;
+
+import java.util.List;
+
 public class RecommendationAdapter extends RecyclerView.Adapter<RecommendationAdapter.InfoViewHolder> {
 
     Context mcontext;
+    List<Featured> mfeaturedList;
 
     class InfoViewHolder extends RecyclerView.ViewHolder {
         ImageView mSchoolImage;
@@ -26,9 +31,12 @@ public class RecommendationAdapter extends RecyclerView.Adapter<RecommendationAd
 
 
 
+
+
         private InfoViewHolder(View itemView) {
             super(itemView);
-            mSchoolImage=  itemView.findViewById(R.id.imageView_favourite);
+
+            mSchoolImage=  itemView.findViewById(R.id.imageView_favourite1);
             mSchoolName=itemView.findViewById(R.id.school_name_favourtie);
             //mRatingbar=itemView.findViewById(R.id.rating_list);
             mStatus=itemView.findViewById(R.id.txtview_status_favourite);
@@ -41,10 +49,11 @@ public class RecommendationAdapter extends RecyclerView.Adapter<RecommendationAd
     private final LayoutInflater mInflater;
     // Cached copy of words
 
-    RecommendationAdapter(Context context)
+    RecommendationAdapter(Context context,List<Featured> featuredList)
     {
         mcontext=context;
         mInflater = LayoutInflater.from(context);
+        mfeaturedList=featuredList;
 
     }
 
@@ -65,11 +74,13 @@ public class RecommendationAdapter extends RecyclerView.Adapter<RecommendationAd
 
 
         /*holder.mSchoolImage.setImageResource(mImageIds.get(position));*/
-        holder.mSchoolImage.setBackgroundResource(R.drawable.mother_newborn);
+       /* holder.mSchoolImage.setBackgroundResource(R.drawable.mother_newborn);
         holder.mSchoolName.setText(R.string.komal_day_care_service_and_pre_nursery);
         // holder.mRatingbar.setRating(2);
         holder.mDistance.setText("0.4 KM");
-        holder.mStatus.setText("Open");
+        holder.mStatus.setText("Open");*/
+
+       holder.mSchoolName.setText(mfeaturedList.get(position).getName());
 
 
 
@@ -83,7 +94,7 @@ public class RecommendationAdapter extends RecyclerView.Adapter<RecommendationAd
         /*if (logs != null)
             return logs.size();
         else return 0;*/
-        return 2;
+        return mfeaturedList.size();
     }
 
 }

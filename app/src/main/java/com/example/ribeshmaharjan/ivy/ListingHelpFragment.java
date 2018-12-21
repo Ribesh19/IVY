@@ -52,7 +52,9 @@ public class ListingHelpFragment extends Fragment {
 
     private static final String TAG =" Fragment";
     List<city> citieslist=null;
-    List<School> schoolslist=null;
+     List<School> schoolslist=null;
+     static List<School> schoolListformap=null;
+
 
     public ListingHelpFragment() {
         // Required empty public constructor
@@ -81,6 +83,7 @@ public class ListingHelpFragment extends Fragment {
                     public void onResponse(@NonNull Call<cityresponse> call, @NonNull retrofit2.Response<cityresponse> response) {
                         assert response.body() != null;
                         int statuscode = response.code();
+
                         citieslist = response.body().getResults();
                         Log.d(TAG, "Number of cities received: " + citieslist.size());
                         if(getActivity()!=null) {
@@ -110,7 +113,7 @@ public class ListingHelpFragment extends Fragment {
                // String cityname=adapterView.getSelectedItem().toString();
                int city = spinner.getSelectedItemPosition();
                if (citieslist != null) {
-                   String cityname = citieslist.get(city).getCity();
+                   final String cityname = citieslist.get(city).getCity();
                    //Toast.makeText(getContext(), cityname, Toast.LENGTH_LONG).show();
                    Call<SchoolResponse> call1 = apiInterface.getschools(cityname);
                    call1.enqueue(new Callback<SchoolResponse>() {
@@ -119,6 +122,11 @@ public class ListingHelpFragment extends Fragment {
                           // Toast.makeText(getContext(), "Kathmandu Success", Toast.LENGTH_LONG).show();
                            assert response.body() != null;
                            progressBar.setVisibility(View.GONE);
+                           if(spinner.getSelectedItemPosition()==0)
+                           {
+                               Toast.makeText(getContext(), "Kathmandu Success", Toast.LENGTH_LONG).show();
+                               schoolListformap=response.body().getResults();
+                           }
                            schoolslist = response.body().getResults();
                            SchoollistAdapter recyclerview_adapter = new SchoollistAdapter(Objects.requireNonNull(getActivity()).getApplicationContext(), schoolslist);
                            recyclerView.setAdapter(recyclerview_adapter);

@@ -2,6 +2,7 @@ package com.example.ribeshmaharjan.ivy;
 
 import android.content.Context;
 
+import android.location.Location;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -19,7 +20,7 @@ import java.util.List;
 
 public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.InfoViewHolder> {
     Context mcontext;
-    List<ReviewCollection> mreviewCollectionList=null;
+    List<ReviewCollection> mreviewCollectionList;
 
     class InfoViewHolder extends RecyclerView.ViewHolder {
 
@@ -67,11 +68,17 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.InfoViewHo
         holder.mLastactive.setText(ratingdate[position]);
         holder.mReviewRatingbar.setRating(rating[position]);
         holder.mRatingValue.setText(ratingvalue[position]);*/
-       holder.musername.setText(mreviewCollectionList.get(position).getUsername());
-       holder.mLastactive.setText(mreviewCollectionList.get(position).getDate());
-       holder.mReviewRatingbar.setRating(mreviewCollectionList.get(position).getUseraveragereview());
-       holder.mRatingValue.setText(mreviewCollectionList.get(position).getUseraveragereview().toString() + " of 5");
-       holder.mreview.setText(mreviewCollectionList.get(position).getMessage());
+       if(mreviewCollectionList.isEmpty())
+       {
+           holder.musername.setText("NO REVIEWS AVAILABLE");
+       }
+       else {
+           holder.musername.setText(mreviewCollectionList.get(position).getUsername());
+           holder.mLastactive.setText(mreviewCollectionList.get(position).getDate());
+           holder.mReviewRatingbar.setRating(mreviewCollectionList.get(position).getUseraveragereview());
+           holder.mRatingValue.setText(mreviewCollectionList.get(position).getUseraveragereview().toString() + " of 5");
+           holder.mreview.setText(mreviewCollectionList.get(position).getMessage());
+       }
         }
 
     // getItemCount() is called many times, and when it is first called,

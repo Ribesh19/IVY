@@ -10,18 +10,21 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
+
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
+
+import android.widget.AdapterView;
 import android.widget.Button;
 
 import android.widget.ImageButton;
-import android.Manifest;
+
 
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.ribeshmaharjan.ivy.model.School;
+import com.example.ribeshmaharjan.ivy.model.SchoolResponse;
 import com.example.ribeshmaharjan.ivy.model.city;
 import com.example.ribeshmaharjan.ivy.model.cityresponse;
 import com.example.ribeshmaharjan.ivy.rest.ApiClient;
@@ -30,18 +33,19 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.places.GeoDataClient;
 import com.google.android.gms.location.places.PlaceDetectionClient;
-import com.google.android.gms.location.places.PlaceLikelihood;
-import com.google.android.gms.location.places.PlaceLikelihoodBufferResponse;
+
 import com.google.android.gms.location.places.Places;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 
 import com.google.android.gms.maps.model.MapStyleOptions;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -49,7 +53,7 @@ import com.google.android.gms.tasks.Task;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
+
 import java.util.Objects;
 
 import retrofit2.Call;
@@ -68,6 +72,10 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     // The entry points to the Places API.
     private GeoDataClient mGeoDataClient;
     private PlaceDetectionClient mPlaceDetectionClient;
+    List<city> citieslist;
+    //List<School> schoolslist2=null;
+    List<School> schoolslist2=ListingHelpFragment.schoolListformap;
+    LatLng latLng=SchoollistAdapter.latLng;
 
     // The entry point to the Fused Location Provider.
     private FusedLocationProviderClient mFusedLocationProviderClient;
@@ -87,16 +95,13 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     private static final String KEY_CAMERA_POSITION = "camera_position";
     private static final String KEY_LOCATION = "location";
 
-    // Used for selecting the current place.
-    private static final int M_MAX_ENTRIES = 5;
-    private String[] mLikelyPlaceNames;
-    private String[] mLikelyPlaceAddresses;
-    private String[] mLikelyPlaceAttributions;
-    private LatLng[] mLikelyPlaceLatLngs;
+
 
     private static String URL1 = "https://api.ivyschool.in/api/getcity";
 
     ArrayList<String> list=new ArrayList<>();
+    final ApiInterface apiInterface=ApiClient.getClient().create(ApiInterface.class);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,24 +114,68 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         // Retrieve the content view that renders the map.
         setContentView(R.layout.activity_map);
 
+
+
         spinner=findViewById(R.id.spinner_mapview);
-        ApiInterface apiInterface=ApiClient.getClient().create(ApiInterface.class);
+
         Call<cityresponse> call= apiInterface.getcity();
+
         call.enqueue(new Callback<cityresponse>() {
             @Override
             public void onResponse(@NonNull Call<cityresponse> call, @NonNull retrofit2.Response<cityresponse> response) {
                 assert response.body() != null;
-                int statuscode=response.code();
-                List<city> cities=response.body().getResults();
-                Log.d(TAG, "Number of movies received: " + cities.size());
-                SpinnerAdapter adapter=new SpinnerAdapter(MapActivity.this,R.layout.spinner_layout,R.id.spinner_txt_item,cities);
-                spinner.setAdapter(adapter);
-            }
+                int statuscode = response.code();
+                citieslist = response.body().getResults();
+                Log.d(TAG, "Number of cities received: " + citieslist.size());
+                if(citieslist!=null) {
+                    SpinnerAdapter adapter = new SpinnerAdapter(MapActivity.this, R.layout.spinner_layout, R.id.spinner_txt_item, citieslist);
+                    spinner.setAdapter(adapter);
+                }
+                else
+                {
+                    SpinnerAdapter adapter = new SpinnerAdapter(MapActivity.this, R.layout.spinner_layout, R.id.spinner_txt_item, citieslist);
+                    spinner.setAdapter(adapter);
+                }
 
+            }
             @Override
             public void onFailure(@NonNull Call<cityresponse> call, @NonNull Throwable t) {
                 Log.e(TAG, t.toString());
 
+            }
+        });
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                // String city = adapterView.getItemAtPosition(spinner.getSelectedItemPosition()).toString();
+                // String cityname=adapterView.getSelectedItem().toString();
+                int city = spinner.getSelectedItemPosition();
+                if (citieslist != null) {
+                    String cityname = citieslist.get(city).getCity();
+                    //Toast.makeText(getContext(), cityname, Toast.LENGTH_LONG).show();
+                    Call<SchoolResponse> call1 = apiInterface.getschools(cityname);
+                    call1.enqueue(new Callback<SchoolResponse>() {
+                        @Override
+                        public void onResponse(@NonNull Call<SchoolResponse> call1, @NonNull retrofit2.Response<SchoolResponse> response) {
+                            //Toast.makeText(MapActivity.this, " Success", Toast.LENGTH_LONG).show();
+                            assert response.body() != null;
+                            schoolslist2 = response.body().getResults();
+                            updateLocationUI();
+
+                            //addmarkers(schoolslist);
+                        }
+
+                        @Override
+                        public void onFailure(@NonNull Call<SchoolResponse> call1, @NonNull Throwable t) {
+                            //Toast.makeText(getContext(),t.getCause().getMessage(),Toast.LENGTH_LONG).show();
+                        }
+                    });
+                }
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                // DO Nothing here
             }
         });
 
@@ -138,24 +187,14 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                 startActivity(intent);
             }
         });
-
-       /* spinner=findViewById(R.id.spinner_mapview);
-        ArrayList<ItemData> list=new ArrayList<>();
-        list.add(new ItemData("Delhi"));
-        list.add(new ItemData("Hauz Khas"));
-        list.add(new ItemData("Lajpat Nagar"));
-        list.add(new ItemData("Greater Kailash"));
-        list.add(new ItemData("Rangpuri"));
-        list.add(new ItemData("Noida"));*/
-
-
         mListview=findViewById(R.id.btn_listview);
         mListview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                // Toast.makeText(MapActivity.this,"List view",Toast.LENGTH_LONG).show();
-                Intent intent1=new Intent(MapActivity.this,MainLayoutActivity.class);
-                startActivity(intent1);
+                /*Intent intent1=new Intent(MapActivity.this,MainLayoutActivity.class);
+                startActivity(intent1);*/
+                MapActivity.super.onBackPressed();
             }
         });
 
@@ -173,9 +212,11 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
         // Build the map.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+        final SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         Objects.requireNonNull(mapFragment).getMapAsync(this);
+
+
 
     }
 
@@ -190,35 +231,6 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
             super.onSaveInstanceState(outState);
         }
     }
-
-    /**
-     * Sets up the options menu.
-     * @param menu The options menu.
-     * @return Boolean.
-     */
-   /* @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.current_place_menu, menu);
-        return true;
-    }
-
-    *//**
-     * Handles a click on the menu option to get a place.
-     * @param item The menu item to handle.
-     * @return Boolean.
-     *//*
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.option_get_place) {
-            showCurrentPlace();
-        }
-        return true;
-    }*/
-
-    /**
-     * Manipulates the map when it's available.
-     * This callback is triggered when the map is ready to be used.
-     */
     @Override
     public void onMapReady(GoogleMap map) {
         mMap = map;
@@ -238,38 +250,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
             Log.e(TAG, "Can't find style file. Error: ", e);
         }
         mMap.setPadding(0,200,32,0);
-       //LatLng pinewood = new LatLng(37.430610, -122.104842);
-       // mMap.addMarker(new MarkerOptions().position(pinewood).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
 
-        // Use a custom info window adapter to handle multiple lines of text in the
-        // info window contents.
-       /* mMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
-
-            @Override
-            // Return null here, so that getInfoContents() is called next.
-            public View getInfoWindow(Marker arg0) {
-                return null;
-            }
-
-            @Override
-            public View getInfoContents(Marker marker) {
-                // Inflate the layouts for the info window, title and snippet.
-               *//* View infoWindow = getLayoutInflater().inflate(R.layout.custom_info_contents,
-                        (FrameLayout) findViewById(R.id.map), false);
-
-                TextView title = ((TextView) infoWindow.findViewById(R.id.title));
-                title.setText(marker.getTitle());
-
-                TextView snippet = ((TextView) infoWindow.findViewById(R.id.snippet));
-                snippet.setText(marker.getSnippet());
-
-                return infoWindow;*//*
-            }
-
-
-
-
-        });*/
 
         // Prompt the user for permission.
         getLocationPermission();
@@ -277,10 +258,20 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         updateLocationUI();
         // Get the current location of the device and set the position of the map.
         getDeviceLocation();
+       // Marker visibilemarkers = new Marker().addmarkers(schoolslist2);
+        //addmarkers(schoolslist2);
 
+        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
 
+                marker.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.icon_selected_geo));
+                return false;
+            }
+        });
 
-    }
+}
+
 
     /**
      * Gets the current location of the device, and positions the map's camera.
@@ -302,6 +293,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
                                     new LatLng(Objects.requireNonNull(mLastKnownLocation).getLatitude(),
                                             mLastKnownLocation.getLongitude()), DEFAULT_ZOOM));
+                            latLng=new LatLng(mLastKnownLocation.getLatitude(),mLastKnownLocation.getLongitude());
                         } else {
                             Log.d(TAG, "Current location is null. Using defaults.");
                             Log.e(TAG, "Exception: %s", task.getException());
@@ -358,8 +350,6 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
             getDeviceLocation();
             updateLocationUI();
         }
-
-
     }
 
     /**
@@ -370,67 +360,6 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         if (mMap == null) {
             return;
         }
-        /*if (mLocationPermissionGranted) {
-            // Get the likely places - that is, the businesses and other points of interest that
-            // are the best match for the device's current location.
-            @SuppressWarnings("MissingPermission") final
-            Task<PlaceLikelihoodBufferResponse> placeResult =
-                    mPlaceDetectionClient.getCurrentPlace(null);
-            placeResult.addOnCompleteListener
-                    (new OnCompleteListener<PlaceLikelihoodBufferResponse>() {
-                        @Override
-                        public void onComplete(@NonNull Task<PlaceLikelihoodBufferResponse> task) {
-                            if (task.isSuccessful() && task.getResult() != null) {
-                                PlaceLikelihoodBufferResponse likelyPlaces = task.getResult();
-
-                                // Set the count, handling cases where less than 5 entries are returned.
-                                int count;
-                                if (likelyPlaces.getCount() < M_MAX_ENTRIES) {
-                                    count = likelyPlaces.getCount();
-                                } else {
-                                    count = M_MAX_ENTRIES;
-                                }
-
-                                int i = 0;
-                                mLikelyPlaceNames = new String[count];
-                                mLikelyPlaceAddresses = new String[count];
-                                mLikelyPlaceAttributions = new String[count];
-                                mLikelyPlaceLatLngs = new LatLng[count];
-
-                                for (PlaceLikelihood placeLikelihood : likelyPlaces) {
-                                    // Build a list of likely places to show the user.
-                                    mLikelyPlaceNames[i] = (String) placeLikelihood.getPlace().getName();
-                                    mLikelyPlaceAddresses[i] = (String) placeLikelihood.getPlace()
-                                            .getAddress();
-                                    mLikelyPlaceAttributions[i] = (String) placeLikelihood.getPlace()
-                                            .getAttributions();
-                                    mLikelyPlaceLatLngs[i] = placeLikelihood.getPlace().getLatLng();
-
-                                    i++;
-                                    if (i > (count - 1)) {
-                                        break;
-                                    }
-                                }
-
-                                // Release the place likelihood buffer, to avoid memory leaks.
-                                likelyPlaces.release();
-
-                                // Show a dialog offering the user the list of likely places, and add a
-                                // marker at the selected place.
-                                openPlacesDialog();
-
-                            } else {
-                                Log.e(TAG, "Exception: %s", task.getException());
-                            }
-                        }
-                    });
-        } else {
-            // The user has not granted permission.
-            Log.i(TAG, "The user did not grant location permission.");
-
-            // Add a default marker, because the user hasn't selected a place.
-
-        }*/
         mMap.addMarker(new MarkerOptions()
                 .title(getString(R.string.default_info_title))
                 .position(mDefaultLocation)
@@ -439,44 +368,6 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
        //getLocationPermission();
     }
 
-   /* *//**
-     * Displays a form allowing the user to select a place from a list of likely places.
-     *//*
-    private void openPlacesDialog() {
-        // Ask the user to choose the place where they are now.
-        DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                // The "which" argument contains the position of the selected item.
-                LatLng markerLatLng = mLikelyPlaceLatLngs[which];
-                String markerSnippet = mLikelyPlaceAddresses[which];
-                if (mLikelyPlaceAttributions[which] != null) {
-                    markerSnippet = markerSnippet + "\n" + mLikelyPlaceAttributions[which];
-                }
-
-                // Add a marker for the selected place, with an info window
-                // showing information about that place.
-                mMap.addMarker(new MarkerOptions()
-                        .title(mLikelyPlaceNames[which])
-                        .position(markerLatLng)
-                        .snippet(markerSnippet));
-
-                // Position the map's camera at the location of the marker.
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(markerLatLng,
-                        DEFAULT_ZOOM));
-            }
-        };
-
-        // Display the dialog.
-        AlertDialog dialog = new AlertDialog.Builder(this)
-                .setTitle("Pick Place")
-                .setItems(mLikelyPlaceNames, listener)
-                .show();
-    }*/
-
-    /**
-     * Updates the map's UI settings based on whether the user has granted location permission.
-     */
     private void updateLocationUI() {
         if (mMap == null) {
 
@@ -487,6 +378,21 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                 mMap.setMyLocationEnabled(true);
                 mMap.getUiSettings().setMyLocationButtonEnabled(true);
                 mMap.getUiSettings().setZoomControlsEnabled(true);
+                if(schoolslist2.size()!=0) {
+                    mMap.clear();
+                    for (int i = 0; i < schoolslist2.size(); i++) {
+                        Double distance = (getDistanceBetween(latLng.latitude,
+                                latLng.longitude,schoolslist2.get(i).getLatitude(),schoolslist2.get(i).getLongitude()))/1000;
+                        LatLng latLng = new LatLng(schoolslist2.get(i).getLatitude(), schoolslist2.get(i).getLongitude());
+                        // Toast.makeText(getApplicationContext(), latLng.toString(), Toast.LENGTH_SHORT).show();
+                        Marker marker=mMap.addMarker(new MarkerOptions().position(latLng).title(schoolslist2.get(i).getName()).draggable(false)
+                        .snippet(String.format("%.2f",distance)+" "+"Km from you"));
+                        marker.setTag(schoolslist2.get(i).getId());
+                        //mMap.addMarker(new MarkerOptions().position(latLng).title(schoolslist2.get(i).getName()).draggable(false));
+
+                    }
+
+                }
             } else {
                 mMap.setMyLocationEnabled(false);
                 mMap.getUiSettings().setMyLocationButtonEnabled(false);
@@ -497,5 +403,14 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
             Log.e("Exception: %s", e.getMessage());
         }
     }
+public static Double getDistanceBetween(double lat1, double lon1, double lat2, double lon2) {
+    if (lat1 == 0 || lat2 == 0)
+        return null;
+    float[] result = new float[1];
+    Location.distanceBetween(lat1, lon1,
+            lat2, lon2, result);
+    return (double) result[0];
+}
+
 }
 

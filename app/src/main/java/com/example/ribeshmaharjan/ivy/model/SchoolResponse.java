@@ -19,6 +19,11 @@ public class SchoolResponse {
     @Expose
     private School request;
 
+    @SerializedName("message")
+    @Expose
+    private String message;
+
+
     public Integer getStatus() {
         return status;
     }
@@ -51,4 +56,11 @@ public class SchoolResponse {
         this.request = request;
     }
 
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 }

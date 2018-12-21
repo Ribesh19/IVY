@@ -17,7 +17,6 @@ import com.example.ribeshmaharjan.ivy.model.ReviewResponse;
 import com.example.ribeshmaharjan.ivy.rest.ApiClient;
 import com.example.ribeshmaharjan.ivy.rest.ApiInterface;
 
-import java.util.List;
 import java.util.Objects;
 
 import retrofit2.Call;
@@ -63,10 +62,19 @@ public class AllReviewAcitivity extends AppCompatActivity {
                 assert response.body() != null;
                 review=response.body().getResults();
                 mprogressBar_reviews.setVisibility(View.GONE);
-                mrating_security_allreview.setRating(review.getSecurityaverage());
-                mrating_qualified_staff_allreview.setRating(review.getStaffaverage());
-                mrating_infrastructure_allreview.setRating(review.getInfrastructureaverage());
-                mrating_curriculum_allreview.setRating(review.getCurriculumaverage());
+                if (review.getSecurityaverage()!=null) {
+                    mrating_security_allreview.setRating(review.getSecurityaverage());
+                    mrating_qualified_staff_allreview.setRating(review.getStaffaverage());
+                    mrating_infrastructure_allreview.setRating(review.getInfrastructureaverage());
+                    mrating_curriculum_allreview.setRating(review.getCurriculumaverage());
+                }
+                else
+                {
+                    mrating_security_allreview.setRating(0);
+                    mrating_qualified_staff_allreview.setRating(0);
+                    mrating_infrastructure_allreview.setRating(0);
+                    mrating_curriculum_allreview.setRating(0);
+                }
                 final ReviewAdapter recyclerview_adapter1 = new ReviewAdapter(Objects.requireNonNull(getApplicationContext()),review.getReviews());
                 recyclerView.setAdapter(recyclerview_adapter1);
             }

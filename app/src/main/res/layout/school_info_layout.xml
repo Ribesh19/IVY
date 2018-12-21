@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/card_view_clicked"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -35,16 +33,18 @@
 
             <TextView
                 android:id="@+id/nameTxt"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="4dp"
-                android:text="@string/ivy_komal_pre_school"
+                android:layout_marginEnd="16dp"
                 android:fontFamily="@font/montserrat_regular"
+                android:letterSpacing="0.06"
+                android:text="@string/ivy_komal_pre_school"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:letterSpacing="0.06"
+                app:layout_constraintEnd_toStartOf="@+id/rating_list"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -53,17 +53,14 @@
                 style="?android:attr/ratingBarStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
                 android:isIndicator="true"
                 android:numStars="5"
-                android:stepSize="0.5"
                 android:rating="4.5"
+                android:stepSize="0.5"
+                android:theme="@style/AppTheme2"
                 app:layout_constraintBottom_toBottomOf="@+id/nameTxt"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.84"
-                app:layout_constraintStart_toEndOf="@+id/nameTxt"
-                app:layout_constraintTop_toTopOf="@+id/nameTxt"
-                android:theme="@style/AppTheme2"/>
+                app:layout_constraintTop_toTopOf="@+id/nameTxt" />
          <!--   <RatingBar
                 android:id="@+id/rating_list"
                 style="@style/ImageRatingBar"

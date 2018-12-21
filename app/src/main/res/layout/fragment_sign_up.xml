@@ -33,7 +33,6 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/edit_text_signup_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/name1"
@@ -53,7 +52,6 @@
             app:layout_constraintTop_toBottomOf="@+id/signup_name">
 
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/edit_text_signup_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/email2"
@@ -73,7 +71,6 @@
             app:layout_constraintTop_toBottomOf="@+id/signup_email">
 
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/edit_text_signup_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/password"
@@ -93,7 +90,6 @@
             app:layout_constraintTop_toBottomOf="@+id/signup_password">
 
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/edit_text_signup_confirmpassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/confirm_password"

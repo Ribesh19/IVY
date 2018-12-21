@@ -59,7 +59,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <com.synnapps.carouselview.CarouselView
+            <!--<com.synnapps.carouselview.CarouselView
                 android:id="@+id/imageView2"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
@@ -71,13 +71,24 @@
                 android:src="@drawable/preschool_img"
                 app:disableAutoPlayOnUserInteraction="true"
                 app:fillColor="#FFFFFFFF"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guideline"
                 app:pageColor="#00000000"
                 app:radius="4dp"
-                app:slideInterval="3000" />
+                app:slideInterval="3000" />-->
+
+        <ir.apend.slider.ui.Slider
+            android:id="@+id/imageView2"
+            android:layout_width="match_parent"
+            android:layout_height="190dip"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="24dp"
+            app:indicatorSize="8dp"
+            app:intervalSecond="5"
+            app:loopSlides="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline"/>
 
             <TextView
                 android:id="@+id/txtview_status_2"
@@ -161,18 +172,16 @@
 
 
                 <Button
-                    android:id="@+id/btn_call"
                     android:layout_width="36dp"
                     android:layout_height="36dp"
                     android:layout_marginStart="6dp"
                     android:layout_marginEnd="6dp"
                     android:background="@drawable/ic_circle_green"
                     android:drawableStart="@drawable/ic_call_icon"
-                    android:paddingStart="7dp"
-                    android:paddingEnd="6dp" />
+                    android:paddingStart="9dp"
+                    android:paddingEnd="8dp" />
 
                 <Button
-                    android:id="@+id/btn_map"
                     android:layout_width="36dp"
                     android:layout_height="36dp"
                     android:layout_marginStart="6dp"
@@ -180,7 +189,7 @@
                     android:background="@drawable/ic_circle_blue"
                     android:drawableStart="@drawable/ic_location_icon_blue"
                     android:fontFamily="@font/montserrat_regular"
-                    android:paddingStart="7dp"
+                    android:paddingStart="9dp"
                     android:paddingEnd="6dp" />
 
                 <ToggleButton
@@ -192,7 +201,7 @@
                     android:background="@drawable/ic_circle"
                     android:drawableStart="@drawable/ic_icon_favourite"
                     android:fontFamily="@font/montserrat_regular"
-                    android:paddingStart="7dp"
+                    android:paddingStart="9dp"
                     android:paddingEnd="6dp" />
 
                 <Button
@@ -204,7 +213,7 @@
                     android:background="@drawable/ic_circle_yellow"
                     android:drawableStart="@drawable/ic_create_black_24dp"
                     android:fontFamily="@font/montserrat_regular"
-                    android:paddingStart="7dp"
+                    android:paddingStart="9dp"
                     android:paddingEnd="6dp" />
             </LinearLayout>
 
@@ -593,7 +602,6 @@
     </android.support.constraint.ConstraintLayout>
     </ScrollView>
     <LinearLayout
-        android:id="@+id/btn_linear_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
