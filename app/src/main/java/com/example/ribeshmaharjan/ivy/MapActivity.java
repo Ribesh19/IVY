@@ -2,6 +2,7 @@ package com.example.ribeshmaharjan.ivy;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.location.Location;
@@ -63,6 +64,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     Button mListview;
     Spinner spinner;
     ImageButton msignup;
+    SharedPreferences prefs;
 
     private GoogleMap mMap;
 
@@ -162,6 +164,9 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                             assert response.body() != null;
                             schoolslist2 = response.body().getResults();
                             updateLocationUI();
+                            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
+                                    new LatLng(Objects.requireNonNull(mLastKnownLocation).getLatitude(),
+                                            mLastKnownLocation.getLongitude()), 12));
 
                             //addmarkers(schoolslist);
                         }
@@ -183,8 +188,20 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         msignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(MapActivity.this,RegisterActivity.class);
-                startActivity(intent);
+                prefs = getSharedPreferences("mypref", MODE_PRIVATE);
+                boolean Islogin=prefs.getBoolean("Islogin",false);
+                if(Islogin)
+                {
+                    Intent intent2=new Intent(MapActivity.this,UserDetailActivity.class);
+                    startActivity(intent2);
+                }
+                else
+                {
+
+                    Intent intent1=new Intent(MapActivity.this,RegisterActivity.class);
+                    startActivity(intent1);
+                }
+
             }
         });
         mListview=findViewById(R.id.btn_listview);
@@ -236,7 +253,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         mMap = map;
 
 
-        try {
+        /*try {
             // Customize the styling of the base map using a JSON object defined
             // in a raw resource file.
             boolean success = mMap.setMapStyle(
@@ -248,7 +265,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
             }
         } catch (Resources.NotFoundException e) {
             Log.e(TAG, "Can't find style file. Error: ", e);
-        }
+        }*/
         mMap.setPadding(0,200,32,0);
 
 
@@ -266,6 +283,9 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
             public boolean onMarkerClick(Marker marker) {
 
                 marker.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.icon_selected_geo));
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
+                        new LatLng(Objects.requireNonNull(marker.getPosition().latitude),
+                                marker.getPosition().longitude), DEFAULT_ZOOM));
                 return false;
             }
         });
@@ -375,12 +395,13 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         }
         try {
             if (mLocationPermissionGranted) {
+                int i;
                 mMap.setMyLocationEnabled(true);
                 mMap.getUiSettings().setMyLocationButtonEnabled(true);
                 mMap.getUiSettings().setZoomControlsEnabled(true);
                 if(schoolslist2.size()!=0) {
                     mMap.clear();
-                    for (int i = 0; i < schoolslist2.size(); i++) {
+                    for (i = 0; i < schoolslist2.size(); i++) {
                         Double distance = (getDistanceBetween(latLng.latitude,
                                 latLng.longitude,schoolslist2.get(i).getLatitude(),schoolslist2.get(i).getLongitude()))/1000;
                         LatLng latLng = new LatLng(schoolslist2.get(i).getLatitude(), schoolslist2.get(i).getLongitude());
@@ -391,6 +412,8 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                         //mMap.addMarker(new MarkerOptions().position(latLng).title(schoolslist2.get(i).getName()).draggable(false));
 
                     }
+
+
 
                 }
             } else {

@@ -33,6 +33,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static android.content.Context.MODE_APPEND;
 import static android.content.Context.MODE_PRIVATE;
 
 
@@ -45,6 +46,7 @@ public class LoginFragment extends Fragment {
     TextInputLayout mlogin_password;
 
     LoginResults loginResults;
+    SharedPreferences.Editor editor;
 
 
 
@@ -93,10 +95,12 @@ public class LoginFragment extends Fragment {
                             {
                                 Toast.makeText(getContext(),"Login Valid",Toast.LENGTH_LONG).show();
                                 loginResults=response.body().getResults();
-                                SharedPreferences.Editor editor = getActivity().getSharedPreferences("mypref", MODE_PRIVATE).edit();
-                                editor.putInt("id",loginResults.getId());
+                                editor = getActivity().getSharedPreferences("mypref", MODE_PRIVATE).edit();
+                                editor.putString("id",loginResults.getId());
                                 editor.putString("name",loginResults.getName());
                                 editor.putString("email",loginResults.getEmail());
+                                editor.putString("image",loginResults.getAvatar());
+                                editor.putBoolean("Islogin", true);
                                 editor.apply();
                                 Objects.requireNonNull(LoginFragment.super.getActivity()).onBackPressed();
                             }

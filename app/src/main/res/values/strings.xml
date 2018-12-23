@@ -77,6 +77,8 @@
 
     <string name="facebook_app_id">2259222424363790</string>
     <string name="fb_login_protocol_scheme">fb2259222424363790</string>
+    <string name="search_result">Search Result</string>
+    <string name="logout">LogOut</string>
 
 
 </resources>

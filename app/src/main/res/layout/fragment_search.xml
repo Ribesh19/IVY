@@ -73,7 +73,7 @@
         android:fontFamily="@font/montserrat_regular"
         android:gravity="start"
         android:letterSpacing="0.05"
-        android:text="Rearch Result"
+        android:text="@string/search_result"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="18sp"
         android:textStyle="bold"

@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ribeshmaharjan.ivy.model.Featured;
@@ -40,6 +41,7 @@ public class SearchFragment extends Fragment {
     SearchView msearchView_location;
     List<Featured> featuredList=null;
     List<School> schoolslist=null;
+    TextView mrecentsearch;
 
 
 
@@ -57,6 +59,8 @@ public class SearchFragment extends Fragment {
         final View rootview= inflater.inflate(R.layout.fragment_search, container, false);
         final RecyclerView recyclerView =rootview.findViewById(R.id.recentsearch_recyclerview);
         final RecyclerView recyclerView1 =rootview.findViewById(R.id.recommendation_recyclerview);
+        mrecentsearch=rootview.findViewById(R.id.recentsearch);
+        mrecentsearch.setVisibility(View.GONE);
         msearchView_location=rootview.findViewById(R.id.search_location);
         msearchView_school_name=rootview.findViewById(R.id.search_school);
        msearchView_location.setIconified(false);
@@ -91,6 +95,7 @@ public class SearchFragment extends Fragment {
                  search_schoolresposne.enqueue(new Callback<SchoolResponse>() {
                      @Override
                      public void onResponse(@NonNull Call<SchoolResponse> call, @NonNull Response<SchoolResponse> response) {
+                         mrecentsearch.setVisibility(View.VISIBLE);
                          assert response.body() != null;
                          int statuscode=response.code();
                          if(statuscode==200) {
@@ -124,6 +129,7 @@ public class SearchFragment extends Fragment {
                      @Override
                      public void onResponse(@NonNull Call<SchoolResponse> call, @NonNull Response<SchoolResponse> response) {
                          assert response.body() != null;
+                         mrecentsearch.setVisibility(View.VISIBLE);
                          int statuscode=response.code();
                          if(statuscode==200) {
                              schoolslist = response.body().getResults();

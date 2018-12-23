@@ -93,29 +93,18 @@ public class RatingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 SharedPreferences prefs = getSharedPreferences("mypref", MODE_PRIVATE);
-               Integer id  = prefs.getInt("name", 1);
+                String id  = prefs.getString("name", "1");
                 String name = prefs.getString("name", "");
                 String email = prefs.getString("email","");
+                boolean IsLogin= prefs.getBoolean("Islogin",false);
                 String addinfo= madditional_info_rating.getEditText().getText().toString();
                 Toast.makeText(RatingActivity.this,name + email, Toast.LENGTH_LONG).show();
-                if(name.equals(""))
+                if(IsLogin)
                 {
 
-                    LayoutInflater inflater = getLayoutInflater();
-                    View layout = inflater.inflate(R.layout.toast_pleaselogin_layout, (ViewGroup) findViewById(R.id.toast_layout_card_login));
-                    Toast toast = new Toast(getApplicationContext());
-                    toast.setGravity(Gravity.CENTER_VERTICAL, 0, 400);
-                    toast.setDuration(Toast.LENGTH_SHORT);
-                    toast.setView(layout);
-                    toast.show();
-                    Intent intent= new Intent(RatingActivity.this,RegisterActivity.class);
-                    startActivity(intent);
-                }
-                else
-                {
                     ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
                     final Call<RatingResponse> ratingResponseCall=apiInterface.postreview(schoolid,1
-                    ,mratingBarInput.getRating(),mQualified_staff_rating_input.getRating(),minfrastructure_rating_input.getRating(),
+                            ,mratingBarInput.getRating(),mQualified_staff_rating_input.getRating(),minfrastructure_rating_input.getRating(),
                             mcurriculum_rating_input.getRating(),addinfo);
                     ratingResponseCall.enqueue(new Callback<RatingResponse>() {
                         @Override
@@ -130,6 +119,20 @@ public class RatingActivity extends AppCompatActivity {
 
                         }
                     });
+
+
+                }
+                else
+                {
+                    LayoutInflater inflater = getLayoutInflater();
+                    View layout = inflater.inflate(R.layout.toast_pleaselogin_layout, (ViewGroup) findViewById(R.id.toast_layout_card_login));
+                    Toast toast = new Toast(getApplicationContext());
+                    toast.setGravity(Gravity.CENTER_VERTICAL, 0, 400);
+                    toast.setDuration(Toast.LENGTH_SHORT);
+                    toast.setView(layout);
+                    toast.show();
+                    Intent intent= new Intent(RatingActivity.this,RegisterActivity.class);
+                    startActivity(intent);
 
                 }
 

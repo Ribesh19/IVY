@@ -1,6 +1,7 @@
 package com.example.ribeshmaharjan.ivy;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 
@@ -36,7 +37,7 @@ import com.example.ribeshmaharjan.ivy.rest.ApiInterface;
 import retrofit2.Call;
 import retrofit2.Callback;
 
-
+import static android.content.Context.MODE_PRIVATE;
 
 
 /**
@@ -48,6 +49,9 @@ public class ListingHelpFragment extends Fragment {
     Button mbtnmapview;
     ImageButton mbtnsignuplogin;
     ProgressBar progressBar;
+
+    SharedPreferences prefs;
+
 
 
     private static final String TAG =" Fragment";
@@ -74,6 +78,8 @@ public class ListingHelpFragment extends Fragment {
         final RecyclerView recyclerView =rootview.findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(Objects.requireNonNull(getActivity()).getApplicationContext()));
         progressBar.setVisibility(View.VISIBLE);
+
+
         final ApiInterface apiInterface=ApiClient.getClient().create(ApiInterface.class);
 
             if (citieslist==null) {
@@ -124,7 +130,7 @@ public class ListingHelpFragment extends Fragment {
                            progressBar.setVisibility(View.GONE);
                            if(spinner.getSelectedItemPosition()==0)
                            {
-                               Toast.makeText(getContext(), "Kathmandu Success", Toast.LENGTH_LONG).show();
+                              // Toast.makeText(mcontext, "Kathmandu Success", Toast.LENGTH_LONG).show();
                                schoolListformap=response.body().getResults();
                            }
                            schoolslist = response.body().getResults();
@@ -157,10 +163,25 @@ public class ListingHelpFragment extends Fragment {
         mbtnsignuplogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(getActivity(),RegisterActivity.class);
-                startActivity(intent);
+                prefs = getActivity().getSharedPreferences("mypref", MODE_PRIVATE);
+                boolean Islogin=prefs.getBoolean("Islogin",false);
+                if(Islogin)
+                {
+                    Intent intent2=new Intent(getActivity(),UserDetailActivity.class);
+                    startActivity(intent2);
+                }
+                else
+                {
+
+                    Intent intent1=new Intent(getActivity(),RegisterActivity.class);
+                    startActivity(intent1);
+                }
+
+
             }
         });
+
+
 
         return rootview;
     }

@@ -66,6 +66,7 @@ public class SchoollistAdapter extends RecyclerView.Adapter<SchoollistAdapter.In
         TextView mStatus;
         TextView mDistance;
         ImageButton mPrice;
+        TextView mtxtview_status;
         Slider slider;
 
         private InfoViewHolder(View itemView) {
@@ -77,6 +78,7 @@ public class SchoollistAdapter extends RecyclerView.Adapter<SchoollistAdapter.In
             mStatus = itemView.findViewById(R.id.txtview_status);
             mDistance = itemView.findViewById(R.id.txtview_distance);
             mPrice = itemView.findViewById(R.id.btn_viewprice);
+            mtxtview_status=itemView.findViewById(R.id.txtview_status);
 
 
         }
@@ -170,7 +172,8 @@ public class SchoollistAdapter extends RecyclerView.Adapter<SchoollistAdapter.In
         //holder.mDistance.setText(getDistanceBetween(37.422,-122.084, mschools.get(position).getLatitude(), mschools.get(position).getLongitude()).toString());
        // holder.mDistance.setText("0.4 Km from you");
         holder.mDistance.setTypeface(typeface);
-        holder.mStatus.setText("Open");
+        //holder.mStatus.setText("Open");
+        holder.mStatus.setText(mschools.get(position).getOpeningtime() + " - "+ mschools.get(position).getClosingtime());
         holder.mDistance.setTypeface(typeface);
 
         // Toast.makeText(mcontext,imagelist.get(position),Toast.LENGTH_LONG).show();
@@ -202,6 +205,17 @@ public class SchoollistAdapter extends RecyclerView.Adapter<SchoollistAdapter.In
                 intent.putExtra("schoolID", mschools.get(position).getId());
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 mcontext.startActivity(intent);
+            }
+        });
+
+        holder.mSchoolName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent2 = new Intent(mcontext.getApplicationContext(), DetailActivity.class);
+                intent2.putExtra("schoolID", mschools.get(position).getId());
+                intent2.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                mcontext.startActivity(intent2);
+
             }
         });
     }

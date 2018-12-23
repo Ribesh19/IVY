@@ -1,6 +1,8 @@
 package com.example.ribeshmaharjan.ivy;
 
 import android.content.Context;
+import android.content.Intent;
+import android.location.Location;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,17 +10,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.ribeshmaharjan.ivy.model.Detail;
 import com.example.ribeshmaharjan.ivy.model.DetailResponse;
 import com.example.ribeshmaharjan.ivy.model.FavouriteResults;
 import com.example.ribeshmaharjan.ivy.rest.ApiClient;
 import com.example.ribeshmaharjan.ivy.rest.ApiInterface;
+import com.google.android.gms.location.LocationListener;
+import com.google.android.gms.maps.model.LatLng;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import ir.apend.slider.model.Slide;
+import ir.apend.slider.ui.Slider;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -27,11 +36,14 @@ public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.Info
 
     Context mcontext;
     List<FavouriteResults> mfavouriteResultsList;
+    LatLng latLng=SchoollistAdapter.latLng;
+
+
 
     class InfoViewHolder extends RecyclerView.ViewHolder {
-        ImageView mSchoolImage;
+        Slider mSchoolImage;
         TextView mSchoolName;
-        //RatingBar mRatingbar;
+        RatingBar mRatingbar;
         TextView mStatus;
         TextView mDistance;
         ImageButton mPrice;
@@ -43,7 +55,7 @@ public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.Info
             super(itemView);
             mSchoolImage=  itemView.findViewById(R.id.imageView_favourite1);
             mSchoolName=itemView.findViewById(R.id.school_name_favourtie);
-            //mRatingbar=itemView.findViewById(R.id.rating_list);
+            mRatingbar=itemView.findViewById(R.id.rating_bar_favourite);
             mStatus=itemView.findViewById(R.id.txtview_status_favourite);
             mDistance=itemView.findViewById(R.id.txtview_distance_favourite);
 
@@ -79,9 +91,35 @@ public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.Info
         call_detailing.enqueue(new Callback<DetailResponse>() {
             @Override
             public void onResponse(@NonNull Call<DetailResponse> call, @NonNull Response<DetailResponse> response) {
-                assert response.body() != null;
-                Detail detail = response.body().getResults();
+                //assert response.body() != null;
+                final Detail detail = response.body().getResults();
                 holder.mSchoolName.setText(detail.getName());
+                holder.mStatus.setText(detail.getOpeningtime() + " - "+ detail.getClosingtime());
+                Double distance = (getDistanceBetween(latLng.latitude, latLng.longitude,
+                        detail.getLatitude(),detail.getLongitude()))/1000;
+                if(distance<0==false)
+                {
+                    holder.mDistance.setText(String.format("%.2f",distance)+" "+"Km from you");
+                }
+                List<Slide> slideList2 = new ArrayList<>();
+                slideList2.add((new Slide(0, detail.getImages().get(0), mcontext.getResources().getDimensionPixelSize(R.dimen.slider_image_corner))));
+                holder.mSchoolImage.addSlides(slideList2);
+                if(detail.getSchoolaverage()!=null) {
+                    holder.mRatingbar.setRating(detail.getSchoolaverage());
+                }
+                else
+                {
+                    holder.mRatingbar.setRating(0);
+                }
+                holder.mSchoolName.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent2 = new Intent(mcontext.getApplicationContext(), DetailActivity.class);
+                        intent2.putExtra("schoolID", detail.getId());
+                        intent2.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        mcontext.startActivity(intent2);
+                    }
+                });
 
             }
 
@@ -93,11 +131,12 @@ public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.Info
 
 
         /*holder.mSchoolImage.setImageResource(mImageIds.get(position));*/
-        holder.mSchoolImage.setBackgroundResource(R.drawable.mother_newborn);
+       // holder.mSchoolImage.setBackgroundResource();
         //holder.mSchoolName.setText(mfavouriteResultsList.get(position).);
         // holder.mRatingbar.setRating(2);
-        holder.mDistance.setText("0.4 KM");
-        holder.mStatus.setText("Open");
+        //holder.mDistance.setText("0.4 KM");
+       // holder.mStatus.setText("Open");
+
 
 
 
@@ -114,6 +153,14 @@ public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.Info
         return mfavouriteResultsList.size();
     }
 
+    public static Double getDistanceBetween(double lat1, double lon1, double lat2, double lon2) {
+        if (lat1 == 0 || lat2 == 0)
+            return null;
+        float[] result = new float[1];
+        Location.distanceBetween(lat1, lon1,
+                lat2, lon2, result);
+        return (double) result[0];
+    }
 
 
 }

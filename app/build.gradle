@@ -50,8 +50,8 @@ dependencies {
     //keyboard
     implementation 'net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:2.1.0'
 
-    //implementation 'com.github.bumptech.glide:glide:4.8.0'
-    //annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
+    /*implementation 'com.github.bumptech.glide:glide:4.8.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'*/
 
     //volley
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
@@ -59,6 +59,10 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.2'
 
     implementation 'com.facebook.android:facebook-android-sdk:[4,5)'
+
+    //circularimage
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
+    implementation 'com.squareup.picasso:picasso:2.71828'
 
 
 }

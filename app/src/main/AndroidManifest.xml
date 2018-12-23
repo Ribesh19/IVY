@@ -9,8 +9,8 @@
          location permissions for the 'MyLocation' functionality. 
     -->
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
@@ -21,14 +21,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".HomeActivity" android:theme="@style/SplashTheme">
+        <activity
+            android:name=".HomeActivity"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".DetailActivity" />
         <activity android:name=".FeeStructureActivity" />
         <activity android:name=".RatingActivity" />
@@ -44,9 +45,14 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
+
+
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.gms.auth.TokenData"
+            android:value="519744419097-h078pa00c4tdql8m3ol6jck23qifh8ve.apps.googleusercontent.com"/>
 
         <activity android:name=".MapActivity" />
 
@@ -54,27 +60,29 @@
             android:name="org.apache.http.legacy"
             android:required="false" />
 
-        <meta-data android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id"/>
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
         <activity
             android:name=".RegisterActivity"
             android:label="@string/title_activity_register"
             android:theme="@style/AppTheme"
-           android:windowSoftInputMode="adjustPan">
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data android:scheme="@string/fb_login_protocol_scheme" />
-            </intent-filter><!--added-->
+            </intent-filter> <!-- added -->
         </activity>
-        <activity android:name=".MainLayoutActivity"/>
+        <activity android:name=".MainLayoutActivity" />
 
-
-           <!-- android:windowSoftInputMode="stateVisible|adjustResize"/>-->
-        <activity android:name=".AllReviewAcitivity"/>
-
+        <!-- android:windowSoftInputMode="stateVisible|adjustResize"/> -->
+        <activity android:name=".AllReviewAcitivity" />
+        <activity android:name=".UserDetailActivity"></activity>
     </application>
-
 
 </manifest>

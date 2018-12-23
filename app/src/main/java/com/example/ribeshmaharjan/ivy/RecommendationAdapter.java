@@ -15,13 +15,15 @@ import com.example.ribeshmaharjan.ivy.model.Featured;
 
 import java.util.List;
 
+import ir.apend.slider.ui.Slider;
+
 public class RecommendationAdapter extends RecyclerView.Adapter<RecommendationAdapter.InfoViewHolder> {
 
     Context mcontext;
     List<Featured> mfeaturedList;
 
     class InfoViewHolder extends RecyclerView.ViewHolder {
-        ImageView mSchoolImage;
+        Slider mSchoolImage;
         TextView mSchoolName;
         //RatingBar mRatingbar;
         TextView mStatus;
@@ -81,6 +83,7 @@ public class RecommendationAdapter extends RecyclerView.Adapter<RecommendationAd
         holder.mStatus.setText("Open");*/
 
        holder.mSchoolName.setText(mfeaturedList.get(position).getName());
+      // holder.mDistance.setText(mfeaturedList.get(position).get);
 
 
 

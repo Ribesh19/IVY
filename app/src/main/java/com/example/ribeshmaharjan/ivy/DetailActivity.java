@@ -3,6 +3,7 @@ package com.example.ribeshmaharjan.ivy;
 import android.app.ActivityOptions;
 import android.content.Intent;
 
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
@@ -36,6 +37,7 @@ import com.example.ribeshmaharjan.ivy.rest.ApiInterface;
 import java.util.ArrayList;
 import java.util.List;
 
+import ir.apend.slider.model.Slide;
 import ir.apend.slider.ui.Slider;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -67,6 +69,8 @@ public class DetailActivity extends AppCompatActivity {
     RatingBar mrating_review_review_detail;
     TextView mlastactive_review_detail;
     ImageView mimageView4_review_detail;
+    TextView mfacilities_content;
+
 
     Detail detail=null;
     @Override
@@ -95,6 +99,7 @@ public class DetailActivity extends AppCompatActivity {
         slider=findViewById(R.id.imageView2);
         mlastactive_review_detail=findViewById(R.id.lastactive_review_detail);
         mimageView4_review_detail=findViewById(R.id.imageView4_review_detail);
+        mfacilities_content=findViewById(R.id.facilities_content);
 
         mprogressbar=findViewById(R.id.progressBar_detail);
         mbackbtn=findViewById(R.id.back_btn);
@@ -111,6 +116,9 @@ public class DetailActivity extends AppCompatActivity {
        /* mmakefavourite.setChecked(false);
         mmakefavourite.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_circle));*/
 
+        SharedPreferences prefs = getSharedPreferences("mypref", MODE_PRIVATE);
+        final boolean Islogin= prefs.getBoolean("Islogin",false);
+
         ApiInterface apiInterface=ApiClient.getClient().create(ApiInterface.class);
         Call<DetailResponse> call_detailing=apiInterface.getschooldetail(schoolid);
         call_detailing.enqueue(new Callback<DetailResponse>() {
@@ -122,32 +130,30 @@ public class DetailActivity extends AppCompatActivity {
                 //Toast.makeText(DetailActivity.this, Integer.toString(statuscode),Toast.LENGTH_LONG).show();
                 assert response.body() != null;
                 detail = response.body().getResults();
-                List<ir.apend.slider.model.Slide> slideList1 = new ArrayList<>();
+                List<Slide> slideList1 = new ArrayList<>();
                 for (int i = 0; i < detail.getImages().size(); i++) {
-                    slideList1.add((new ir.apend.slider.model.Slide(i, detail.getImages().get(i), getResources().getDimensionPixelSize(R.dimen.slider_image_corner))));
+                    slideList1.add((new Slide(i, detail.getImages().get(i), getResources().getDimensionPixelSize(R.dimen.slider_image_corner))));
                 }
                 slider.addSlides(slideList1);
                 //Toast.makeText(DetailActivity.this,detail.getName() ,Toast.LENGTH_LONG).show();
                 mschoolname.setText(detail.getName());
                 String address = detail.getAddress() + ", " + detail.getCity() + ", State - " + detail.getState() + ", " + detail.getPostCode() + ", " + detail.getCountry();
                 maddress.setText(address);
-                if(detail.getFavorite().size()!=0)
-                {
-                    int fav_id = detail.getFavorite().get(0).getIsFavorite();
+                    int fav_id = detail.getIsFavorite();
                     if (fav_id == 0) {
 
                         mmakefavourite.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_circle));
                     } else {
                         mmakefavourite.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_circle_red));
                     }
-                }
-                else
-                {
-                    mmakefavourite.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_circle));
-                }
+
                 maboutuscontent.setText(detail.getDescription());
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                     maboutuscontent.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
+                }
+                mfacilities_content.setText(detail.getFacilities());
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    mfacilities_content.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
                 }
                 magegroup.setText(detail.getAgeGroup());
                 if(detail.getSchoolaverage()!=null) {
@@ -170,6 +176,7 @@ public class DetailActivity extends AppCompatActivity {
                     mReviewbody_review_detail.setText(detail.getLatestReview().getMessage());
                     mrating_review_review_detail.setRating(detail.getLatestReview().getUseraveragereview());
                     mratingvalue_review_detail_review.setText(detail.getLatestReview().getUseraveragereview().toString() + " of 5");
+                    mlastactive_review_detail.setText(detail.getLatestReview().getCreatedAt());
 
                 }
                 else
@@ -234,30 +241,47 @@ public class DetailActivity extends AppCompatActivity {
         mmakefavourite.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked)
+                if(Islogin)
                 {
-                    mmakefavourite.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_circle_red));
-                    LayoutInflater inflater = getLayoutInflater();
-                    View layout = inflater.inflate(R.layout.toast_favourite_layout,
-                            (ViewGroup) findViewById(R.id.toast_layout_card));
-                    Toast toast = new Toast(getApplicationContext());
-                    toast.setGravity(Gravity.CENTER_VERTICAL, 0, 400);
-                    toast.setDuration(Toast.LENGTH_SHORT);
-                    toast.setView(layout);
-                    toast.show();
+                    if(isChecked)
+                    {
+                        mmakefavourite.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_circle_red));
+                        LayoutInflater inflater = getLayoutInflater();
+                        View layout = inflater.inflate(R.layout.toast_favourite_layout,
+                                (ViewGroup) findViewById(R.id.toast_layout_card));
+                        Toast toast = new Toast(getApplicationContext());
+                        toast.setGravity(Gravity.CENTER_VERTICAL, 0, 400);
+                        toast.setDuration(Toast.LENGTH_SHORT);
+                        toast.setView(layout);
+                        toast.show();
+
+                    }
+                    else
+                    {
+                        mmakefavourite.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_circle));
+                        LayoutInflater inflater = getLayoutInflater();
+                        View layout = inflater.inflate(R.layout.toast_remove_favourite_layout,
+                                (ViewGroup) findViewById(R.id.toast_layout_card_remove));
+                        Toast toast = new Toast(getApplicationContext());
+                        toast.setGravity(Gravity.CENTER_VERTICAL, 0, 400);
+                        toast.setDuration(Toast.LENGTH_SHORT);
+                        toast.setView(layout);
+                        toast.show();
+                    }
                 }
                 else
                 {
-                    mmakefavourite.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_circle));
                     LayoutInflater inflater = getLayoutInflater();
-                    View layout = inflater.inflate(R.layout.toast_remove_favourite_layout,
-                            (ViewGroup) findViewById(R.id.toast_layout_card_remove));
+                    View layout = inflater.inflate(R.layout.toast_pleaselogin_layout, (ViewGroup) findViewById(R.id.toast_layout_card_login));
                     Toast toast = new Toast(getApplicationContext());
                     toast.setGravity(Gravity.CENTER_VERTICAL, 0, 400);
                     toast.setDuration(Toast.LENGTH_SHORT);
                     toast.setView(layout);
                     toast.show();
+                    Intent intent= new Intent(DetailActivity.this,RegisterActivity.class);
+                    startActivity(intent);
                 }
+
             }
         });
         }

@@ -13,6 +13,10 @@ public class Detail_review {
     @Expose
     private String message;
 
+    @SerializedName("created_at")
+    @Expose
+    private String createdAt;
+
     public String getUsername() {
         return username;
     }
@@ -36,5 +40,13 @@ public class Detail_review {
     public void setMessage(String message) {
         this.message = message;
     }
+    public String getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
+
 
 }

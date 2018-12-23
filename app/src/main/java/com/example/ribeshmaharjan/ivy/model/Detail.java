@@ -42,7 +42,7 @@ public class Detail {
     private String ageGroup;
     @SerializedName("facilities")
     @Expose
-    private Object facilities;
+    private String facilities;
     @SerializedName("latitude")
     @Expose
     private Double latitude;
@@ -76,9 +76,12 @@ public class Detail {
     @SerializedName("images")
     @Expose
     private List<String> images = null;
-    @SerializedName("favorite")
+   /* @SerializedName("favorite")
     @Expose
-    private List<Detail_Favourite> favorite = null;
+    private List<Detail_Favourite> favorite = null;*/
+   @SerializedName("is_favorite")
+   @Expose
+   private Integer isFavorite;
     @SerializedName("schoolaverage")
     @Expose
     private Float schoolaverage;
@@ -194,11 +197,11 @@ public class Detail {
         this.ageGroup = ageGroup;
     }
 
-    public Object getFacilities() {
+    public String getFacilities() {
         return facilities;
     }
 
-    public void setFacilities(Object facilities) {
+    public void setFacilities(String facilities) {
         this.facilities = facilities;
     }
 
@@ -290,13 +293,14 @@ public class Detail {
         this.images = images;
     }
 
-    public List<Detail_Favourite> getFavorite() {
-        return favorite;
+    public Integer getIsFavorite() {
+        return isFavorite;
     }
 
-    public void setFavorite(List<Detail_Favourite> favorite) {
-        this.favorite = favorite;
+    public void setIsFavorite(Integer isFavorite) {
+        this.isFavorite = isFavorite;
     }
+
 
     public Float getSchoolaverage() {
         return schoolaverage;
