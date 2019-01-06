@@ -19,12 +19,11 @@
         app:cardCornerRadius="5dp"
         android:layout_marginBottom="16dp">
 
-    <ir.apend.slider.ui.Slider
+    <ImageView
         android:id="@+id/imageView_favourite1"
         android:layout_width="90dp"
         android:layout_height="90dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/mother_newborn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
     </android.support.v7.widget.CardView>
@@ -37,7 +36,7 @@
         android:fontFamily="@font/montserrat_regular"
         android:gravity="start"
         android:letterSpacing="0.05"
-        android:text="@string/komal_day_care_service_and_pre_nursery"
+        android:text="@string/ivy_komal_pre_school"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="14sp"
         app:autoSizeMaxTextSize="100sp"

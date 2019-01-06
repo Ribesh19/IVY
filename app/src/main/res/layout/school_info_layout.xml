@@ -11,8 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:background="@color/white"
         app:cardCornerRadius="8dp"
+
         app:cardElevation="6dp">
         <ir.apend.slider.ui.Slider
             android:id="@+id/profileImageView"
@@ -20,7 +20,7 @@
             android:layout_height="190dip"
             app:indicatorSize="8dp"
             app:intervalSecond="5"
-            app:loopSlides="true"/>
+            app:loopSlides="true" />
 
     </android.support.v7.widget.CardView>
 
@@ -38,12 +38,11 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="16dp"
-                android:fontFamily="@font/montserrat_regular"
+                android:fontFamily="@font/montserrat_semibold"
                 android:letterSpacing="0.06"
                 android:text="@string/ivy_komal_pre_school"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp"
-                android:textStyle="bold"
                 app:layout_constraintEnd_toStartOf="@+id/rating_list"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

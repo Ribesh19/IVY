@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardElevation="4dp"
+    app:cardCornerRadius="5dp"
+    android:layout_marginBottom="16dp">
+
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp">
+
+    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/imageView_favourite"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="8dp"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="4dp"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView_infowindow"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:scaleType="centerCrop"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </android.support.v7.widget.CardView>
+
+    <TextView
+        android:id="@+id/school_name_infowindow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:gravity="start"
+        android:letterSpacing="0.05"
+        android:text="@string/komal_day_care_service_and_pre_nursery"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="14sp"
+        app:autoSizeMaxTextSize="100sp"
+        app:autoSizeMinTextSize="12sp"
+        app:autoSizeStepGranularity="2sp"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView_favourite"
+        app:layout_constraintTop_toTopOf="@+id/imageView_favourite" />
+
+    <TextView
+        android:id="@+id/txtview_status_infowindow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:letterSpacing="0.05"
+        android:text="@string/open"
+        android:textColor="@color/colorAccent"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/school_name_infowindow"
+        app:layout_constraintTop_toBottomOf="@+id/school_name_infowindow" />
+
+    <ImageView
+        android:id="@+id/imageView_fav_infowindow"
+        android:layout_width="6dp"
+        android:layout_height="6dp"
+        android:layout_marginStart="8dp"
+        android:src="@drawable/ic_circle"
+        app:layout_constraintBottom_toBottomOf="@+id/txtview_status_infowindow"
+        app:layout_constraintStart_toEndOf="@+id/txtview_status_infowindow"
+        app:layout_constraintTop_toTopOf="@+id/txtview_status_infowindow"
+        app:layout_constraintVertical_bias="0.68" />
+
+    <TextView
+        android:id="@+id/txtview_distance_infowindow"
+        android:layout_width="0dp"
+        android:layout_height="15dp"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:letterSpacing="0.05"
+        android:text="@string/distance"
+        android:textColor="@color/grey"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_fav_infowindow"
+        app:layout_constraintStart_toEndOf="@+id/imageView_fav_infowindow"
+        app:layout_constraintTop_toTopOf="@+id/imageView_fav_infowindow"
+        app:layout_constraintVertical_bias="0.73" />
+
+    <RatingBar
+        android:id="@+id/rating_bar_infowindow"
+        style="?android:attr/ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:rating="4"
+        android:stepSize="1"
+        android:theme="@style/AppTheme2"
+        app:layout_constraintStart_toStartOf="@+id/txtview_status_infowindow"
+        app:layout_constraintTop_toBottomOf="@+id/txtview_status_infowindow" />
+
+</android.support.constraint.ConstraintLayout>
+</android.support.v7.widget.CardView>

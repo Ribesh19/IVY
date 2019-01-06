@@ -6,64 +6,38 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".SearchFragment">
 
-
-    <android.support.v7.widget.CardView
-        android:id="@+id/search_school_card"
-        android:layout_width="0dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
-        android:background="@color/colorPrimaryDark"
-        android:backgroundTint="#f3f7fb"
-        android:padding="8dp"
-        android:elevation="0dp"
-        app:cardCornerRadius="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
         <android.support.v7.widget.SearchView
-            android:id="@+id/search_school"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:id="@+id/search_school_card"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_search"
             android:hapticFeedbackEnabled="true"
             app:defaultQueryHint="Search Day Care and others"
+            app:searchIcon="@drawable/ic_icon_search_grey"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:searchIcon="@drawable/ic_icon_search_grey"
-
-            />
-    </android.support.v7.widget.CardView>
-
-    <android.support.v7.widget.CardView
-        android:id="@+id/search_location_card"
-        android:layout_width="0dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:background="@color/colorPrimaryDark"
-        android:backgroundTint="#f3f7fb"
-        android:padding="8dp"
-        android:elevation="0dp"
-        app:cardCornerRadius="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search_school_card">
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            android:paddingBottom="1dp"
+            app:searchHintIcon="@drawable/ic_icon_search_grey"/>
 
         <android.support.v7.widget.SearchView
-            android:id="@+id/search_location"
+            android:id="@+id/search_location_card"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_search"
             android:hapticFeedbackEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/search_school_card"
             app:queryHint="Kishangadh, Delhi"
-            app:searchIcon="@drawable/ic_location_icon_grey" />
-    </android.support.v7.widget.CardView>
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:searchIcon="@drawable/ic_location_icon_grey"
+            app:searchHintIcon="@drawable/ic_location_icon_grey"/>
 
     <TextView
         android:id="@+id/recentsearch"

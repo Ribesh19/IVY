@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.ribeshmaharjan.ivy">
+    package="com.creatudevelopers.ribeshmaharjan.ivy">
 
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
@@ -21,19 +21,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity
-            android:name=".HomeActivity"
-            android:theme="@style/SplashTheme">
+        <activity android:name="com.creatudevelopers.ribeshmaharjan.ivy.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DetailActivity" />
-        <activity android:name=".FeeStructureActivity" />
-        <activity android:name=".RatingActivity" />
-        <activity android:name=".AppointmentActivity" />
+        <activity android:name="com.creatudevelopers.ribeshmaharjan.ivy.DetailActivity" />
+        <activity android:name="com.creatudevelopers.ribeshmaharjan.ivy.FeeStructureActivity" />
+        <activity android:name="com.creatudevelopers.ribeshmaharjan.ivy.RatingActivity" />
+        <activity android:name="com.creatudevelopers.ribeshmaharjan.ivy.AppointmentActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -45,16 +43,14 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
-
-
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
         <meta-data
             android:name="com.google.android.gms.auth.TokenData"
-            android:value="519744419097-h078pa00c4tdql8m3ol6jck23qifh8ve.apps.googleusercontent.com"/>
+            android:value="519744419097-h078pa00c4tdql8m3ol6jck23qifh8ve.apps.googleusercontent.com" />
 
-        <activity android:name=".MapActivity" />
+        <activity android:name="com.creatudevelopers.ribeshmaharjan.ivy.MapActivity" />
 
         <uses-library
             android:name="org.apache.http.legacy"
@@ -65,7 +61,9 @@
             android:value="@string/facebook_app_id" />
 
         <activity
-            android:name=".RegisterActivity"
+            android:name="com.creatudevelopers.ribeshmaharjan.ivy.RegisterActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:exported="true"
             android:label="@string/title_activity_register"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan">
@@ -78,11 +76,14 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter> <!-- added -->
         </activity>
-        <activity android:name=".MainLayoutActivity" />
+        <activity android:name="com.creatudevelopers.ribeshmaharjan.ivy.MainLayoutActivity" />
 
         <!-- android:windowSoftInputMode="stateVisible|adjustResize"/> -->
-        <activity android:name=".AllReviewAcitivity" />
-        <activity android:name=".UserDetailActivity"></activity>
+        <activity android:name="com.creatudevelopers.ribeshmaharjan.ivy.AllReviewAcitivity" />
+        <activity android:name="com.creatudevelopers.ribeshmaharjan.ivy.UserDetailActivity">
+        </activity>
+        <activity android:name="com.creatudevelopers.ribeshmaharjan.ivy.ThankyouActivity" />
+        <activity android:name="com.creatudevelopers.ribeshmaharjan.ivy.ForgetPassword"></activity>
     </application>
 
 </manifest>

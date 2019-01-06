@@ -209,8 +209,6 @@
                         android:hint="@string/how_did_you_feel_about_the_school"
                         android:imeOptions="actionNext"
                         android:inputType="textMultiLine"
-                        android:lines="2"
-                        android:maxLength="100"
                         android:nextFocusDown="@null"
                         android:paddingBottom="100dp"
                         android:selectAllOnFocus="true"

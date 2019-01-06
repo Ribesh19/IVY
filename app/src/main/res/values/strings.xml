@@ -5,10 +5,10 @@
     <string name="favourite">FAVOURITE</string>
     <string name="mapview">Map View</string>
     <string name="your_location">Your Location</string>
-    <string name="ivy_komal_pre_school">IVY: Komal Pre-School</string>
+    <string name="ivy_komal_pre_school">IVY School</string>
     <string name="open">Open</string>
     <string name="distance">Distance</string>
-    <string name="ivy_kids_safe_home">IVY: Kids Safe Home</string>
+    <string name="ivy_kids_safe_home">IVY School</string>
     <string name="about_us">About Us</string>
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
         sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -53,7 +53,7 @@
     <string name="title_activity_register">RegisterActivity</string>
     <string name="login"><b>LOGIN</b></string>
     <string name="sign_up"><b>SIGN UP</b></string>
-    <string name="PLEASE_SIGN_UP">Please SingUp</string>
+    <string name="PLEASE_SIGN_UP">Please Singup</string>
     <string name="log_in_with_facebook">LOGIN WITH FACEBOOK</string>
     <string name="log_in_with_google">LOGIN WITH GOOGLE</string>
     <string name="or">OR</string>
@@ -75,10 +75,23 @@
     <string name="up_wrong">Either email or password is incorrect.</string>
 
 
-    <string name="facebook_app_id">2259222424363790</string>
-    <string name="fb_login_protocol_scheme">fb2259222424363790</string>
+    <!--<string name="facebook_app_id">2259222424363790</string>
+    <string name="fb_login_protocol_scheme">fb2259222424363790</string>-->
+    <string name="facebook_app_id">352603065554595</string>
+    <string name="fb_login_protocol_scheme">fb352603065554595</string>
     <string name="search_result">Search Result</string>
     <string name="logout">LogOut</string>
+    <string name="sign_up_2"><u>Sign Up</u></string>
+    <string name="Password_dontmatch">Password don\'t match</string>
+    <string name="userid">userid</string>
+    <string name="Email_id_exists">Email id already exists!</string>
+    <string name="invalidemail">Invalid Email</string>
+    <string name="Futuredate"> Select future date</string>
+    <string name="thank_you">Thank you!</string>
+    <string name="your_review_help_parents_to_find_the_best_school_for_their_kids">Your review help parents to find the best school for their kids.</string>
+    <string name="forget_password"><u>Forget Password?</u></string>
+    <string name="reset_password">Reset Password</string>
+    <string name="send_password_reset_link">Send Password Reset Link</string>
 
 
 </resources>

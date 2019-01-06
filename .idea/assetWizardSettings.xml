@@ -16,11 +16,27 @@
                             <entry key="launcher">
                               <value>
                                 <PersistentState>
+                                  <option name="children">
+                                    <map>
+                                      <entry key="foregroundImage">
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+                                                <entry key="scalingPercent" value="58" />
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
+                                    </map>
+                                  </option>
                                   <option name="values">
                                     <map>
                                       <entry key="backgroundColor" value="6f3594" />
-                                      <entry key="backgroundImage" value="$USER_HOME$/Desktop/background.svg" />
-                                      <entry key="foregroundImage" value="$USER_HOME$/Desktop/ivy_logo.svg" />
+                                      <entry key="backgroundImage" value="$USER_HOME$/Desktop/final_icon_background.svg" />
+                                      <entry key="foregroundImage" value="$USER_HOME$/Desktop/final_icon.svg" />
+                                      <entry key="showGrid" value="true" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -51,7 +67,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/Applications/Android%20Studio.app/Contents/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_assignment_ind_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/Applications/Android%20Studio.app/Contents/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_check_circle_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -62,8 +78,9 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="ic_icon_map_geo" />
-                            <entry key="sourceFile" value="$PROJECT_DIR$/../../app-slices-svg/icon_map_geo.svg" />
+                            <entry key="color" value="ffffff" />
+                            <entry key="outputName" value="ic_star" />
+                            <entry key="sourceFile" value="$PROJECT_DIR$/../../star.svg" />
                           </map>
                         </option>
                       </PersistentState>

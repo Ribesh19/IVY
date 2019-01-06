@@ -166,7 +166,6 @@
                         android:inputType="textMultiLine"
                         android:freezesText="true"
                         android:imeOptions="actionNext"
-                        android:maxLength="100"
                         android:nextFocusDown="@null"
                         android:lines="2"
                         android:ellipsize="end"

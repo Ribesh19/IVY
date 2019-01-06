@@ -10,6 +10,7 @@
         <item name="android:textSize">12sp</item>
         <item name="android:fontFamily">@font/montserrat_regular</item>
         <item name="android:windowActivityTransitions">true</item>
+        <item name="android:backgroundDimEnabled">true</item>
 
     </style>
 
@@ -23,14 +24,15 @@
         <item name="android:windowActivityTransitions">true</item>
     </style>
 
-    <style name="AppTheme4" parent="@style/Theme.MaterialComponents.Light.DarkActionBar">
+    <style name="AppTheme4" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:fontFamily">@font/montserrat_regular</item>
-        <item name="android:letterSpacing">0.1</item>
+        <item name="android:fontFamily">@font/montserrat_bold2</item>
+        <item name="android:letterSpacing">0.05</item>
         <item name="android:windowActivityTransitions">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
 
     </style>
 
@@ -55,25 +57,16 @@
         <item name="android:letterSpacing">0.05</item>
     </style>
 
-    <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
+   <!-- <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        &lt;!&ndash; Customize your theme here. &ndash;&gt;
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowBackground">@drawable/splash</item>
 
 
-    </style>
+    </style>-->
 
-    <style name="FacebookLoginButton">
-        <item name="android:textSize">14sp</item>
-        <item name="android:background">@drawable/roundedbutton_fb</item>
-        <item name="android:layout_gravity">center_horizontal</item>
-        <item name="android:text"> @string/log_in_with_facebook</item>
-        <item name="android:fontFamily">@font/montserrat_regular</item>
-        <item name="android:padding">8dp</item>
-
-    </style>
 
 
 
